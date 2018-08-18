@@ -18,7 +18,7 @@
     L1:
     #emit    jump    L1
     #emit    zero    cellmin
-}
+}//баг или не баг) Может дело в компиляторе или в браузере)
 
 
 #include <a_samp>
