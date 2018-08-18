@@ -18,7 +18,7 @@
     L1:
     #emit    jump    L1
     #emit    zero    cellmin
-}
+}//РєРѕРјРјРµРЅС‚
 
 
 #include <a_samp>
@@ -132,14 +132,14 @@ stock ConnectMySQL()
 	mysql_log(ERROR | WARNING);
 
 	print(!"===============================================================================");
-	print((mysql_errno()) ? !"                        Подключение не удалось                        "// используются тернарные условия ? :
-						: !"                        Подключение успешно установлено                        ");
+	print((mysql_errno()) ? !"                        ГЏГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГҐ Г­ГҐ ГіГ¤Г Г«Г®Г±Гј                        "// ГЁГ±ГЇГ®Г«ГјГ§ГіГѕГІГ±Гї ГІГҐГ°Г­Г Г°Г­Г»ГҐ ГіГ±Г«Г®ГўГЁГї ? :
+						: !"                        ГЏГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГҐ ГіГ±ГЇГҐГёГ­Г® ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г®                        ");
  	print(!"===============================================================================");
  	
 
 	//mysql_function_query(connects, "SET NAMES cp1251", false, "", "");
 	/*
-	*   Кодировка для MySQL
+	*   ГЉГ®Г¤ГЁГ°Г®ГўГЄГ  Г¤Г«Гї MySQL
 	*/
 	mysql_function_query(connects, !"SET CHARSET 'utf8'", false, "","");
 	mysql_function_query(connects, !"SET NAMES 'utf8'", false, "","");
@@ -162,7 +162,7 @@ public OnGameModeExit()
     
     mysql_close(connects);
     
-	print("Сервер успешно выключен!");
+	print("Г‘ГҐГ°ГўГҐГ° ГіГ±ГЇГҐГёГ­Г® ГўГ»ГЄГ«ГѕГ·ГҐГ­!");
 	return true;
 }
 
@@ -264,7 +264,7 @@ public OnPlayerDisconnect(playerid, reason)
 
 	if(GetPVarInt(playerid,"BuyCar") != 0) DestroyVehicle(Player[playerid][pCar][3]);
     if(GetPVarInt(playerid,"ReconedID") != INVALID_PLAYER_ID) {
- 		SCM(GetPVarInt(playerid,"ReconedID"),0xFF0000FF,"Игрок отключился от сервера. Слежка прекращена!");
+ 		SCM(GetPVarInt(playerid,"ReconedID"),0xFF0000FF,"Г€ГЈГ°Г®ГЄ Г®ГІГЄГ«ГѕГ·ГЁГ«Г±Гї Г®ГІ Г±ГҐГ°ГўГҐГ°Г . Г‘Г«ГҐГ¦ГЄГ  ГЇГ°ГҐГЄГ°Г Г№ГҐГ­Г !");
 
 	  	callcmd::recon(GetPVarInt(playerid, "ReconedID"), "");
   	}
@@ -272,17 +272,17 @@ public OnPlayerDisconnect(playerid, reason)
     if(Player[playerid][pHouse] != 9999) if(Player[playerid][pCar][0] != -1) DestroyVehicle(Player[playerid][PlayerCar]);
     if(GetPVarInt(playerid,"TaxiJob") != 0) taximans--;
     
-    memset(Player[playerid], 0, _:pInfo);// Чистим массив игрока
+    memset(Player[playerid], 0, _:pInfo);// Г—ГЁГ±ГІГЁГ¬ Г¬Г Г±Г±ГЁГў ГЁГЈГ°Г®ГЄГ 
     
 	printf("KILLTIMER = player_other_timer[playerid] = %d", player_other_timer[playerid]);
-	KillTimer(player_other_timer[playerid]);// Убиваем таймер игрока
+	KillTimer(player_other_timer[playerid]);// Г“ГЎГЁГўГ ГҐГ¬ ГІГ Г©Г¬ГҐГ° ГЁГЈГ°Г®ГЄГ 
     
 	return true;
 }
 
 public OnPlayerSpawn(playerid)
 {
-    if(!Player[playerid][PlayerLogged]) return SendClientMessage(playerid, 0xAC7575FF, "Необходимо авторизоваться!");
+    if(!Player[playerid][PlayerLogged]) return SendClientMessage(playerid, 0xAC7575FF, "ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® Г ГўГІГ®Г°ГЁГ§Г®ГўГ ГІГјГ±Гї!");
 
 	SetPVarInt(playerid,"AirTime",3);
 
@@ -308,11 +308,11 @@ public OnPlayerDeath(playerid, killerid, reason)
 	}   }
 	if(GetPVarInt(playerid,"TaxiJob") != 0) taximans--;
    	SetPVarInt(playerid,"CheckSpawn",0), SetPVarInt(playerid,"Job",0), SetPVarInt(playerid,"TaxiJob",0), SetPVarInt(playerid,"MailJob",0), SetPVarInt(playerid,"MailSend",0);
-   	if(PlayerLaw(killerid) && PlayerToZone(killerid,-103.125,1645.3125,442.96875,2179.6875) && PlayerGangster(playerid)) SCM(killerid,0xFFFFFFFF,"Вы ранили бандита, {03c03c}премия в размере: 200$"), Player[killerid][pMoney] += 200;
-	if(PlayerCF(killerid) && (0 < Player[playerid][pWanted] < 7)) Player[playerid][pWanted] = ((Player[playerid][pWanted]*2)*60)+7, SetPlayerWantedLevel(playerid,0), SCM(killerid,0xFFC800FF,"Приступник был ранен и доставлен в тюремный госпиталь!"), GameTextForPlayer(killerid,"~g~+350$",1000,1);
+   	if(PlayerLaw(killerid) && PlayerToZone(killerid,-103.125,1645.3125,442.96875,2179.6875) && PlayerGangster(playerid)) SCM(killerid,0xFFFFFFFF,"Г‚Г» Г°Г Г­ГЁГ«ГЁ ГЎГ Г­Г¤ГЁГІГ , {03c03c}ГЇГ°ГҐГ¬ГЁГї Гў Г°Г Г§Г¬ГҐГ°ГҐ: 200$"), Player[killerid][pMoney] += 200;
+	if(PlayerCF(killerid) && (0 < Player[playerid][pWanted] < 7)) Player[playerid][pWanted] = ((Player[playerid][pWanted]*2)*60)+7, SetPlayerWantedLevel(playerid,0), SCM(killerid,0xFFC800FF,"ГЏГ°ГЁГ±ГІГіГЇГ­ГЁГЄ ГЎГ»Г« Г°Г Г­ГҐГ­ ГЁ Г¤Г®Г±ГІГ ГўГ«ГҐГ­ Гў ГІГѕГ°ГҐГ¬Г­Г»Г© ГЈГ®Г±ГЇГЁГІГ Г«Гј!"), GameTextForPlayer(killerid,"~g~+350$",1000,1);
 	if(!PlayerCF(killerid) && (0 < Player[killerid][pWanted] < 7)) {
         Player[killerid][pWanted] = ((2 + Player[killerid][pWanted]) > 6) ? 6 : (Player[killerid][pWanted]+2), SetPlayerWantedLevel(killerid,Player[killerid][pWanted]);
-        format(strock,76,"[R] Диспетчер: Совершено убийство, подозреваемый: %s",Name(killerid));
+        format(strock,76,"[R] Г„ГЁГ±ГЇГҐГІГ·ГҐГ°: Г‘Г®ГўГҐГ°ГёГҐГ­Г® ГіГЎГЁГ©Г±ГІГўГ®, ГЇГ®Г¤Г®Г§Г°ГҐГўГ ГҐГ¬Г»Г©: %s",Name(killerid));
         for(new i = 7; i < 10; i++) SendRadioMessage(i, 0x1faee9AA, strock);
 	}
 	return true;
@@ -339,12 +339,12 @@ public OnPlayerText(playerid, text[])
 	if(Player[playerid][pMute] != 0 && Player[playerid][pMute] < gettime()) Player[playerid][pMute] = 0;
 
 	if(Player[playerid][pMute] > gettime()) {
-		SCM(playerid,0xFFFFFFFF,"У вас {1faee9}бан чата!");
+		SCM(playerid,0xFFFFFFFF,"Г“ ГўГ Г± {1faee9}ГЎГ Г­ Г·Г ГІГ !");
 		return false;
 	}
 
 	if(GetPVarInt(playerid,"Chat") > gettime()) {
-		SCM(playerid,0xFF0000FF,"Не флудите!");
+		SCM(playerid,0xFF0000FF,"ГЌГҐ ГґГ«ГіГ¤ГЁГІГҐ!");
 		return false;
 	}
 	
@@ -352,7 +352,7 @@ public OnPlayerText(playerid, text[])
 	new strocks[144+1];
  	if(GetPVarInt(playerid,"Called") >= 3)
  	{
- 		format(strocks, sizeof(strocks), "[Т] %s: %s", Name(playerid), text);
+ 		format(strocks, sizeof(strocks), "[Г’] %s: %s", Name(playerid), text);
 
 		SCM(GetPVarInt(playerid,"CalledID"),0xFFEE00FF,strocks);
  		SetPlayerChatBubble(playerid, strocks, 0xFFEE00FF, 15.0, 4000);
@@ -360,31 +360,31 @@ public OnPlayerText(playerid, text[])
 		ProxDetector(playerid, 15.0, COLOR_FADE2, strocks);
  	    return false;
  	}
-  	if(strcmp(text, "чВ", true) == 0 || strcmp(text, ":D", true) == 0 || strcmp(text, "хД", true) == 0 || strcmp(text, "xD", true) == 0 || strcmp(text, "lol", true) == 0 || strcmp(text, "лол", true) == 0) {
-		format(strocks,32,"%s смеётся",Name(playerid));
+  	if(strcmp(text, "Г·Г‚", true) == 0 || strcmp(text, ":D", true) == 0 || strcmp(text, "ГµГ„", true) == 0 || strcmp(text, "xD", true) == 0 || strcmp(text, "lol", true) == 0 || strcmp(text, "Г«Г®Г«", true) == 0) {
+		format(strocks,32,"%s Г±Г¬ГҐВёГІГ±Гї",Name(playerid));
 		ProxDetector(playerid, 25.0, COLOR_PURPLE, strocks);
 
-		SetPlayerChatBubble(playerid, "смеётся",COLOR_PURPLE,30.0,10000);
+		SetPlayerChatBubble(playerid, "Г±Г¬ГҐВёГІГ±Гї",COLOR_PURPLE,30.0,10000);
 		return false;
 	}
 	else if(strcmp(text, ")", true) == 0 || strcmp(text, "))", true) == 0) {
-	    format(strocks,34,"%s улыбается",Name(playerid));
+	    format(strocks,34,"%s ГіГ«Г»ГЎГ ГҐГІГ±Гї",Name(playerid));
 	    ProxDetector(playerid, 25.0, COLOR_PURPLE, strocks);
 	    
-		SetPlayerChatBubble(playerid, "улыбается",COLOR_PURPLE,30.0,10000);
+		SetPlayerChatBubble(playerid, "ГіГ«Г»ГЎГ ГҐГІГ±Гї",COLOR_PURPLE,30.0,10000);
 		return false;
 	}
 	else if(strcmp(text, "(", true) == 0 || strcmp(text, ":C", true) == 0 || strcmp(text, "((", true) == 0) {
-		format(strocks,32,"%s грустит",Name(playerid));
+		format(strocks,32,"%s ГЈГ°ГіГ±ГІГЁГІ",Name(playerid));
 		SendClientsMessage(25.0, playerid, strocks,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 		ProxDetector(playerid, 25.0, COLOR_PURPLE, strocks);
 		
-		SetPlayerChatBubble(playerid, "грустит",COLOR_PURPLE,30.0,10000);
+		SetPlayerChatBubble(playerid, "ГЈГ°ГіГ±ГІГЁГІ",COLOR_PURPLE,30.0,10000);
 		return false;
 	}
 	SetPlayerChatBubble(playerid, text, 0x34c924FF, 40.0, 7000);
 	
-    format(strocks, sizeof(strocks), "%s говорит: %s", Name(playerid), text);
+    format(strocks, sizeof(strocks), "%s ГЈГ®ГўГ®Г°ГЁГІ: %s", Name(playerid), text);
 	ProxDetector(playerid, 40.0, COLOR_FADE1, strocks);
 	
  	if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_NONE) ApplyAnimation(playerid, "PED", "IDLE_CHAT",4.1,0,1,1,1,1,1),SetTimerEx("ClearChat", 1300, 0, "i", playerid);
@@ -404,8 +404,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
 public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger) return SetPVarInt(playerid,"AC_VID",vehicleid);
 
 public OnPlayerExitVehicle(playerid, vehicleid) {
-	if(GetPlayerState(GetPVarInt(playerid,"TaxiCall")) == PLAYER_STATE_DRIVER)  SetPVarInt(GetPVarInt(playerid,"TaxiCall"),"TaxiCall",INVALID_PLAYER_ID),SCM(GetPVarInt(playerid,"TaxiCall"),0xFFFFFFFF,"Пассажир {1faee9}вышел из вашего автомобиля!"), SetPVarInt(playerid,"TaxiCall",INVALID_PLAYER_ID);
-	if(GetPVarInt(playerid,"TruckJob") > 0 && (GetPlayerVehicleID(playerid) >= truckcar[0] && GetPlayerVehicleID(playerid) <= truckcar[1]) && Player[playerid][ArendedVehicle] == vehicleid) SCM(playerid,0xAC7575FF,"У вас есть 1 минута на то, чтобы вернуться в ваш грузовик!");
+	if(GetPlayerState(GetPVarInt(playerid,"TaxiCall")) == PLAYER_STATE_DRIVER)  SetPVarInt(GetPVarInt(playerid,"TaxiCall"),"TaxiCall",INVALID_PLAYER_ID),SCM(GetPVarInt(playerid,"TaxiCall"),0xFFFFFFFF,"ГЏГ Г±Г±Г Г¦ГЁГ° {1faee9}ГўГ»ГёГҐГ« ГЁГ§ ГўГ ГёГҐГЈГ® Г ГўГІГ®Г¬Г®ГЎГЁГ«Гї!"), SetPVarInt(playerid,"TaxiCall",INVALID_PLAYER_ID);
+	if(GetPVarInt(playerid,"TruckJob") > 0 && (GetPlayerVehicleID(playerid) >= truckcar[0] && GetPlayerVehicleID(playerid) <= truckcar[1]) && Player[playerid][ArendedVehicle] == vehicleid) SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± ГҐГ±ГІГј 1 Г¬ГЁГ­ГіГІГ  Г­Г  ГІГ®, Г·ГІГ®ГЎГ» ГўГҐГ°Г­ГіГІГјГ±Гї Гў ГўГ Гё ГЈГ°ГіГ§Г®ГўГЁГЄ!");
 	return true;
 }
 
@@ -414,11 +414,11 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 	#define	vehicleid	GetPlayerVehicleID(playerid)
 	if(newstate == PLAYER_STATE_DRIVER)
 	{
-	    if((Player[playerid][Licenses] & (1<<0) == 0) && GetPVarInt(playerid,"Lesson") == 0 && !PlayerInBoat(GetPlayerVehicleID(playerid)) && !PlayerInBike(GetPlayerVehicleID(playerid)) && !PlayerInPlane(GetPlayerVehicleID(playerid))) SetPlayerDrunkLevel(playerid,6000), SCM(playerid,0xAC7575FF,"[Мысли]: Я же не умею водить! Нужно быть аккуратнее..."), SetPVarInt(playerid, "DrunkDriving", 1);
+	    if((Player[playerid][Licenses] & (1<<0) == 0) && GetPVarInt(playerid,"Lesson") == 0 && !PlayerInBoat(GetPlayerVehicleID(playerid)) && !PlayerInBike(GetPlayerVehicleID(playerid)) && !PlayerInPlane(GetPlayerVehicleID(playerid))) SetPlayerDrunkLevel(playerid,6000), SCM(playerid,0xAC7575FF,"[ГЊГ»Г±Г«ГЁ]: Гџ Г¦ГҐ Г­ГҐ ГіГ¬ГҐГѕ ГўГ®Г¤ГЁГІГј! ГЌГіГ¦Г­Г® ГЎГ»ГІГј Г ГЄГЄГіГ°Г ГІГ­ГҐГҐ..."), SetPVarInt(playerid, "DrunkDriving", 1);
 
 		if(!PlayerInBoat(GetPlayerVehicleID(playerid)) && !PlayerInBike(GetPlayerVehicleID(playerid)) && !PlayerInPlane(GetPlayerVehicleID(playerid)))
 		{
-			SCM(playerid,0x1faee9FF,"Для того чтобы завести или выключить двигатель нажмите {ffffff}'CTRL'");
+			SCM(playerid,0x1faee9FF,"Г„Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» Г§Г ГўГҐГ±ГІГЁ ГЁГ«ГЁ ГўГ»ГЄГ«ГѕГ·ГЁГІГј Г¤ГўГЁГЈГ ГІГҐГ«Гј Г­Г Г¦Г¬ГЁГІГҐ {ffffff}'CTRL'");
 			PlayerTextDrawSetString(playerid,sengine[playerid], (VVB<vehicleid:engines>) ? ("~g~ENGINE") : ("~r~ENGINE")),
 			PlayerTextDrawSetString(playerid,slights[playerid], (VVB<vehicleid:light>) ? ("~g~LIGHTS") : ("~r~LIGHTS")),
 			PlayerTextDrawSetString(playerid,slimit[playerid], (VVB<vehicleid:limit>) ? ("~r~SPEED LIMIT") : ("~g~SPEED LIMIT"));
@@ -436,52 +436,52 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 	        PlayerTextDrawShow(playerid,sfuelv[playerid]);
 	        if(vehicleid == Player[playerid][PlayerCar]) TextDrawShowForPlayer(playerid,smilage[playerid]);
         }
-		if((vehicleid >= grovecar[0] && vehicleid <= grovecar[1]) && Player[playerid][pFraction][1] != 1) SendClientMessage(playerid,COLOR_GRAD1,"Вы не член банды Grove Street Gang!"), RemovePlayerFromVehicle(playerid);
-		else if((vehicleid >= ballascar[0] && vehicleid <= ballascar[1]) && Player[playerid][pFraction][1] != 2) SendClientMessage(playerid,COLOR_GRAD1,"Вы не член банды The Ballas Gang!"), RemovePlayerFromVehicle(playerid);
-		else if((vehicleid >= vagoscar[0] && vehicleid <= vagoscar[1]) && Player[playerid][pFraction][1] != 3) SendClientMessage(playerid,COLOR_GRAD1,"Вы не член банды Los Santos Gang!"), RemovePlayerFromVehicle(playerid);
-		else if((vehicleid >= azteccar[0] && vehicleid <= azteccar[1]) && Player[playerid][pFraction][1] != 4) SendClientMessage(playerid,COLOR_GRAD1,"Вы не член банды Various Los Aztecas Gang!"), RemovePlayerFromVehicle(playerid);
-		else if((vehicleid >= rifacar[0] && vehicleid <= rifacar[1]) && Player[playerid][pFraction][1] != 5) SendClientMessage(playerid,COLOR_GRAD1,"Вы не член банды The Rifa Gang!"), RemovePlayerFromVehicle(playerid);
+		if((vehicleid >= grovecar[0] && vehicleid <= grovecar[1]) && Player[playerid][pFraction][1] != 1) SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г·Г«ГҐГ­ ГЎГ Г­Г¤Г» Grove Street Gang!"), RemovePlayerFromVehicle(playerid);
+		else if((vehicleid >= ballascar[0] && vehicleid <= ballascar[1]) && Player[playerid][pFraction][1] != 2) SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г·Г«ГҐГ­ ГЎГ Г­Г¤Г» The Ballas Gang!"), RemovePlayerFromVehicle(playerid);
+		else if((vehicleid >= vagoscar[0] && vehicleid <= vagoscar[1]) && Player[playerid][pFraction][1] != 3) SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г·Г«ГҐГ­ ГЎГ Г­Г¤Г» Los Santos Gang!"), RemovePlayerFromVehicle(playerid);
+		else if((vehicleid >= azteccar[0] && vehicleid <= azteccar[1]) && Player[playerid][pFraction][1] != 4) SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г·Г«ГҐГ­ ГЎГ Г­Г¤Г» Various Los Aztecas Gang!"), RemovePlayerFromVehicle(playerid);
+		else if((vehicleid >= rifacar[0] && vehicleid <= rifacar[1]) && Player[playerid][pFraction][1] != 5) SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г·Г«ГҐГ­ ГЎГ Г­Г¤Г» The Rifa Gang!"), RemovePlayerFromVehicle(playerid);
 		else if(vehicleid >= taxicar[0] && vehicleid <= taxicar[1])
 		{
 			if (GetPVarInt(playerid,"TaxiJob") == 1) {
-                if(Arended[vehicleid] && Player[playerid][ArendedVehicle] != vehicleid || !Arended[vehicleid] && Player[playerid][ArendedVehicle] != INVALID_VEHICLE_ID) SCM(playerid,COLOR_WHITE,"Данный автомобиль {1faee9}уже арендован либо вы уже арендовали транспорт!"), RemovePlayerFromVehicle(playerid);
-				if(!Arended[vehicleid] && Player[playerid][ArendedVehicle] == INVALID_VEHICLE_ID) ShowPlayerDialog(playerid,25,DIALOG_STYLE_MSGBOX,"{1faee9}Аренда транспорта","{ffffff}Данный транспорт пренадлежит государству и стоит денег.\n{cc7722}Цена аренды составляет - {03c03c}100$","Аренда","Отмена");
+                if(Arended[vehicleid] && Player[playerid][ArendedVehicle] != vehicleid || !Arended[vehicleid] && Player[playerid][ArendedVehicle] != INVALID_VEHICLE_ID) SCM(playerid,COLOR_WHITE,"Г„Г Г­Г­Г»Г© Г ГўГІГ®Г¬Г®ГЎГЁГ«Гј {1faee9}ГіГ¦ГҐ Г Г°ГҐГ­Г¤Г®ГўГ Г­ Г«ГЁГЎГ® ГўГ» ГіГ¦ГҐ Г Г°ГҐГ­Г¤Г®ГўГ Г«ГЁ ГІГ°Г Г­Г±ГЇГ®Г°ГІ!"), RemovePlayerFromVehicle(playerid);
+				if(!Arended[vehicleid] && Player[playerid][ArendedVehicle] == INVALID_VEHICLE_ID) ShowPlayerDialog(playerid,25,DIALOG_STYLE_MSGBOX,"{1faee9}ГЂГ°ГҐГ­Г¤Г  ГІГ°Г Г­Г±ГЇГ®Г°ГІГ ","{ffffff}Г„Г Г­Г­Г»Г© ГІГ°Г Г­Г±ГЇГ®Г°ГІ ГЇГ°ГҐГ­Г Г¤Г«ГҐГ¦ГЁГІ ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГі ГЁ Г±ГІГ®ГЁГІ Г¤ГҐГ­ГҐГЈ.\n{cc7722}Г–ГҐГ­Г  Г Г°ГҐГ­Г¤Г» Г±Г®Г±ГІГ ГўГ«ГїГҐГІ - {03c03c}100$","ГЂГ°ГҐГ­Г¤Г ","ГЋГІГ¬ГҐГ­Г ");
 			}
-			else SendClientMessage(playerid,COLOR_GRAD1,"Вы не работаете в фирме TAXI!"), RemovePlayerFromVehicle(playerid);
+			else SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г°Г ГЎГ®ГІГ ГҐГІГҐ Гў ГґГЁГ°Г¬ГҐ TAXI!"), RemovePlayerFromVehicle(playerid);
 		}
 		else if(vehicleid >= rentcar[0] && vehicleid <= rentcar[1]) {
-			if(Arended[vehicleid] && Player[playerid][ArendedVehicle] != vehicleid || !Arended[vehicleid] && Player[playerid][ArendedVehicle] != INVALID_VEHICLE_ID) SCM(playerid,COLOR_WHITE,"Данный автомобиль {1faee9}уже арендован либо вы уже арендовали транспорт!"), RemovePlayerFromVehicle(playerid);
-			if(!Arended[vehicleid] && Player[playerid][ArendedVehicle] == INVALID_VEHICLE_ID) ShowPlayerDialog(playerid,25,DIALOG_STYLE_MSGBOX,"{1faee9}Аренда транспорта","{ffffff}Данный транспорт пренадлежит государству и стоит денег.\n{cc7722}Цена аренды составляет - {03c03c}550$","Аренда","Отмена");
+			if(Arended[vehicleid] && Player[playerid][ArendedVehicle] != vehicleid || !Arended[vehicleid] && Player[playerid][ArendedVehicle] != INVALID_VEHICLE_ID) SCM(playerid,COLOR_WHITE,"Г„Г Г­Г­Г»Г© Г ГўГІГ®Г¬Г®ГЎГЁГ«Гј {1faee9}ГіГ¦ГҐ Г Г°ГҐГ­Г¤Г®ГўГ Г­ Г«ГЁГЎГ® ГўГ» ГіГ¦ГҐ Г Г°ГҐГ­Г¤Г®ГўГ Г«ГЁ ГІГ°Г Г­Г±ГЇГ®Г°ГІ!"), RemovePlayerFromVehicle(playerid);
+			if(!Arended[vehicleid] && Player[playerid][ArendedVehicle] == INVALID_VEHICLE_ID) ShowPlayerDialog(playerid,25,DIALOG_STYLE_MSGBOX,"{1faee9}ГЂГ°ГҐГ­Г¤Г  ГІГ°Г Г­Г±ГЇГ®Г°ГІГ ","{ffffff}Г„Г Г­Г­Г»Г© ГІГ°Г Г­Г±ГЇГ®Г°ГІ ГЇГ°ГҐГ­Г Г¤Г«ГҐГ¦ГЁГІ ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГі ГЁ Г±ГІГ®ГЁГІ Г¤ГҐГ­ГҐГЈ.\n{cc7722}Г–ГҐГ­Г  Г Г°ГҐГ­Г¤Г» Г±Г®Г±ГІГ ГўГ«ГїГҐГІ - {03c03c}550$","ГЂГ°ГҐГ­Г¤Г ","ГЋГІГ¬ГҐГ­Г ");
 		}
         else if(vehicleid >= mailcar[0] && vehicleid <= mailcar[1]) {
 			if (GetPVarInt(playerid,"MailJob") == 1) {
-                if(Arended[vehicleid] && Player[playerid][ArendedVehicle] != vehicleid || !Arended[vehicleid] && Player[playerid][ArendedVehicle] != INVALID_VEHICLE_ID) SCM(playerid,COLOR_WHITE,"Данный автомобиль {1faee9}уже арендован либо вы уже арендовали транспорт!"), RemovePlayerFromVehicle(playerid);
-				if(!Arended[vehicleid] && Player[playerid][ArendedVehicle] == INVALID_VEHICLE_ID) ShowPlayerDialog(playerid,25,DIALOG_STYLE_MSGBOX,"{1faee9}Аренда транспорта","{ffffff}Данный транспорт пренадлежит государству и стоит денег.\n{cc7722}Цена аренды составляет - {03c03c}200$","Аренда","Отмена");
+                if(Arended[vehicleid] && Player[playerid][ArendedVehicle] != vehicleid || !Arended[vehicleid] && Player[playerid][ArendedVehicle] != INVALID_VEHICLE_ID) SCM(playerid,COLOR_WHITE,"Г„Г Г­Г­Г»Г© Г ГўГІГ®Г¬Г®ГЎГЁГ«Гј {1faee9}ГіГ¦ГҐ Г Г°ГҐГ­Г¤Г®ГўГ Г­ Г«ГЁГЎГ® ГўГ» ГіГ¦ГҐ Г Г°ГҐГ­Г¤Г®ГўГ Г«ГЁ ГІГ°Г Г­Г±ГЇГ®Г°ГІ!"), RemovePlayerFromVehicle(playerid);
+				if(!Arended[vehicleid] && Player[playerid][ArendedVehicle] == INVALID_VEHICLE_ID) ShowPlayerDialog(playerid,25,DIALOG_STYLE_MSGBOX,"{1faee9}ГЂГ°ГҐГ­Г¤Г  ГІГ°Г Г­Г±ГЇГ®Г°ГІГ ","{ffffff}Г„Г Г­Г­Г»Г© ГІГ°Г Г­Г±ГЇГ®Г°ГІ ГЇГ°ГҐГ­Г Г¤Г«ГҐГ¦ГЁГІ ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГі ГЁ Г±ГІГ®ГЁГІ Г¤ГҐГ­ГҐГЈ.\n{cc7722}Г–ГҐГ­Г  Г Г°ГҐГ­Г¤Г» Г±Г®Г±ГІГ ГўГ«ГїГҐГІ - {03c03c}200$","ГЂГ°ГҐГ­Г¤Г ","ГЋГІГ¬ГҐГ­Г ");
 			}
-			else SendClientMessage(playerid,COLOR_GRAD1,"Вы не работаете Развозчиком Почты!"), RemovePlayerFromVehicle(playerid);
+			else SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г°Г ГЎГ®ГІГ ГҐГІГҐ ГђГ Г§ГўГ®Г§Г·ГЁГЄГ®Г¬ ГЏГ®Г·ГІГ»!"), RemovePlayerFromVehicle(playerid);
 		}
 		else if(vehicleid >= truckcar[0] && vehicleid <= truckcar[1]) {
 			if (GetPVarInt(playerid,"TruckJob") == 1) {
-				if(Arended[vehicleid] && Player[playerid][ArendedVehicle] != vehicleid || !Arended[vehicleid] && Player[playerid][ArendedVehicle] != INVALID_VEHICLE_ID) SCM(playerid,COLOR_WHITE,"Данный автомобиль {1faee9}уже арендован либо вы уже арендовали транспорт!"), RemovePlayerFromVehicle(playerid);
-				if(!Arended[vehicleid] && Player[playerid][ArendedVehicle] == INVALID_VEHICLE_ID) ShowPlayerDialog(playerid,25,DIALOG_STYLE_MSGBOX,"{1faee9}Аренда транспорта","{ffffff}Данный транспорт пренадлежит государству и стоит денег.\n{cc7722}Цена аренды составляет - {03c03c}1000$","Аренда","Отмена");
+				if(Arended[vehicleid] && Player[playerid][ArendedVehicle] != vehicleid || !Arended[vehicleid] && Player[playerid][ArendedVehicle] != INVALID_VEHICLE_ID) SCM(playerid,COLOR_WHITE,"Г„Г Г­Г­Г»Г© Г ГўГІГ®Г¬Г®ГЎГЁГ«Гј {1faee9}ГіГ¦ГҐ Г Г°ГҐГ­Г¤Г®ГўГ Г­ Г«ГЁГЎГ® ГўГ» ГіГ¦ГҐ Г Г°ГҐГ­Г¤Г®ГўГ Г«ГЁ ГІГ°Г Г­Г±ГЇГ®Г°ГІ!"), RemovePlayerFromVehicle(playerid);
+				if(!Arended[vehicleid] && Player[playerid][ArendedVehicle] == INVALID_VEHICLE_ID) ShowPlayerDialog(playerid,25,DIALOG_STYLE_MSGBOX,"{1faee9}ГЂГ°ГҐГ­Г¤Г  ГІГ°Г Г­Г±ГЇГ®Г°ГІГ ","{ffffff}Г„Г Г­Г­Г»Г© ГІГ°Г Г­Г±ГЇГ®Г°ГІ ГЇГ°ГҐГ­Г Г¤Г«ГҐГ¦ГЁГІ ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГі ГЁ Г±ГІГ®ГЁГІ Г¤ГҐГ­ГҐГЈ.\n{cc7722}Г–ГҐГ­Г  Г Г°ГҐГ­Г¤Г» Г±Г®Г±ГІГ ГўГ«ГїГҐГІ - {03c03c}1000$","ГЂГ°ГҐГ­Г¤Г ","ГЋГІГ¬ГҐГ­Г ");
 			}
-			else SendClientMessage(playerid,COLOR_GRAD1,"Вы не работаете Дальнобойщиком!"), RemovePlayerFromVehicle(playerid);
+			else SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г°Г ГЎГ®ГІГ ГҐГІГҐ Г„Г Г«ГјГ­Г®ГЎГ®Г©Г№ГЁГЄГ®Г¬!"), RemovePlayerFromVehicle(playerid);
 		}
-		else if((vehicleid >= armycar[0] && vehicleid <= armycar[1]) && Player[playerid][pFraction][1] != 6) SendClientMessage(playerid,COLOR_GRAD1,"Вы не служите в армии!"), RemovePlayerFromVehicle(playerid);
-		else if((vehicleid >= pd[0] && vehicleid <= pd[1]) && !PlayerCop(playerid)) SendClientMessage(playerid,COLOR_GRAD1,"Вы не офицер полиции штата!"), RemovePlayerFromVehicle(playerid);
-		else if((vehicleid >= fbicar[0] && vehicleid <= fbicar[1]) && Player[playerid][pFraction][1] != 10) SendClientMessage(playerid,COLOR_GRAD1,"Вы не агент FBI!"), RemovePlayerFromVehicle(playerid);
-		else if((vehicleid >= sfncar[0] && vehicleid <= sfncar[1]) && Player[playerid][pFraction][1] != 13) SendClientMessage(playerid,COLOR_GRAD1,"Вы не работник SAN!"), RemovePlayerFromVehicle(playerid);
-		else if((vehicleid >= cnncar[0] && vehicleid <= cnncar[1]) && Player[playerid][pFraction][1] != 14) SendClientMessage(playerid,COLOR_GRAD1,"Вы не работник CNN!"), RemovePlayerFromVehicle(playerid);
-		else if((vehicleid >= srccar[0] && vehicleid <= srccar[1]) && Player[playerid][pFraction][1] != 18) SendClientMessage(playerid,COLOR_GRAD1,"У вас нет ключей от этого автомобиля."), RemovePlayerFromVehicle(playerid);
+		else if((vehicleid >= armycar[0] && vehicleid <= armycar[1]) && Player[playerid][pFraction][1] != 6) SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г±Г«ГіГ¦ГЁГІГҐ Гў Г Г°Г¬ГЁГЁ!"), RemovePlayerFromVehicle(playerid);
+		else if((vehicleid >= pd[0] && vehicleid <= pd[1]) && !PlayerCop(playerid)) SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г®ГґГЁГ¶ГҐГ° ГЇГ®Г«ГЁГ¶ГЁГЁ ГёГІГ ГІГ !"), RemovePlayerFromVehicle(playerid);
+		else if((vehicleid >= fbicar[0] && vehicleid <= fbicar[1]) && Player[playerid][pFraction][1] != 10) SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г ГЈГҐГ­ГІ FBI!"), RemovePlayerFromVehicle(playerid);
+		else if((vehicleid >= sfncar[0] && vehicleid <= sfncar[1]) && Player[playerid][pFraction][1] != 13) SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г°Г ГЎГ®ГІГ­ГЁГЄ SAN!"), RemovePlayerFromVehicle(playerid);
+		else if((vehicleid >= cnncar[0] && vehicleid <= cnncar[1]) && Player[playerid][pFraction][1] != 14) SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г°Г ГЎГ®ГІГ­ГЁГЄ CNN!"), RemovePlayerFromVehicle(playerid);
+		else if((vehicleid >= srccar[0] && vehicleid <= srccar[1]) && Player[playerid][pFraction][1] != 18) SendClientMessage(playerid,COLOR_GRAD1,"Г“ ГўГ Г± Г­ГҐГІ ГЄГ«ГѕГ·ГҐГ© Г®ГІ ГЅГІГ®ГЈГ® Г ГўГІГ®Г¬Г®ГЎГЁГ«Гї."), RemovePlayerFromVehicle(playerid);
 		else if(vehicleid >= drivingcar[0] && vehicleid <= drivingcar[1]) {
 		    if (Player[playerid][pFraction][1] == 12 || GetPVarInt(playerid,"Lesson") == 1) {
-		        if(GetPVarInt(playerid,"Lesson") == 1) SetPlayerRaceCheckpoint(playerid,1,-2055.235107,-94.230751,34.993179,-2055.235107,-94.230751,34.993179,3.0), SetPVarInt(playerid,"LessonCheck", 1), SCM(playerid,-1,"Для сдачи экзамена {03c03c}следуйте по маршруту!");
+		        if(GetPVarInt(playerid,"Lesson") == 1) SetPlayerRaceCheckpoint(playerid,1,-2055.235107,-94.230751,34.993179,-2055.235107,-94.230751,34.993179,3.0), SetPVarInt(playerid,"LessonCheck", 1), SCM(playerid,-1,"Г„Г«Гї Г±Г¤Г Г·ГЁ ГЅГЄГ§Г Г¬ГҐГ­Г  {03c03c}Г±Г«ГҐГ¤ГіГ©ГІГҐ ГЇГ® Г¬Г Г°ГёГ°ГіГІГі!");
 		    }
-		    else SendClientMessage(playerid,COLOR_GRAD1,"Вы не сотрудник Автошколы!"), RemovePlayerFromVehicle(playerid);
+		    else SendClientMessage(playerid,COLOR_GRAD1,"Г‚Г» Г­ГҐ Г±Г®ГІГ°ГіГ¤Г­ГЁГЄ ГЂГўГІГ®ГёГЄГ®Г«Г»!"), RemovePlayerFromVehicle(playerid);
 		}
 		if((GetTickCount() - GetPVarInt(playerid, "AC_CarTime")) < 500)	{
             SetPVarInt(playerid, "AC_CarSpam", GetPVarInt(playerid, "AC_CarSpam") + 1);
-            if(GetPVarInt(playerid, "AC_CarSpam") >= 3) SCM(playerid,COLOR_LIGHTRED,"Вы были кикнуты. Опкод: {ffffff}A5C0S0"), KickEx(playerid);
+            if(GetPVarInt(playerid, "AC_CarSpam") >= 3) SCM(playerid,COLOR_LIGHTRED,"Г‚Г» ГЎГ»Г«ГЁ ГЄГЁГЄГ­ГіГІГ». ГЋГЇГЄГ®Г¤: {ffffff}A5C0S0"), KickEx(playerid);
         }
         SetPVarInt(playerid, "AC_CarTime", GetTickCount());
 	}
@@ -501,10 +501,10 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 	}
    	if(newstate == PLAYER_STATE_PASSENGER) {
         if(Fares[vehicleid] != 0) {
-			if(Player[playerid][pMoney] < Fares[vehicleid]) { RemovePlayerFromVehicle(playerid), SCM(playerid,0xFFFFFFFF,"У вас {1faee9}недостаточно денег для поездки!"); return true; }
+			if(Player[playerid][pMoney] < Fares[vehicleid]) { RemovePlayerFromVehicle(playerid), SCM(playerid,0xFFFFFFFF,"Г“ ГўГ Г± {1faee9}Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї ГЇГ®ГҐГ§Г¤ГЄГЁ!"); return true; }
 		 	Player[playerid][pMoney] -= Fares[vehicleid];
 			foreach(new i : Player) if(GetPlayerVehicleID(i) == vehicleid && GetPlayerState(i) == PLAYER_STATE_DRIVER && GetPVarInt(i,"TaxiJob") == 1) SetPVarInt(i,"Cost",GetPVarInt(i,"Cost")+Fares[vehicleid]), GameTextForPlayer(playerid, "~r~-$", 3000, 1),
-			SCM(i,0x1faee9FF,"Пассажир сел в Ваш автомобиль, деньги взымаются по тарифу. {ffffff}Забрать деньги вы сможете после конца рабочего дня!"), GameTextForPlayer(i, "~g~+$", 1000, 3);
+			SCM(i,0x1faee9FF,"ГЏГ Г±Г±Г Г¦ГЁГ° Г±ГҐГ« Гў Г‚Г Гё Г ГўГІГ®Г¬Г®ГЎГЁГ«Гј, Г¤ГҐГ­ГјГЈГЁ ГўГ§Г»Г¬Г ГѕГІГ±Гї ГЇГ® ГІГ Г°ГЁГґГі. {ffffff}Г‡Г ГЎГ°Г ГІГј Г¤ГҐГ­ГјГЈГЁ ГўГ» Г±Г¬Г®Г¦ГҐГІГҐ ГЇГ®Г±Г«ГҐ ГЄГ®Г­Г¶Г  Г°Г ГЎГ®Г·ГҐГЈГ® Г¤Г­Гї!"), GameTextForPlayer(i, "~g~+$", 1000, 3);
 	}   }
 	#undef  vehicleid
 	return true;
@@ -514,19 +514,19 @@ public OnPlayerEnterCheckpoint(playerid)
 {
     DisablePlayerCheckpoint(playerid);
     if(GetPVarInt(playerid,"MailSend") == 1) {
-    	SCM(playerid,0x1faee9FF,"Вы забрали посылку.{ffffff} Продолжайте работу!"), SetPVarInt(playerid,"MainSend",2);
+    	SCM(playerid,0x1faee9FF,"Г‚Г» Г§Г ГЎГ°Г Г«ГЁ ГЇГ®Г±Г»Г«ГЄГі.{ffffff} ГЏГ°Г®Г¤Г®Г«Г¦Г Г©ГІГҐ Г°Г ГЎГ®ГІГі!"), SetPVarInt(playerid,"MainSend",2);
 	    new string[68], mail[12], rh = random(Houses+1);
 	    if(rh == 0) rh = 1;
 		switch(random(7)) {
-		    case 0: mail = "письмо";
-		    case 1: mail = "посылку";
-		    case 2: mail = "поветску";
-		    case 3: mail = "газету";
-		    case 4: mail = "журнал";
-		    case 5: mail = "счета";
-		    default: mail = "письма";
+		    case 0: mail = "ГЇГЁГ±ГјГ¬Г®";
+		    case 1: mail = "ГЇГ®Г±Г»Г«ГЄГі";
+		    case 2: mail = "ГЇГ®ГўГҐГІГ±ГЄГі";
+		    case 3: mail = "ГЈГ Г§ГҐГІГі";
+		    case 4: mail = "Г¦ГіГ°Г­Г Г«";
+		    case 5: mail = "Г±Г·ГҐГІГ ";
+		    default: mail = "ГЇГЁГ±ГјГ¬Г ";
 		}
-		format(string,68,"Нужно доставить {ffffff}%s {1faee9}к дому {ffffff}№%d!",mail,rh);
+		format(string,68,"ГЌГіГ¦Г­Г® Г¤Г®Г±ГІГ ГўГЁГІГј {ffffff}%s {1faee9}ГЄ Г¤Г®Г¬Гі {ffffff}В№%d!",mail,rh);
 		SCM(playerid,0x1faee9FF,string);
 		SetPlayerRaceCheckpoint(playerid,1,House[rh][cX],House[rh][cY],House[rh][cZ],0.0,0.0,0.0,5.0);
 		SetPlayerAttachedObject(playerid,0,1210, 6, 0.279000, 0.087000, -0.009000, 0.000000, -86.700035, -0.399999, 1.000000, 1.000000, 1.000000);
@@ -538,7 +538,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		SetTimerEx("Carry", 1400, 0, "dd", playerid,1);
         SetPlayerAttachedObject(playerid, 2, 3931, 1, 0.000000, 0.427999, -0.108999, 0.000000, 0.000000, 0.000000, 0.432999, 0.477999, 0.535999);
         SetPlayerCheckpoint(playerid,2544.184814, -463.555358, 84.762008,1.2);
-        SCM(playerid,0x1faee9FF,"Вы выкопали {ffffff}несколько килограмм железной руды!");
+        SCM(playerid,0x1faee9FF,"Г‚Г» ГўГ»ГЄГ®ГЇГ Г«ГЁ {ffffff}Г­ГҐГ±ГЄГ®Г«ГјГЄГ® ГЄГЁГ«Г®ГЈГ°Г Г¬Г¬ Г¦ГҐГ«ГҐГ§Г­Г®Г© Г°ГіГ¤Г»!");
         SetPVarInt(playerid,"ShahtaSend",2);
         return true;
 	}
@@ -547,9 +547,9 @@ public OnPlayerEnterCheckpoint(playerid)
  		SetTimerEx("Carry", 1400, 0, "dd", playerid,0);
         SetPVarInt(playerid,"Cost",GetPVarInt(playerid,"Cost")+(35+random(15)+GetPVarInt(playerid,"ShahtaRange")));
         new string[70];
-        format(string,sizeof(string),"Вы получили прибавку в виде {1faee9}%d$ за дополнительное расстояние!",GetPVarInt(playerid,"ShahtaRange"));
+        format(string,sizeof(string),"Г‚Г» ГЇГ®Г«ГіГ·ГЁГ«ГЁ ГЇГ°ГЁГЎГ ГўГЄГі Гў ГўГЁГ¤ГҐ {1faee9}%d$ Г§Г  Г¤Г®ГЇГ®Г«Г­ГЁГІГҐГ«ГјГ­Г®ГҐ Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ!",GetPVarInt(playerid,"ShahtaRange"));
 		SCM(playerid,0xFFFFFFFF,string);
-		SCM(playerid,0xFFFFFFFF,"Вы можете {1faee9}продолжить добывать руду или закончите рабочий день.");
+		SCM(playerid,0xFFFFFFFF,"Г‚Г» Г¬Г®Г¦ГҐГІГҐ {1faee9}ГЇГ°Г®Г¤Г®Г«Г¦ГЁГІГј Г¤Г®ГЎГ»ГўГ ГІГј Г°ГіГ¤Гі ГЁГ«ГЁ Г§Г ГЄГ®Г­Г·ГЁГІГҐ Г°Г ГЎГ®Г·ГЁГ© Г¤ГҐГ­Гј.");
         new rand = random(sizeof(jP));
 		SetPlayerCheckpoint(playerid, jP[rand][0],jP[rand][1],jP[rand][2], 1.2);
 		SetPVarInt(playerid,"ShahtaSend",1),SetPVarInt(playerid,"ShahtaRange",rand*20);
@@ -570,12 +570,12 @@ public OnPlayerEnterRaceCheckpoint(playerid)
 	fcor
 	if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER) {
 		if(GetPVarInt(playerid,"TaxiCheck") == 1) {
-		    DisablePlayerRaceCheckpoint(playerid), SCM(playerid,0x1faee9FF,"Вы прибыли на место вызова. {ffffff}Если клиента нет более 2х минут, смело пишите /taxicancel"), SetPVarInt(playerid,"TaxiCheck",0);
-		    SCM(GetPVarInt(playerid,"TaxiCall"),0x1faee9FF,"Ваш автомобиль прибыл на место, {ffffff}поторопитесь или он уедет без вас!");
+		    DisablePlayerRaceCheckpoint(playerid), SCM(playerid,0x1faee9FF,"Г‚Г» ГЇГ°ГЁГЎГ»Г«ГЁ Г­Г  Г¬ГҐГ±ГІГ® ГўГ»Г§Г®ГўГ . {ffffff}Г…Г±Г«ГЁ ГЄГ«ГЁГҐГ­ГІГ  Г­ГҐГІ ГЎГ®Г«ГҐГҐ 2Гµ Г¬ГЁГ­ГіГІ, Г±Г¬ГҐГ«Г® ГЇГЁГёГЁГІГҐ /taxicancel"), SetPVarInt(playerid,"TaxiCheck",0);
+		    SCM(GetPVarInt(playerid,"TaxiCall"),0x1faee9FF,"Г‚Г Гё Г ГўГІГ®Г¬Г®ГЎГЁГ«Гј ГЇГ°ГЁГЎГ»Г« Г­Г  Г¬ГҐГ±ГІГ®, {ffffff}ГЇГ®ГІГ®Г°Г®ГЇГЁГІГҐГ±Гј ГЁГ«ГЁ Г®Г­ ГіГҐГ¤ГҐГІ ГЎГҐГ§ ГўГ Г±!");
 			return true;
 		}
 	 	if(GetPVarInt(playerid,"MainSend") == 2) {
-		    DisablePlayerRaceCheckpoint(playerid), SCM(playerid,0x1faee9FF,"Посылка доставлена! {ffffff}+65$ к вашей зарплате, отправляйтесь к офису для продолжения или окончания работы!"), SetPVarInt(playerid,"Cost",GetPVarInt(playerid,"Cost")+65);
+		    DisablePlayerRaceCheckpoint(playerid), SCM(playerid,0x1faee9FF,"ГЏГ®Г±Г»Г«ГЄГ  Г¤Г®Г±ГІГ ГўГ«ГҐГ­Г ! {ffffff}+65$ ГЄ ГўГ ГёГҐГ© Г§Г Г°ГЇГ«Г ГІГҐ, Г®ГІГЇГ°Г ГўГ«ГїГ©ГІГҐГ±Гј ГЄ Г®ГґГЁГ±Гі Г¤Г«Гї ГЇГ°Г®Г¤Г®Г«Г¦ГҐГ­ГЁГї ГЁГ«ГЁ Г®ГЄГ®Г­Г·Г Г­ГЁГї Г°Г ГЎГ®ГІГ»!"), SetPVarInt(playerid,"Cost",GetPVarInt(playerid,"Cost")+65);
 	        SetPlayerCheckpoint(playerid,1304.1097,-1874.5109,13.5525,1.0), SetPVarInt(playerid,"MailSend",1),RemovePlayerAttachedObject(playerid,0);
 	        return true;
 		}
@@ -609,17 +609,17 @@ public OnPlayerEnterRaceCheckpoint(playerid)
 				case 25: {
 				    new Float:health; GetVehicleHealth(GetPlayerVehicleID(playerid),health);
 				    DisablePlayerRaceCheckpoint(playerid), SetPVarInt(playerid,"LessonCheck",0), SetPVarInt(playerid,"Lesson",0);
-					if(health > 799.0) Player[playerid][Licenses] ^= (1<<0), ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}Сдача на права","{ffffff}По результатам поездки\
-	    			 мы можем смело заявить.\n{1faee9}Вы сдали экзамен по вождению и получаете ваше водительское удостоверение!\n\n{ffffff}Желаем Вам {E79A9A}удачи на дорогах и в любых ваших начинаниях!","Ок","");
-					else ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}Сдача на права","{ffffff}По результатам поездки\
-				     мы можем Вас огорчить.\n{E79A9A}Вы не сдали экзамен по вождению и не сможете получить ваше водительское удостоверение!\n\n{ffffff}Желаем Вам {03c03c}удачи на следующей пересдаче!","Ок","");
+					if(health > 799.0) Player[playerid][Licenses] ^= (1<<0), ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}Г‘Г¤Г Г·Г  Г­Г  ГЇГ°Г ГўГ ","{ffffff}ГЏГ® Г°ГҐГ§ГіГ«ГјГІГ ГІГ Г¬ ГЇГ®ГҐГ§Г¤ГЄГЁ\
+	    			 Г¬Г» Г¬Г®Г¦ГҐГ¬ Г±Г¬ГҐГ«Г® Г§Г ГїГўГЁГІГј.\n{1faee9}Г‚Г» Г±Г¤Г Г«ГЁ ГЅГЄГ§Г Г¬ГҐГ­ ГЇГ® ГўГ®Г¦Г¤ГҐГ­ГЁГѕ ГЁ ГЇГ®Г«ГіГ·Г ГҐГІГҐ ГўГ ГёГҐ ГўГ®Г¤ГЁГІГҐГ«ГјГ±ГЄГ®ГҐ ГіГ¤Г®Г±ГІГ®ГўГҐГ°ГҐГ­ГЁГҐ!\n\n{ffffff}Г†ГҐГ«Г ГҐГ¬ Г‚Г Г¬ {E79A9A}ГіГ¤Г Г·ГЁ Г­Г  Г¤Г®Г°Г®ГЈГ Гµ ГЁ Гў Г«ГѕГЎГ»Гµ ГўГ ГёГЁГµ Г­Г Г·ГЁГ­Г Г­ГЁГїГµ!","ГЋГЄ","");
+					else ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}Г‘Г¤Г Г·Г  Г­Г  ГЇГ°Г ГўГ ","{ffffff}ГЏГ® Г°ГҐГ§ГіГ«ГјГІГ ГІГ Г¬ ГЇГ®ГҐГ§Г¤ГЄГЁ\
+				     Г¬Г» Г¬Г®Г¦ГҐГ¬ Г‚Г Г± Г®ГЈГ®Г°Г·ГЁГІГј.\n{E79A9A}Г‚Г» Г­ГҐ Г±Г¤Г Г«ГЁ ГЅГЄГ§Г Г¬ГҐГ­ ГЇГ® ГўГ®Г¦Г¤ГҐГ­ГЁГѕ ГЁ Г­ГҐ Г±Г¬Г®Г¦ГҐГІГҐ ГЇГ®Г«ГіГ·ГЁГІГј ГўГ ГёГҐ ГўГ®Г¤ГЁГІГҐГ«ГјГ±ГЄГ®ГҐ ГіГ¤Г®Г±ГІГ®ГўГҐГ°ГҐГ­ГЁГҐ!\n\n{ffffff}Г†ГҐГ«Г ГҐГ¬ Г‚Г Г¬ {03c03c}ГіГ¤Г Г·ГЁ Г­Г  Г±Г«ГҐГ¤ГіГѕГ№ГҐГ© ГЇГҐГ°ГҐГ±Г¤Г Г·ГҐ!","ГЋГЄ","");
 					SetVehicleToRespawn(GetPlayerVehicleID(playerid));
 				}
 		    }
 		    return true;
 		}
 		if(GetPVarInt(playerid,"TruckHaul") > 0 && IsTrailerAttachedToVehicle(GetPlayerVehicleID(playerid))) {
-			DisablePlayerRaceCheckpoint(playerid), SCM(playerid,0x999589FF,"[F] Диспетчер: Отлично, груз доставлен, ты можешь продолжать работу!");
+			DisablePlayerRaceCheckpoint(playerid), SCM(playerid,0x999589FF,"[F] Г„ГЁГ±ГЇГҐГІГ·ГҐГ°: ГЋГІГ«ГЁГ·Г­Г®, ГЈГ°ГіГ§ Г¤Г®Г±ГІГ ГўГ«ГҐГ­, ГІГ» Г¬Г®Г¦ГҐГёГј ГЇГ°Г®Г¤Г®Г«Г¦Г ГІГј Г°Г ГЎГ®ГІГі!");
 			switch(GetPVarInt(playerid,"TruckHaul")) {
 				case 1: SetPVarInt(playerid,"Cost",GetPVarInt(playerid,"Cost")+2000+random(500));
 				case 2: SetPVarInt(playerid,"Cost",GetPVarInt(playerid,"Cost")+2100+random(500));
@@ -632,7 +632,7 @@ public OnPlayerEnterRaceCheckpoint(playerid)
 		}
 		switch(GetPVarInt(playerid,"CheckHaul")) {
 		    case 1: {
-			    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 433) return SCM(playerid,0xFFFFFFFF,"Необходимо {1faee9}находиться в грузовом транспорте!");
+			    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 433) return SCM(playerid,0xFFFFFFFF,"ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® {1faee9}Г­Г ГµГ®Г¤ГЁГІГјГ±Гї Гў ГЈГ°ГіГ§Г®ГўГ®Г¬ ГІГ°Г Г­Г±ГЇГ®Г°ГІГҐ!");
 			    DisablePlayerRaceCheckpoint(playerid);
 	   			SetVehicleParamsEx(GetPlayerVehicleID(playerid),VEHICLE_PARAMS_OFF,VEHICLE_PARAMS_OFF,alarm,doors,bonnet,boot,objective), VNULL<GetPlayerVehicleID(playerid):engines>;
 	   			GetPlayerPos(playerid, x, y, z);
@@ -641,13 +641,13 @@ public OnPlayerEnterRaceCheckpoint(playerid)
 				x += (6.5 * floatsin(-angle+180, degrees));
 				y += (6.5 * floatcos(-angle+180, degrees));
 			    haulspl[GetPlayerVehicleID(playerid)-77] = CreateDynamicPickup(3014,23,x,y,z-0.2);
-			    format(string,sizeof(string),"Загруженность грузовика\n{1faee9}%d/500",hauls[GetPlayerVehicleID(playerid)-77][1]);
+			    format(string,sizeof(string),"Г‡Г ГЈГ°ГіГ¦ГҐГ­Г­Г®Г±ГІГј ГЈГ°ГіГ§Г®ГўГЁГЄГ \n{1faee9}%d/500",hauls[GetPlayerVehicleID(playerid)-77][1]);
 			    haulstext[GetPlayerVehicleID(playerid)-77] = CreateDynamic3DTextLabel(string,0xFFFFFFFF,x,y,z+1.5,15.0,INVALID_PLAYER_ID,INVALID_PLAYER_ID,0,-1,-1,-1,100.0);
-			    SetPVarInt(playerid,"Haul",2), SCM(playerid,0xFFFFFFFF,"Необходимо {1faee9}загрузить грузовик комплектующим, которое находится на корабле!"), SCM(playerid,0xFFFFFFFF,"После окончания загрузки {1faee9}повторно введите /haul и разгрузитесь на складе армии!");
+			    SetPVarInt(playerid,"Haul",2), SCM(playerid,0xFFFFFFFF,"ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® {1faee9}Г§Г ГЈГ°ГіГ§ГЁГІГј ГЈГ°ГіГ§Г®ГўГЁГЄ ГЄГ®Г¬ГЇГ«ГҐГЄГІГіГѕГ№ГЁГ¬, ГЄГ®ГІГ®Г°Г®ГҐ Г­Г ГµГ®Г¤ГЁГІГ±Гї Г­Г  ГЄГ®Г°Г ГЎГ«ГҐ!"), SCM(playerid,0xFFFFFFFF,"ГЏГ®Г±Г«ГҐ Г®ГЄГ®Г­Г·Г Г­ГЁГї Г§Г ГЈГ°ГіГ§ГЄГЁ {1faee9}ГЇГ®ГўГІГ®Г°Г­Г® ГўГўГҐГ¤ГЁГІГҐ /haul ГЁ Г°Г Г§ГЈГ°ГіГ§ГЁГІГҐГ±Гј Г­Г  Г±ГЄГ«Г Г¤ГҐ Г Г°Г¬ГЁГЁ!");
 	            return true;
 			}
 			case 2: {
-			    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 433) return SCM(playerid,0xFFFFFFFF,"Необходимо {1faee9}находиться в грузовом транспорте!");
+			    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 433) return SCM(playerid,0xFFFFFFFF,"ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® {1faee9}Г­Г ГµГ®Г¤ГЁГІГјГ±Гї Гў ГЈГ°ГіГ§Г®ГўГ®Г¬ ГІГ°Г Г­Г±ГЇГ®Г°ГІГҐ!");
 			    DisablePlayerRaceCheckpoint(playerid);
 	   			SetVehicleParamsEx(GetPlayerVehicleID(playerid),VEHICLE_PARAMS_OFF,VEHICLE_PARAMS_OFF,alarm,doors,bonnet,boot,objective), VNULL<GetPlayerVehicleID(playerid):engines>;
 	   			GetPlayerPos(playerid, x, y, z);
@@ -656,13 +656,13 @@ public OnPlayerEnterRaceCheckpoint(playerid)
 				x += (6.5 * floatsin(-angle+180, degrees));
 				y += (6.5 * floatcos(-angle+180, degrees));
 			    haulspu[GetPlayerVehicleID(playerid)-77] = CreateDynamicPickup(3014,23,x,y,z-0.2);
-			    format(string,sizeof(string),"Загруженность грузовика\n{1faee9}%d/500",hauls[GetPlayerVehicleID(playerid)-77][1]);
+			    format(string,sizeof(string),"Г‡Г ГЈГ°ГіГ¦ГҐГ­Г­Г®Г±ГІГј ГЈГ°ГіГ§Г®ГўГЁГЄГ \n{1faee9}%d/500",hauls[GetPlayerVehicleID(playerid)-77][1]);
 			    haulstext[GetPlayerVehicleID(playerid)-77] = CreateDynamic3DTextLabel(string,0xFFFFFFFF,x,y,z+1.5,15.0,INVALID_PLAYER_ID,INVALID_PLAYER_ID,0,-1,-1,-1,100.0);
-			    SetPVarInt(playerid,"Haul",5), SCM(playerid,0xFFFFFFFF,"Необходимо {1faee9}разгрузить грузовик с комплектующими на склад армии!");
+			    SetPVarInt(playerid,"Haul",5), SCM(playerid,0xFFFFFFFF,"ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® {1faee9}Г°Г Г§ГЈГ°ГіГ§ГЁГІГј ГЈГ°ГіГ§Г®ГўГЁГЄ Г± ГЄГ®Г¬ГЇГ«ГҐГЄГІГіГѕГ№ГЁГ¬ГЁ Г­Г  Г±ГЄГ«Г Г¤ Г Г°Г¬ГЁГЁ!");
 	            return true;
 			}
 			case 3: {
-			    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 455) return SCM(playerid,0xFFFFFFFF,"Необходимо {1faee9}находиться в грузовом транспорте!");
+			    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 455) return SCM(playerid,0xFFFFFFFF,"ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® {1faee9}Г­Г ГµГ®Г¤ГЁГІГјГ±Гї Гў ГЈГ°ГіГ§Г®ГўГ®Г¬ ГІГ°Г Г­Г±ГЇГ®Г°ГІГҐ!");
 	            DisablePlayerRaceCheckpoint(playerid);
 	   			SetVehicleParamsEx(GetPlayerVehicleID(playerid),VEHICLE_PARAMS_OFF,VEHICLE_PARAMS_OFF,alarm,doors,bonnet,boot,objective), VNULL<GetPlayerVehicleID(playerid):engines>;
 	   			GetPlayerPos(playerid, x, y, z);
@@ -671,13 +671,13 @@ public OnPlayerEnterRaceCheckpoint(playerid)
 				x += (6.5 * floatsin(-angle+180, degrees));
 				y += (6.5 * floatcos(-angle+180, degrees));
 				haulsple = CreateDynamicPickup(2912,23,x,y,z-0.4);
-			    format(string,sizeof(string),"Загруженность грузовика\n{1faee9}%d/500",hauls[GetPlayerVehicleID(playerid)-77][1]);
+			    format(string,sizeof(string),"Г‡Г ГЈГ°ГіГ¦ГҐГ­Г­Г®Г±ГІГј ГЈГ°ГіГ§Г®ГўГЁГЄГ \n{1faee9}%d/500",hauls[GetPlayerVehicleID(playerid)-77][1]);
 			    haulstext[GetPlayerVehicleID(playerid)-77] = CreateDynamic3DTextLabel(string,0xFFFFFFFF,x,y,z+1.5,15.0,INVALID_PLAYER_ID,INVALID_PLAYER_ID,0,-1,-1,-1,100.0);
-			    SetPVarInt(playerid,"Haul",7), SCM(playerid,0xFFFFFFFF,"Необходимо {1faee9}загрузить грузовик ящиками с едой и броней, ящики находятся в здании!"), SCM(playerid,0xFFFFFFFF,"После окончания загрузки {1faee9}повторно введите /haul и разгрузитесь возле столовой армии!");
+			    SetPVarInt(playerid,"Haul",7), SCM(playerid,0xFFFFFFFF,"ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® {1faee9}Г§Г ГЈГ°ГіГ§ГЁГІГј ГЈГ°ГіГ§Г®ГўГЁГЄ ГїГ№ГЁГЄГ Г¬ГЁ Г± ГҐГ¤Г®Г© ГЁ ГЎГ°Г®Г­ГҐГ©, ГїГ№ГЁГЄГЁ Г­Г ГµГ®Г¤ГїГІГ±Гї Гў Г§Г¤Г Г­ГЁГЁ!"), SCM(playerid,0xFFFFFFFF,"ГЏГ®Г±Г«ГҐ Г®ГЄГ®Г­Г·Г Г­ГЁГї Г§Г ГЈГ°ГіГ§ГЄГЁ {1faee9}ГЇГ®ГўГІГ®Г°Г­Г® ГўГўГҐГ¤ГЁГІГҐ /haul ГЁ Г°Г Г§ГЈГ°ГіГ§ГЁГІГҐГ±Гј ГўГ®Г§Г«ГҐ Г±ГІГ®Г«Г®ГўГ®Г© Г Г°Г¬ГЁГЁ!");
 	            return true;
 			}
 			case 4: {
-			    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 455) return SCM(playerid,0xFFFFFFFF,"Необходимо {1faee9}находиться в грузовом транспорте!");
+			    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 455) return SCM(playerid,0xFFFFFFFF,"ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® {1faee9}Г­Г ГµГ®Г¤ГЁГІГјГ±Гї Гў ГЈГ°ГіГ§Г®ГўГ®Г¬ ГІГ°Г Г­Г±ГЇГ®Г°ГІГҐ!");
 	            DisablePlayerRaceCheckpoint(playerid);
 	   			SetVehicleParamsEx(GetPlayerVehicleID(playerid),VEHICLE_PARAMS_OFF,VEHICLE_PARAMS_OFF,alarm,doors,bonnet,boot,objective), VNULL<GetPlayerVehicleID(playerid):engines>;
 	   			GetPlayerPos(playerid, x, y, z);
@@ -686,9 +686,9 @@ public OnPlayerEnterRaceCheckpoint(playerid)
 				x += (6.5 * floatsin(-angle+180, degrees));
 				y += (6.5 * floatcos(-angle+180, degrees));
 				haulspue = CreateDynamicPickup(2912,23,x,y,z-0.4);
-			    format(string,sizeof(string),"Загруженность грузовика\n{1faee9}%d/500",hauls[GetPlayerVehicleID(playerid)-77][1]);
+			    format(string,sizeof(string),"Г‡Г ГЈГ°ГіГ¦ГҐГ­Г­Г®Г±ГІГј ГЈГ°ГіГ§Г®ГўГЁГЄГ \n{1faee9}%d/500",hauls[GetPlayerVehicleID(playerid)-77][1]);
 			    haulstext[GetPlayerVehicleID(playerid)-77] = CreateDynamic3DTextLabel(string,0xFFFFFFFF,x,y,z+1.5,15.0,INVALID_PLAYER_ID,INVALID_PLAYER_ID,0,-1,-1,-1,100.0);
-			    SetPVarInt(playerid,"Haul",9), SCM(playerid,0xFFFFFFFF,"Необходимо {1faee9}разгрузить грузовик с ящиками еды и брони на склад столовой армии!");
+			    SetPVarInt(playerid,"Haul",9), SCM(playerid,0xFFFFFFFF,"ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® {1faee9}Г°Г Г§ГЈГ°ГіГ§ГЁГІГј ГЈГ°ГіГ§Г®ГўГЁГЄ Г± ГїГ№ГЁГЄГ Г¬ГЁ ГҐГ¤Г» ГЁ ГЎГ°Г®Г­ГЁ Г­Г  Г±ГЄГ«Г Г¤ Г±ГІГ®Г«Г®ГўГ®Г© Г Г°Г¬ГЁГЁ!");
 	            return true;
 			}
 		}
@@ -851,17 +851,17 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
     for(new p; p < 7; p++) {
  		if(pickupid == haulspu[p]) {
   			if(GetPVarInt(playerid,"GetPickup") > gettime()) return true;
-   			if(GetPVarInt(playerid,"Ammo") == 1) return SCM(playerid,0xFFFFFFFF,"У вас {1faee9}уже есть с собой ящик с комплектующими!");
+   			if(GetPVarInt(playerid,"Ammo") == 1) return SCM(playerid,0xFFFFFFFF,"Г“ ГўГ Г± {1faee9}ГіГ¦ГҐ ГҐГ±ГІГј Г± Г±Г®ГЎГ®Г© ГїГ№ГЁГЄ Г± ГЄГ®Г¬ГЇГ«ГҐГЄГІГіГѕГ№ГЁГ¬ГЁ!");
 			hauls[p][1] -= 50, RemovePlayerAttachedObject(playerid,0);
 			SetPlayerAttachedObject(playerid, 0, 3014, 5, 0.000000, 0.175000, 0.205000, -78.700042, -4.699985, 13.699992, 1.000000, 1.000000, 1.000000), SetPVarInt(playerid,"Ammo",1);
  			ApplyAnimation(playerid, "CARRY", "LIFTUP", 4.1, 0, 1, 1, 1, 1);
 			SetTimerEx("Carry", 1400, 0, "dd", playerid,1);
 			SetPVarInt(playerid,"Haul", (hauls[p][1] == 0) ? 0 : 5);
-			format(string,42,"Загруженность грузовика\n{1faee9}%d/500",hauls[p][1]);
+			format(string,42,"Г‡Г ГЈГ°ГіГ¦ГҐГ­Г­Г®Г±ГІГј ГЈГ°ГіГ§Г®ГўГЁГЄГ \n{1faee9}%d/500",hauls[p][1]);
 			UpdateDynamic3DTextLabelText(haulstext[p], 0xFFFFFFFF, string);
 			SetPVarInt(playerid,"Ammo",1);
 			if(hauls[p][1] <= 0) {
-				DestroyDynamicPickup(haulspu[p]), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE), SCM(playerid,0xFFFFFFFF,"Грузовик {1faee9}разгружен!"), DestroyDynamic3DTextLabel(haulstext[p]);
+				DestroyDynamicPickup(haulspu[p]), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE), SCM(playerid,0xFFFFFFFF,"ГѓГ°ГіГ§Г®ГўГЁГЄ {1faee9}Г°Г Г§ГЈГ°ГіГ¦ГҐГ­!"), DestroyDynamic3DTextLabel(haulstext[p]);
 				haulspu[GetPlayerVehicleID(playerid)-77] = -1;
 			}
 			SetPVarInt(playerid,"GetPickup",gettime()+3);
@@ -870,16 +870,16 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 	 	if(pickupid == haulspl[p]) {
 	 	    if(GetPVarInt(playerid,"GetPickup") > gettime()) return true;
 	 	    if(Player[playerid][pFraction][1] != 6) return true;
-   			if(GetPVarInt(playerid,"Ammo") == 0) return SCM(playerid,0xFFFFFFFF,"У вас {1faee9}нет с собой ящиков с комплектующими!");
+   			if(GetPVarInt(playerid,"Ammo") == 0) return SCM(playerid,0xFFFFFFFF,"Г“ ГўГ Г± {1faee9}Г­ГҐГІ Г± Г±Г®ГЎГ®Г© ГїГ№ГЁГЄГ®Гў Г± ГЄГ®Г¬ГЇГ«ГҐГЄГІГіГѕГ№ГЁГ¬ГЁ!");
 			hauls[p][1] += 50, RemovePlayerAttachedObject(playerid,0);
 			SetTimerEx("Carry", 1400, 0, "dd", playerid,0);
 			ApplyAnimation(playerid, "CARRY", "PUTDWN", 4.1, 0, 1, 1, 1, 1);
 			SetPVarInt(playerid,"Haul", (hauls[p][1] == 500) ? 0 : 2);
-			format(string,42,"Загруженность грузовика\n{1faee9}%d/500",hauls[p][1]);
+			format(string,42,"Г‡Г ГЈГ°ГіГ¦ГҐГ­Г­Г®Г±ГІГј ГЈГ°ГіГ§Г®ГўГЁГЄГ \n{1faee9}%d/500",hauls[p][1]);
 			UpdateDynamic3DTextLabelText(haulstext[p], 0xFFFFFFFF, string);
 			SetPVarInt(playerid,"Ammo",0);
 			if(hauls[p][1] >= 500) {
-				DestroyDynamicPickup(haulspl[p]), RemovePlayerAttachedObject(playerid,0), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE), SCM(playerid,0xFFFFFFFF,"Грузовик {1faee9}полон!"), DestroyDynamic3DTextLabel(haulstext[p]);
+				DestroyDynamicPickup(haulspl[p]), RemovePlayerAttachedObject(playerid,0), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE), SCM(playerid,0xFFFFFFFF,"ГѓГ°ГіГ§Г®ГўГЁГЄ {1faee9}ГЇГ®Г«Г®Г­!"), DestroyDynamic3DTextLabel(haulstext[p]);
                 haulspl[GetPlayerVehicleID(playerid)-77] = -1;
 			}
 			SetPVarInt(playerid,"GetPickup",gettime()+3);
@@ -892,20 +892,20 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
         	if(GetPVarInt(playerid,"GetPickup") > gettime()) return true;
 		    new priority[12];
 		    switch(House[h][hPriority]) {
-		        case 0: priority = "Фургон";
-		        case 1: priority = "Эконом";
-		        case 2: priority = "Обычный";
-				case 3: priority = "Средний";
-				case 4: priority = "Элитный";
+		        case 0: priority = "Г”ГіГ°ГЈГ®Г­";
+		        case 1: priority = "ГќГЄГ®Г­Г®Г¬";
+		        case 2: priority = "ГЋГЎГ»Г·Г­Г»Г©";
+				case 3: priority = "Г‘Г°ГҐГ¤Г­ГЁГ©";
+				case 4: priority = "ГќГ«ГЁГІГ­Г»Г©";
 			}
-		    format(string,sizeof(string),	"{ffffff}Номер дома:\t\t\t %d\n\
-		    								Гос.Цена дома:\t\t %d$\n\
-											Местоположение:\t\t %s\n\
-											Приоритет дома:\t\t %s\n\
-											Кол-во проживающих:\t\t %d\n\
-											Владелец:\t\t\t{1faee9} %s",
+		    format(string,sizeof(string),	"{ffffff}ГЌГ®Г¬ГҐГ° Г¤Г®Г¬Г :\t\t\t %d\n\
+		    								ГѓГ®Г±.Г–ГҐГ­Г  Г¤Г®Г¬Г :\t\t %d$\n\
+											ГЊГҐГ±ГІГ®ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ:\t\t %s\n\
+											ГЏГ°ГЁГ®Г°ГЁГІГҐГІ Г¤Г®Г¬Г :\t\t %s\n\
+											ГЉГ®Г«-ГўГ® ГЇГ°Г®Г¦ГЁГўГ ГѕГ№ГЁГµ:\t\t %d\n\
+											Г‚Г«Г Г¤ГҐГ«ГҐГ¶:\t\t\t{1faee9} %s",
 		    House[h][hID],House[h][hPrice],House[h][hStreet],priority,House[h][hHousemans],House[h][hOwner]);
-	 		ShowPlayerDialog(playerid,8,DIALOG_STYLE_MSGBOX,"{ffffff}Дом",string, (strcmp(House[h][hOwner],"None",true)!=0) ? ("Войти") : ("Купить") ,"Отмена");
+	 		ShowPlayerDialog(playerid,8,DIALOG_STYLE_MSGBOX,"{ffffff}Г„Г®Г¬",string, (strcmp(House[h][hOwner],"None",true)!=0) ? ("Г‚Г®Г©ГІГЁ") : ("ГЉГіГЇГЁГІГј") ,"ГЋГІГ¬ГҐГ­Г ");
 	 		SetPVarInt(playerid,"GetPickup",gettime()+7);
 	 		return true;
 		}
@@ -914,12 +914,12 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 		if(pickupid == Business[b][bPickup][0]){
 		    if(!IsPlayerInRangeOfPoint(playerid, 2.0,Business[b][bX],Business[b][bY],Business[b][bZ])) continue;
         	if(GetPVarInt(playerid,"GetPickup") > gettime()) return true;
-		    format(string,sizeof(string),	"{ffffff}Номер бизнеса:\t\t %d\n\
-											Название:\t\t\t %s\n\
-											Цена:\t\t\t\t %d$\n\
-											Владелец:\t\t\t{1faee9} %s",
+		    format(string,sizeof(string),	"{ffffff}ГЌГ®Г¬ГҐГ° ГЎГЁГ§Г­ГҐГ±Г :\t\t %d\n\
+											ГЌГ Г§ГўГ Г­ГЁГҐ:\t\t\t %s\n\
+											Г–ГҐГ­Г :\t\t\t\t %d$\n\
+											Г‚Г«Г Г¤ГҐГ«ГҐГ¶:\t\t\t{1faee9} %s",
 		    Business[b][bID],Business[b][bName],Business[b][bPrice],Business[b][bOwner]);
-	 		ShowPlayerDialog(playerid,20,DIALOG_STYLE_MSGBOX,"{ffffff}Бизнес",string, (strcmp(Business[b][bOwner],"None",true)!=0) ? ("Войти") : ("Купить") ,"Отмена");
+	 		ShowPlayerDialog(playerid,20,DIALOG_STYLE_MSGBOX,"{ffffff}ГЃГЁГ§Г­ГҐГ±",string, (strcmp(Business[b][bOwner],"None",true)!=0) ? ("Г‚Г®Г©ГІГЁ") : ("ГЉГіГЇГЁГІГј") ,"ГЋГІГ¬ГҐГ­Г ");
 	 		SetPVarInt(playerid,"GetPickup",gettime()+3);
 	 		return true;
 		}
@@ -934,13 +934,13 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 			SetPVarInt(playerid,"BID",b);
 			switch(Business[b][bType]) {
 			    case 0: {
-					ShowPlayerDialog(playerid,24,DIALOG_STYLE_MSGBOX,"{03c03c}Трудоустройство","{ffffff}Государственная компания {1faee9}TAXI {ffffff}приглашает на работу водителей!\n\n {1faee9}- Для работы вам нужно иметь водительское удостоверение\n\
-					  - Иметь GPS-гарнитуру\n - Иметь при себе минимум 100$ для аренды автомобиля.\n\n {ffffff}Если вы согласны вы можете начать работу, если уже работаете - закончить","Работа","Отмена");
+					ShowPlayerDialog(playerid,24,DIALOG_STYLE_MSGBOX,"{03c03c}Г’Г°ГіГ¤Г®ГіГ±ГІГ°Г®Г©Г±ГІГўГ®","{ffffff}ГѓГ®Г±ГіГ¤Г Г°Г±ГІГўГҐГ­Г­Г Гї ГЄГ®Г¬ГЇГ Г­ГЁГї {1faee9}TAXI {ffffff}ГЇГ°ГЁГЈГ«Г ГёГ ГҐГІ Г­Г  Г°Г ГЎГ®ГІГі ГўГ®Г¤ГЁГІГҐГ«ГҐГ©!\n\n {1faee9}- Г„Г«Гї Г°Г ГЎГ®ГІГ» ГўГ Г¬ Г­ГіГ¦Г­Г® ГЁГ¬ГҐГІГј ГўГ®Г¤ГЁГІГҐГ«ГјГ±ГЄГ®ГҐ ГіГ¤Г®Г±ГІГ®ГўГҐГ°ГҐГ­ГЁГҐ\n\
+					  - Г€Г¬ГҐГІГј GPS-ГЈГ Г°Г­ГЁГІГіГ°Гі\n - Г€Г¬ГҐГІГј ГЇГ°ГЁ Г±ГҐГЎГҐ Г¬ГЁГ­ГЁГ¬ГіГ¬ 100$ Г¤Г«Гї Г Г°ГҐГ­Г¤Г» Г ГўГІГ®Г¬Г®ГЎГЁГ«Гї.\n\n {ffffff}Г…Г±Г«ГЁ ГўГ» Г±Г®ГЈГ«Г Г±Г­Г» ГўГ» Г¬Г®Г¦ГҐГІГҐ Г­Г Г·Г ГІГј Г°Г ГЎГ®ГІГі, ГҐГ±Г«ГЁ ГіГ¦ГҐ Г°Г ГЎГ®ГІГ ГҐГІГҐ - Г§Г ГЄГ®Г­Г·ГЁГІГј","ГђГ ГЎГ®ГІГ ","ГЋГІГ¬ГҐГ­Г ");
 			  		SetPVarInt(playerid,"DialogActive",1);
 					SetPVarInt(playerid,"GetPickup",gettime()+3);
 			    }
 			    case 1: {
-			        if(Business[b][bProduct] < 1) return SCM(playerid,0xAC7575FF,"На складе нет одежды!");
+			        if(Business[b][bProduct] < 1) return SCM(playerid,0xAC7575FF,"ГЌГ  Г±ГЄГ«Г Г¤ГҐ Г­ГҐГІ Г®Г¤ГҐГ¦Г¤Г»!");
 					SetPlayerVirtualWorld(playerid,playerid+2);
 					switch(GetPlayerInterior(playerid)) {
 					    case 1: AC_SetPlayerPos(playerid, 213.9570,-41.4431,1002.0234), SetPlayerFacingAngle(playerid,90.4205), SetPlayerCameraPos(playerid,211.7931,-41.2535,1002.0234+0.8), SetPlayerCameraLookAt(playerid,213.9570,-41.4431,1002.0234+0.2); // sub urban
@@ -958,17 +958,17 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 					SetPVarInt(playerid,"GetPickup",gettime()+3);
 			    }
                 case 2: {
-                    format(string,162,"{ffffff}Мобильный телефон [%d$]\nТелефонный номер [%d$]\nНаручные часы [%d$]\nGPS-навигатор [%d$]\nБита [%d$]\nФотоаппарат [%d$]\nРемонтный набор [%d$]",Business[b][bCost],pernumber(Business[b][bCost],12),pernumber(Business[b][bCost],20),pernumber(Business[b][bCost],35),pernumber(Business[b][bCost],56),pernumber(Business[b][bCost],72),pernumber(Business[b][bCost],100));
-                    ShowPlayerDialog(playerid,52,DIALOG_STYLE_LIST,"{FFC800}Ассортимент магазина",string,"Купить","Отмена");
+                    format(string,162,"{ffffff}ГЊГ®ГЎГЁГ«ГјГ­Г»Г© ГІГҐГ«ГҐГґГ®Г­ [%d$]\nГ’ГҐГ«ГҐГґГ®Г­Г­Г»Г© Г­Г®Г¬ГҐГ° [%d$]\nГЌГ Г°ГіГ·Г­Г»ГҐ Г·Г Г±Г» [%d$]\nGPS-Г­Г ГўГЁГЈГ ГІГ®Г° [%d$]\nГЃГЁГІГ  [%d$]\nГ”Г®ГІГ®Г ГЇГЇГ Г°Г ГІ [%d$]\nГђГҐГ¬Г®Г­ГІГ­Г»Г© Г­Г ГЎГ®Г° [%d$]",Business[b][bCost],pernumber(Business[b][bCost],12),pernumber(Business[b][bCost],20),pernumber(Business[b][bCost],35),pernumber(Business[b][bCost],56),pernumber(Business[b][bCost],72),pernumber(Business[b][bCost],100));
+                    ShowPlayerDialog(playerid,52,DIALOG_STYLE_LIST,"{FFC800}ГЂГ±Г±Г®Г°ГІГЁГ¬ГҐГ­ГІ Г¬Г ГЈГ Г§ГЁГ­Г ",string,"ГЉГіГЇГЁГІГј","ГЋГІГ¬ГҐГ­Г ");
                     SetPVarInt(playerid,"DialogActive",1);
                 }
                 case 3: {
-                    ShowPlayerDialog(playerid,53,DIALOG_STYLE_LIST,"{FFC800}Ассортимент магазина","{ffffff}Очки\nШляпки\nБереты\nБанданы\nМаски","Выбор","Отмена");
+                    ShowPlayerDialog(playerid,53,DIALOG_STYLE_LIST,"{FFC800}ГЂГ±Г±Г®Г°ГІГЁГ¬ГҐГ­ГІ Г¬Г ГЈГ Г§ГЁГ­Г ","{ffffff}ГЋГ·ГЄГЁ\nГГ«ГїГЇГЄГЁ\nГЃГҐГ°ГҐГІГ»\nГЃГ Г­Г¤Г Г­Г»\nГЊГ Г±ГЄГЁ","Г‚Г»ГЎГ®Г°","ГЋГІГ¬ГҐГ­Г ");
                     SetPVarInt(playerid,"DialogActive",1);
                 }
 				case 5: {
-				    format(string,160,"{ffffff}Хот-дог [%d$]\nПицца [%d$]\nБургер [%d$]\nКартофель-Фри [%d$]\nКола [%d$]\nБиг-Бургер [%d$]\nПиво [%d$]",Business[b][bCost],pernumber(Business[b][bCost],12),pernumber(Business[b][bCost],20),pernumber(Business[b][bCost],35),pernumber(Business[b][bCost],56),pernumber(Business[b][bCost],72),pernumber(Business[b][bCost],100));
-				    ShowPlayerDialog(playerid,53,DIALOG_STYLE_LIST,"{FFC800}Ассортимент магазина",string,"Выбор","Отмена");
+				    format(string,160,"{ffffff}Г•Г®ГІ-Г¤Г®ГЈ [%d$]\nГЏГЁГ¶Г¶Г  [%d$]\nГЃГіГ°ГЈГҐГ° [%d$]\nГЉГ Г°ГІГ®ГґГҐГ«Гј-Г”Г°ГЁ [%d$]\nГЉГ®Г«Г  [%d$]\nГЃГЁГЈ-ГЃГіГ°ГЈГҐГ° [%d$]\nГЏГЁГўГ® [%d$]",Business[b][bCost],pernumber(Business[b][bCost],12),pernumber(Business[b][bCost],20),pernumber(Business[b][bCost],35),pernumber(Business[b][bCost],56),pernumber(Business[b][bCost],72),pernumber(Business[b][bCost],100));
+				    ShowPlayerDialog(playerid,53,DIALOG_STYLE_LIST,"{FFC800}ГЂГ±Г±Г®Г°ГІГЁГ¬ГҐГ­ГІ Г¬Г ГЈГ Г§ГЁГ­Г ",string,"Г‚Г»ГЎГ®Г°","ГЋГІГ¬ГҐГ­Г ");
 				    SetPVarInt(playerid,"DialogActive",1);
 				}
 				case 6: {
@@ -978,8 +978,8 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 
 				}
 				case 8: {
-				    ShowPlayerDialog(playerid,34,DIALOG_STYLE_MSGBOX,"{03c03c}Покупка оружия","{ffffff}Вы находитесь в магазине оружия, здесь вы можете купить любой вид оружия ( легальный ).\nЕсли хотите продолжить покупку - нажмите {1faee9}'Ок'\n\n\
-	    			{FFCC00}Цена за обойму и название оружия написаны слева сверху.\n{03c03c}Для покупки оружия используйте кнопку 'BUY', {CA7575}BACK для выхода.\n{92C4DC}Листать список оружия можно с помощью стрелок снизу!","Ок","Отмена");
+				    ShowPlayerDialog(playerid,34,DIALOG_STYLE_MSGBOX,"{03c03c}ГЏГ®ГЄГіГЇГЄГ  Г®Г°ГіГ¦ГЁГї","{ffffff}Г‚Г» Г­Г ГµГ®Г¤ГЁГІГҐГ±Гј Гў Г¬Г ГЈГ Г§ГЁГ­ГҐ Г®Г°ГіГ¦ГЁГї, Г§Г¤ГҐГ±Гј ГўГ» Г¬Г®Г¦ГҐГІГҐ ГЄГіГЇГЁГІГј Г«ГѕГЎГ®Г© ГўГЁГ¤ Г®Г°ГіГ¦ГЁГї ( Г«ГҐГЈГ Г«ГјГ­Г»Г© ).\nГ…Г±Г«ГЁ ГµГ®ГІГЁГІГҐ ГЇГ°Г®Г¤Г®Г«Г¦ГЁГІГј ГЇГ®ГЄГіГЇГЄГі - Г­Г Г¦Г¬ГЁГІГҐ {1faee9}'ГЋГЄ'\n\n\
+	    			{FFCC00}Г–ГҐГ­Г  Г§Г  Г®ГЎГ®Г©Г¬Гі ГЁ Г­Г Г§ГўГ Г­ГЁГҐ Г®Г°ГіГ¦ГЁГї Г­Г ГЇГЁГ±Г Г­Г» Г±Г«ГҐГўГ  Г±ГўГҐГ°ГµГі.\n{03c03c}Г„Г«Гї ГЇГ®ГЄГіГЇГЄГЁ Г®Г°ГіГ¦ГЁГї ГЁГ±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ ГЄГ­Г®ГЇГЄГі 'BUY', {CA7575}BACK Г¤Г«Гї ГўГ»ГµГ®Г¤Г .\n{92C4DC}Г‹ГЁГ±ГІГ ГІГј Г±ГЇГЁГ±Г®ГЄ Г®Г°ГіГ¦ГЁГї Г¬Г®Г¦Г­Г® Г± ГЇГ®Г¬Г®Г№ГјГѕ Г±ГІГ°ГҐГ«Г®ГЄ Г±Г­ГЁГ§Гі!","ГЋГЄ","ГЋГІГ¬ГҐГ­Г ");
                     SetPVarInt(playerid,"DialogActive",1);
 				}
 				case 9: {
@@ -999,26 +999,26 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
  	if(pickupid == haulammo) {
 	    if(GetPVarInt(playerid,"GetPickup") > gettime()) return true;
 	    if(Player[playerid][pFraction][1] == 6 || PlayerGangster(playerid)) {
-		    if(GetPVarInt(playerid,"Ammo") == 1) return SCM(playerid,0xFFFFFFFF,"У вас {1faee9}уже есть с собой ящик с комплектующими!");
-		    if(LSW < 50) return SCM(playerid,0xFFFFFFFF,"На корабле {1faee9}недостаточно комплектующих!");
+		    if(GetPVarInt(playerid,"Ammo") == 1) return SCM(playerid,0xFFFFFFFF,"Г“ ГўГ Г± {1faee9}ГіГ¦ГҐ ГҐГ±ГІГј Г± Г±Г®ГЎГ®Г© ГїГ№ГЁГЄ Г± ГЄГ®Г¬ГЇГ«ГҐГЄГІГіГѕГ№ГЁГ¬ГЁ!");
+		    if(LSW < 50) return SCM(playerid,0xFFFFFFFF,"ГЌГ  ГЄГ®Г°Г ГЎГ«ГҐ {1faee9}Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЄГ®Г¬ГЇГ«ГҐГЄГІГіГѕГ№ГЁГµ!");
 		    LSW -= 50;
-		    format(string,58,"Комплектующие для сбора оружия\n{1faee9}На корабле: %d",LSW);
+		    format(string,58,"ГЉГ®Г¬ГЇГ«ГҐГЄГІГіГѕГ№ГЁГҐ Г¤Г«Гї Г±ГЎГ®Г°Г  Г®Г°ГіГ¦ГЁГї\n{1faee9}ГЌГ  ГЄГ®Г°Г ГЎГ«ГҐ: %d",LSW);
 			UpdateDynamic3DTextLabelText(LSWtext, 0xFFFFFFFF, string);
 		    SetPlayerAttachedObject(playerid, 0, 3014, 5, 0.000000, 0.175000, 0.205000, -78.700042, -4.699985, 13.699992, 1.000000, 1.000000, 1.000000), SetPVarInt(playerid,"Ammo",1);
 	        ApplyAnimation(playerid, "CARRY", "LIFTUP", 4.1, 0, 1, 1, 1, 1);
 	 		SetTimerEx("Carry", 1400, 0, "dd", playerid,1);
 		    SetPVarInt(playerid,"Haul",7);
 		}
-		else return SCM(playerid,0x1faee9FF,"[Мысли]: {ffffff}Наверное не стоит это трогать...");
+		else return SCM(playerid,0x1faee9FF,"[ГЊГ»Г±Г«ГЁ]: {ffffff}ГЌГ ГўГҐГ°Г­Г®ГҐ Г­ГҐ Г±ГІГ®ГЁГІ ГЅГІГ® ГІГ°Г®ГЈГ ГІГј...");
 		SetPVarInt(playerid,"GetPickup",gettime()+5);
 		return true;
 	}
 	if(pickupid == ammolv) {
 	    if(GetPVarInt(playerid,"GetPickup") > gettime()) return true;
-	    if(GetPVarInt(playerid,"Ammo") == 0) return SCM(playerid,0xFFFFFFFF,"У вас {1faee9}нет с собой ящика с комплектующими!");
-	    if(LVW >= 50000) { SCM(playerid,0xFFFFFFFF,"Склад {1faee9}заполнен!"), RemovePlayerAttachedObject(playerid,0), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE); return true; }
+	    if(GetPVarInt(playerid,"Ammo") == 0) return SCM(playerid,0xFFFFFFFF,"Г“ ГўГ Г± {1faee9}Г­ГҐГІ Г± Г±Г®ГЎГ®Г© ГїГ№ГЁГЄГ  Г± ГЄГ®Г¬ГЇГ«ГҐГЄГІГіГѕГ№ГЁГ¬ГЁ!");
+	    if(LVW >= 50000) { SCM(playerid,0xFFFFFFFF,"Г‘ГЄГ«Г Г¤ {1faee9}Г§Г ГЇГ®Г«Г­ГҐГ­!"), RemovePlayerAttachedObject(playerid,0), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE); return true; }
 	    LVW += 50;
-	    format(string,48,"Собранное оружие\n{1faee9}На складе: %d ед.",LVW);
+	    format(string,48,"Г‘Г®ГЎГ°Г Г­Г­Г®ГҐ Г®Г°ГіГ¦ГЁГҐ\n{1faee9}ГЌГ  Г±ГЄГ«Г Г¤ГҐ: %d ГҐГ¤.",LVW);
 		UpdateDynamic3DTextLabelText(LVWtext, 0xFFFFFFFF, string);
 	    RemovePlayerAttachedObject(playerid,0);
         ApplyAnimation(playerid, "CARRY", "PUTDWN", 4.1, 0, 1, 1, 1, 1);
@@ -1031,7 +1031,7 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
  	if(pickupid == hauleat) {
 	    if(GetPVarInt(playerid,"GetPickup") > gettime()) return true;
 	    if(Player[playerid][pFraction][1] != 6) return true;
-	    if(GetPVarInt(playerid,"EatBox") == 1) return SCM(playerid,0xFFFFFFFF,"У вас {1faee9}уже есть с собой ящик с едой!");
+	    if(GetPVarInt(playerid,"EatBox") == 1) return SCM(playerid,0xFFFFFFFF,"Г“ ГўГ Г± {1faee9}ГіГ¦ГҐ ГҐГ±ГІГј Г± Г±Г®ГЎГ®Г© ГїГ№ГЁГЄ Г± ГҐГ¤Г®Г©!");
 	    SetPlayerAttachedObject(playerid, 0, 2912, 5, 0.040000, -0.035000, 0.174000, -77.599945, -6.599995, 14.200003, 0.641000, 0.745000, 0.558999);
         ApplyAnimation(playerid, "CARRY", "LIFTUP", 4.1, 0, 1, 1, 1, 1);
  		SetTimerEx("Carry", 1400, 0, "dd", playerid,1);
@@ -1049,15 +1049,15 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 		    SetPVarInt(playerid,"EatBox",0);
 		    SetPVarInt(playerid,"Haul",0);
 	 		LVWE++;
-	 		format(string,48,"Еда и Броня\n{1faee9}На складе: %d пайков",LVWE);
+	 		format(string,48,"Г…Г¤Г  ГЁ ГЃГ°Г®Г­Гї\n{1faee9}ГЌГ  Г±ГЄГ«Г Г¤ГҐ: %d ГЇГ Г©ГЄГ®Гў",LVWE);
 			UpdateDynamic3DTextLabelText(LVWEtext, 0xFFFFFFFF, string);
             SetPVarInt(playerid,"GetPickup",gettime()+10);
 			return true;
 		}
 		if(Player[playerid][pFraction][1] == 6 && LVWE > 0) {
-		    if(GetPVarInt(playerid,"GetAmmoH") > gettime()) return SCM(playerid,0xFFFFFFFF,"Брать сух.поек можно {03c03c}раз в 3 минуты!");
-			SetPlayerArmorAC(playerid,100.0), SetPlayerHealth(playerid,100.0), LVWE--, SCM(playerid,0xFFFFFFFF,"Сух.поек {1faee9}выдан!");
-			format(string,48,"Еда и Броня\n{1faee9}На складе: %d пайков",LVWE);
+		    if(GetPVarInt(playerid,"GetAmmoH") > gettime()) return SCM(playerid,0xFFFFFFFF,"ГЃГ°Г ГІГј Г±ГіГµ.ГЇГ®ГҐГЄ Г¬Г®Г¦Г­Г® {03c03c}Г°Г Г§ Гў 3 Г¬ГЁГ­ГіГІГ»!");
+			SetPlayerArmorAC(playerid,100.0), SetPlayerHealth(playerid,100.0), LVWE--, SCM(playerid,0xFFFFFFFF,"Г‘ГіГµ.ГЇГ®ГҐГЄ {1faee9}ГўГ»Г¤Г Г­!");
+			format(string,48,"Г…Г¤Г  ГЁ ГЃГ°Г®Г­Гї\n{1faee9}ГЌГ  Г±ГЄГ«Г Г¤ГҐ: %d ГЇГ Г©ГЄГ®Гў",LVWE);
 			UpdateDynamic3DTextLabelText(LVWEtext, 0xFFFFFFFF, string);
 			SetPVarInt(playerid,"GetAmmoH",gettime()+180);
 			return true;
@@ -1066,17 +1066,17 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 	if(pickupid == haulspue) {
 		if(GetPVarInt(playerid,"GetPickup") > gettime()) return true;
 		if(Player[playerid][pFraction][1] != 6) return true;
-		if(GetPVarInt(playerid,"EatBox") == 1) return SCM(playerid,0xFFFFFFFF,"У вас {1faee9}уже есть с собой ящик с едой!");
+		if(GetPVarInt(playerid,"EatBox") == 1) return SCM(playerid,0xFFFFFFFF,"Г“ ГўГ Г± {1faee9}ГіГ¦ГҐ ГҐГ±ГІГј Г± Г±Г®ГЎГ®Г© ГїГ№ГЁГЄ Г± ГҐГ¤Г®Г©!");
 		hauls[0][1] -= 50, RemovePlayerAttachedObject(playerid,0);
 		SetPlayerAttachedObject(playerid, 0, 2912, 5, 0.040000, -0.035000, 0.174000, -77.599945, -6.599995, 14.200003, 0.641000, 0.745000, 0.558999);
 		ApplyAnimation(playerid, "CARRY", "LIFTUP", 4.1, 0, 1, 1, 1, 1);
 		SetTimerEx("Carry", 1400, 0, "dd", playerid,1);
-		format(string,42,"Загруженность грузовика\n{1faee9}%d/500",hauls[0][1]);
+		format(string,42,"Г‡Г ГЈГ°ГіГ¦ГҐГ­Г­Г®Г±ГІГј ГЈГ°ГіГ§Г®ГўГЁГЄГ \n{1faee9}%d/500",hauls[0][1]);
 		UpdateDynamic3DTextLabelText(haulstext[0], 0xFFFFFFFF, string);
 		SetPVarInt(playerid,"EatBox",1);
 		SetPVarInt(playerid,"Haul",9);
 		if(hauls[0][1] <= 0) {
-			DestroyDynamicPickup(haulspue), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE), SCM(playerid,0xFFFFFFFF,"Грузовик {1faee9}разгружен!"), DestroyDynamic3DTextLabel(haulstext[0]);
+			DestroyDynamicPickup(haulspue), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE), SCM(playerid,0xFFFFFFFF,"ГѓГ°ГіГ§Г®ГўГЁГЄ {1faee9}Г°Г Г§ГЈГ°ГіГ¦ГҐГ­!"), DestroyDynamic3DTextLabel(haulstext[0]);
 			haulspue = -1;
 		}
 		SetPVarInt(playerid,"GetPickup",gettime()+3),SetPVarInt(playerid,"GetAmmoH",gettime()+23);
@@ -1085,26 +1085,26 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 	if(pickupid == haulsple) {
 		if(GetPVarInt(playerid,"GetPickup") > gettime()) return true;
 	    if(Player[playerid][pFraction][1] != 6) return true;
-		if(GetPVarInt(playerid,"EatBox") == 0) return SCM(playerid,0xFFFFFFFF,"У вас {1faee9}нет с собой ящиков с едой!");
+		if(GetPVarInt(playerid,"EatBox") == 0) return SCM(playerid,0xFFFFFFFF,"Г“ ГўГ Г± {1faee9}Г­ГҐГІ Г± Г±Г®ГЎГ®Г© ГїГ№ГЁГЄГ®Гў Г± ГҐГ¤Г®Г©!");
 		hauls[0][1] += 50, RemovePlayerAttachedObject(playerid,0);
 		SetTimerEx("Carry", 1400, 0, "dd", playerid,0);
 		ApplyAnimation(playerid, "CARRY", "PUTDWN", 4.1, 0, 1, 1, 1, 1);
-		format(string,42,"Загруженность грузовика\n{1faee9}%d/500",hauls[0][1]);
+		format(string,42,"Г‡Г ГЈГ°ГіГ¦ГҐГ­Г­Г®Г±ГІГј ГЈГ°ГіГ§Г®ГўГЁГЄГ \n{1faee9}%d/500",hauls[0][1]);
 		UpdateDynamic3DTextLabelText(haulstext[0], 0xFFFFFFFF, string);
 		SetPVarInt(playerid,"EatBox",0);
 		if(hauls[0][1] >= 500) {
-			DestroyDynamicPickup(haulsple), RemovePlayerAttachedObject(playerid,0), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE), SCM(playerid,0xFFFFFFFF,"Грузовик {1faee9}полон!"), DestroyDynamic3DTextLabel(haulstext[0]);
+			DestroyDynamicPickup(haulsple), RemovePlayerAttachedObject(playerid,0), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE), SCM(playerid,0xFFFFFFFF,"ГѓГ°ГіГ§Г®ГўГЁГЄ {1faee9}ГЇГ®Г«Г®Г­!"), DestroyDynamic3DTextLabel(haulstext[0]);
 			haulsple = -1;
 		}
 		SetPVarInt(playerid,"GetPickup",gettime()+3);
 		return true;
 	}
 	if(pickupid == pickjob) {
-	    if(Player[playerid][pFraction] != 0) return SCM(playerid,0xFF0000FF,"Вы уже состоите в организации!");
+	    if(Player[playerid][pFraction] != 0) return SCM(playerid,0xFF0000FF,"Г‚Г» ГіГ¦ГҐ Г±Г®Г±ГІГ®ГЁГІГҐ Гў Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГЁ!");
 
 	}
 	switch(pickupid-1) {
-		case 1: { // Позиция когда выйдешь на пикап внутрений в Grove, появишься снаружи
+		case 1: { // ГЏГ®Г§ГЁГ¶ГЁГї ГЄГ®ГЈГ¤Г  ГўГ»Г©Г¤ГҐГёГј Г­Г  ГЇГЁГЄГ ГЇ ГўГ­ГіГІГ°ГҐГ­ГЁГ© Гў Grove, ГЇГ®ГїГўГЁГёГјГ±Гї Г±Г­Г Г°ГіГ¦ГЁ
 			SetPlayerInterior(playerid, 0);
 			SetPlayerVirtualWorld(playerid,0);
 			AC_SetPlayerPos(playerid,2495.2722,-1687.0764,13.5150);
@@ -1121,7 +1121,7 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 			PlayerPlaySound(playerid, 30803, 0.0, 0.0, 0.0);
 			TogglePlayerControllable(playerid,0), SetTimerEx("PickupFreeze", 2100, false, "i", playerid);
 		}
-		case 3: { // Позиция когда выйдешь на пикап внутрений в Ballas, появишься снаружи
+		case 3: { // ГЏГ®Г§ГЁГ¶ГЁГї ГЄГ®ГЈГ¤Г  ГўГ»Г©Г¤ГҐГёГј Г­Г  ГЇГЁГЄГ ГЇ ГўГ­ГіГІГ°ГҐГ­ГЁГ© Гў Ballas, ГЇГ®ГїГўГЁГёГјГ±Гї Г±Г­Г Г°ГіГ¦ГЁ
 			SetPlayerInterior(playerid, 0);
 			SetPlayerVirtualWorld(playerid,0);
 			AC_SetPlayerPos(playerid,2000.1307,-1118.1412,26.781);
@@ -1150,15 +1150,15 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 			TextDrawShowForPlayer(playerid,asBBuy);
 			TextDrawShowForPlayer(playerid,asBExit);
 			SelectTextDraw(playerid, 0x1faee9FF), Player[playerid][TDSelect] = true;
-		} // Автосалон ЛС
+		} // ГЂГўГІГ®Г±Г Г«Г®Г­ Г‹Г‘
 		case 5: {
 			if(GetPVarInt(playerid,"GetPickup") > gettime()) return true;
-			if(Player[playerid][pFraction][1] != 0 || (GetPVarInt(playerid,"Job") == 1 && GetPVarInt(playerid,"MailJob") < 1)) return SCM(playerid,-1,"Увы, но вы не можете тут работать, {ff0000}по скольку уже состоите в организации!");
-			ShowPlayerDialog(playerid,29,DIALOG_STYLE_MSGBOX,"{cc7722}Трудоустройство","{ffffff}Вы действительно хотите {03c03c}начать{ffffff}/{ff0000}закончить {ffffff}рабочий день?\n\
-			Чтобы переодеться, вам стоит лишь нажать на кнопку {03c03c}'Да'","Да","Отмена");
+			if(Player[playerid][pFraction][1] != 0 || (GetPVarInt(playerid,"Job") == 1 && GetPVarInt(playerid,"MailJob") < 1)) return SCM(playerid,-1,"Г“ГўГ», Г­Г® ГўГ» Г­ГҐ Г¬Г®Г¦ГҐГІГҐ ГІГіГІ Г°Г ГЎГ®ГІГ ГІГј, {ff0000}ГЇГ® Г±ГЄГ®Г«ГјГЄГі ГіГ¦ГҐ Г±Г®Г±ГІГ®ГЁГІГҐ Гў Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГЁ!");
+			ShowPlayerDialog(playerid,29,DIALOG_STYLE_MSGBOX,"{cc7722}Г’Г°ГіГ¤Г®ГіГ±ГІГ°Г®Г©Г±ГІГўГ®","{ffffff}Г‚Г» Г¤ГҐГ©Г±ГІГўГЁГІГҐГ«ГјГ­Г® ГµГ®ГІГЁГІГҐ {03c03c}Г­Г Г·Г ГІГј{ffffff}/{ff0000}Г§Г ГЄГ®Г­Г·ГЁГІГј {ffffff}Г°Г ГЎГ®Г·ГЁГ© Г¤ГҐГ­Гј?\n\
+			Г—ГІГ®ГЎГ» ГЇГҐГ°ГҐГ®Г¤ГҐГІГјГ±Гї, ГўГ Г¬ Г±ГІГ®ГЁГІ Г«ГЁГёГј Г­Г Г¦Г ГІГј Г­Г  ГЄГ­Г®ГЇГЄГі {03c03c}'Г„Г '","Г„Г ","ГЋГІГ¬ГҐГ­Г ");
 			SetPVarInt(playerid,"GetPickup",gettime()+10);
 		}
-		case 6: { // Позиция когда выйдешь на пикап внутрений в Vagos, появишься снаружи
+		case 6: { // ГЏГ®Г§ГЁГ¶ГЁГї ГЄГ®ГЈГ¤Г  ГўГ»Г©Г¤ГҐГёГј Г­Г  ГЇГЁГЄГ ГЇ ГўГ­ГіГІГ°ГҐГ­ГЁГ© Гў Vagos, ГЇГ®ГїГўГЁГёГјГ±Гї Г±Г­Г Г°ГіГ¦ГЁ
 			SetPlayerInterior(playerid, 0);
 			SetPlayerVirtualWorld(playerid,0);
 			AC_SetPlayerPos(playerid,2808.7112,-1178.3368,25.3576);\
@@ -1166,7 +1166,7 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 			SetCameraBehindPlayer(playerid);
 			PlayerPlaySound(playerid, 30803, 0.0, 0.0, 0.0);
 		}
-		case 7: { // Позиция когда выйдешь на пикап внутрений в Aztec, появишься снаружи
+		case 7: { // ГЏГ®Г§ГЁГ¶ГЁГї ГЄГ®ГЈГ¤Г  ГўГ»Г©Г¤ГҐГёГј Г­Г  ГЇГЁГЄГ ГЇ ГўГ­ГіГІГ°ГҐГ­ГЁГ© Гў Aztec, ГЇГ®ГїГўГЁГёГјГ±Гї Г±Г­Г Г°ГіГ¦ГЁ
 			SetPlayerInterior(playerid, 0);
 			SetPlayerVirtualWorld(playerid,0);
 			AC_SetPlayerPos(playerid,1884.4657,-2000.8673,13.5469);
@@ -1174,7 +1174,7 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 			SetCameraBehindPlayer(playerid);
 			PlayerPlaySound(playerid, 30803, 0.0, 0.0, 0.0);
 		}
-		case 8: { // Позиция когда выйдешь на пикап внутрений в Rifa, появишься снаружи
+		case 8: { // ГЏГ®Г§ГЁГ¶ГЁГї ГЄГ®ГЈГ¤Г  ГўГ»Г©Г¤ГҐГёГј Г­Г  ГЇГЁГЄГ ГЇ ГўГ­ГіГІГ°ГҐГ­ГЁГ© Гў Rifa, ГЇГ®ГїГўГЁГёГјГ±Гї Г±Г­Г Г°ГіГ¦ГЁ
 			SetPlayerInterior(playerid, 0);
 			SetPlayerVirtualWorld(playerid,0);
 			AC_SetPlayerPos(playerid,1946.5869,-1564.5144,13.6128);
@@ -1211,12 +1211,12 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 		}
 		case 12: {
 			if(GetPVarInt(playerid,"GetPickup") > gettime()) return true;
-			if(Player[playerid][pFraction][1] != 0  || (GetPVarInt(playerid,"Job") == 1 && GetPVarInt(playerid,"ShahtaJob") < 1)) return SCM(playerid,-1,"Увы, но вы не можете тут работать, {ff0000}по скольку уже состоите в организации!");
-			ShowPlayerDialog(playerid,30,DIALOG_STYLE_MSGBOX,"{cc7722}Трудоустройство","{ffffff}Вы действительно хотите {03c03c}начать{ffffff}/{ff0000}закончить {ffffff}рабочий день добытчика руды?\n\
-			Чтобы переодеться, вам стоит лишь нажать на кнопку {03c03c}'Да'","Да","Отмена");
+			if(Player[playerid][pFraction][1] != 0  || (GetPVarInt(playerid,"Job") == 1 && GetPVarInt(playerid,"ShahtaJob") < 1)) return SCM(playerid,-1,"Г“ГўГ», Г­Г® ГўГ» Г­ГҐ Г¬Г®Г¦ГҐГІГҐ ГІГіГІ Г°Г ГЎГ®ГІГ ГІГј, {ff0000}ГЇГ® Г±ГЄГ®Г«ГјГЄГі ГіГ¦ГҐ Г±Г®Г±ГІГ®ГЁГІГҐ Гў Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГЁ!");
+			ShowPlayerDialog(playerid,30,DIALOG_STYLE_MSGBOX,"{cc7722}Г’Г°ГіГ¤Г®ГіГ±ГІГ°Г®Г©Г±ГІГўГ®","{ffffff}Г‚Г» Г¤ГҐГ©Г±ГІГўГЁГІГҐГ«ГјГ­Г® ГµГ®ГІГЁГІГҐ {03c03c}Г­Г Г·Г ГІГј{ffffff}/{ff0000}Г§Г ГЄГ®Г­Г·ГЁГІГј {ffffff}Г°Г ГЎГ®Г·ГЁГ© Г¤ГҐГ­Гј Г¤Г®ГЎГ»ГІГ·ГЁГЄГ  Г°ГіГ¤Г»?\n\
+			Г—ГІГ®ГЎГ» ГЇГҐГ°ГҐГ®Г¤ГҐГІГјГ±Гї, ГўГ Г¬ Г±ГІГ®ГЁГІ Г«ГЁГёГј Г­Г Г¦Г ГІГј Г­Г  ГЄГ­Г®ГЇГЄГі {03c03c}'Г„Г '","Г„Г ","ГЋГІГ¬ГҐГ­Г ");
 			SetPVarInt(playerid,"GetPickup",gettime()+10);
 		}
-		case 13: { // Позиция когда выйдешь на пикап внутрений в Армии, появишься снаружи
+		case 13: { // ГЏГ®Г§ГЁГ¶ГЁГї ГЄГ®ГЈГ¤Г  ГўГ»Г©Г¤ГҐГёГј Г­Г  ГЇГЁГЄГ ГЇ ГўГ­ГіГІГ°ГҐГ­ГЁГ© Гў ГЂГ°Г¬ГЁГЁ, ГЇГ®ГїГўГЁГёГјГ±Гї Г±Г­Г Г°ГіГ¦ГЁ
 			SetPlayerInterior(playerid, 0);
 			SetPlayerVirtualWorld(playerid,0);
 			AC_SetPlayerPos(playerid,226.6496,1885.1958,17.6406);
@@ -1233,7 +1233,7 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 			PlayerPlaySound(playerid, 30803, 0.0, 0.0, 0.0);
 			TogglePlayerControllable(playerid,0), SetTimerEx("PickupFreeze", 2100, false, "i", playerid);
 		}
-		case 15: { // Позиция когда выйдешь на пикап внутрений в Армии, появишься снаружи
+		case 15: { // ГЏГ®Г§ГЁГ¶ГЁГї ГЄГ®ГЈГ¤Г  ГўГ»Г©Г¤ГҐГёГј Г­Г  ГЇГЁГЄГ ГЇ ГўГ­ГіГІГ°ГҐГ­ГЁГ© Гў ГЂГ°Г¬ГЁГЁ, ГЇГ®ГїГўГЁГёГјГ±Гї Г±Г­Г Г°ГіГ¦ГЁ
 			SetPlayerInterior(playerid,1);
 			SetPlayerVirtualWorld(playerid,1);
 			AC_SetPlayerPos(playerid,288.2709,-38.4945,1001.5156);
@@ -1251,27 +1251,27 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 		}
 		case 17: {
 			if(PlayerGangster(playerid)) {
-				SCM(playerid,0xFFFFFFFF,"Вы взяли {1faee9}один боевой комплект! ( +74 ед. )");
+				SCM(playerid,0xFFFFFFFF,"Г‚Г» ГўГ§ГїГ«ГЁ {1faee9}Г®Г¤ГЁГ­ ГЎГ®ГҐГўГ®Г© ГЄГ®Г¬ГЇГ«ГҐГЄГІ! ( +74 ГҐГ¤. )");
 				SetPlayerAttachedObject(playerid, 0, 3026, 1, -0.372999, -0.059999, 0.000000, 0.000000, 0.000000, 0.000000, 1.470000, 1.700000, 1.349999);
 				LVW -= 150, Player[playerid][pAmmo] += 150;
 				SetPVarInt(playerid,"Ammo",1);
-				format(string,48,"Собранное оружие\n{1faee9}На складе: %d ед.",LVW);
+				format(string,48,"Г‘Г®ГЎГ°Г Г­Г­Г®ГҐ Г®Г°ГіГ¦ГЁГҐ\n{1faee9}ГЌГ  Г±ГЄГ«Г Г¤ГҐ: %d ГҐГ¤.",LVW);
 				UpdateDynamic3DTextLabelText(LVWtext, 0xFFFFFFFF, string);
 			}
 			if(Player[playerid][pFraction][1] == 6) {
-				if(GetPVarInt(playerid,"GetAmmo") > gettime()) return SCM(playerid,0xFFFFFFFF,"Брать комплект можно {03c03c}раз в 3 минуты!");
-				SCM(playerid,0xFFFFFFFF,"Боекомплект {1faee9}выдан!");
+				if(GetPVarInt(playerid,"GetAmmo") > gettime()) return SCM(playerid,0xFFFFFFFF,"ГЃГ°Г ГІГј ГЄГ®Г¬ГЇГ«ГҐГЄГІ Г¬Г®Г¦Г­Г® {03c03c}Г°Г Г§ Гў 3 Г¬ГЁГ­ГіГІГ»!");
+				SCM(playerid,0xFFFFFFFF,"ГЃГ®ГҐГЄГ®Г¬ГЇГ«ГҐГЄГІ {1faee9}ГўГ»Г¤Г Г­!");
 				switch(random(2)) {
 					case 0: GiveWeapon(playerid,31,50);
 					case 1: GiveWeapon(playerid,30,50);
 				}
 				LVW -= 150, GiveWeapon(playerid,24,24);
-				format(string,48,"Собранное оружие\n{1faee9}На складе: %d ед.",LVW);
+				format(string,48,"Г‘Г®ГЎГ°Г Г­Г­Г®ГҐ Г®Г°ГіГ¦ГЁГҐ\n{1faee9}ГЌГ  Г±ГЄГ«Г Г¤ГҐ: %d ГҐГ¤.",LVW);
 				UpdateDynamic3DTextLabelText(LVWtext, 0xFFFFFFFF, string);
 				SetPVarInt(playerid,"GetAmmo",gettime()+180);
 			}
 		}
-		case 18: { // Позиция когда выйдешь на пикап внутрений в Армии, появишься снаружи
+		case 18: { // ГЏГ®Г§ГЁГ¶ГЁГї ГЄГ®ГЈГ¤Г  ГўГ»Г©Г¤ГҐГёГј Г­Г  ГЇГЁГЄГ ГЇ ГўГ­ГіГІГ°ГҐГ­ГЁГ© Гў ГЂГ°Г¬ГЁГЁ, ГЇГ®ГїГўГЁГёГјГ±Гї Г±Г­Г Г°ГіГ¦ГЁ
 			SetPlayerInterior(playerid,0);
 			SetPlayerVirtualWorld(playerid,0);
 			AC_SetPlayerPos(playerid,245.9828,1982.5568,17.6406);
@@ -1287,7 +1287,7 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 			SetCameraBehindPlayer(playerid);
 			PlayerPlaySound(playerid, 30803, 0.0, 0.0, 0.0);
 		}
-		case 20: { // Позиция когда выйдешь на пикап внутрений в LSPD, появишься снаружи
+		case 20: { // ГЏГ®Г§ГЁГ¶ГЁГї ГЄГ®ГЈГ¤Г  ГўГ»Г©Г¤ГҐГёГј Г­Г  ГЇГЁГЄГ ГЇ ГўГ­ГіГІГ°ГҐГ­ГЁГ© Гў LSPD, ГЇГ®ГїГўГЁГёГјГ±Гї Г±Г­Г Г°ГіГ¦ГЁ
 			SetPlayerInterior(playerid,0);
 			SetPlayerVirtualWorld(playerid,0);
 			AC_SetPlayerPos(playerid,1549.1537,-1675.5107,14.8390);
@@ -1355,9 +1355,9 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 		case 28: {
 			if(GetPVarInt(playerid,"GetPickup") > gettime() || GetPVarInt(playerid,"DialogActive") == 1) return true;
 			SetPVarInt(playerid,"DialogActive",1);
-			if(Player[playerid][pBankPass] == 0) return ShowPlayerDialog(playerid,36,DIALOG_STYLE_MSGBOX,"{1faee9}Банковский счет","{ffffff}Для пользования банковскими услугами вам {AC7575}необходимо завести счёт.\nДля этого необходимо иметь при себе {ffffff}1000${03c03c} для стартового вклада.\
-			\n\n{ffffff}Каждый час на вас счет будут поступать {03c03c}положительные проценты{ffffff} которые будут поднимать ваш счет.\n\n\n {1faee9}- Вы согласны?","Да","Нет");
-			ShowPlayerDialog(playerid,38,DIALOG_STYLE_LIST,"{03c03c}Услуги Банка LS","{03c03c}Пополнить{ffffff}/{AC7575}Снять{ffffff} деньги\nПеревод денег на другой счёт\nИнформация о счете","Выбор","Отмена");
+			if(Player[playerid][pBankPass] == 0) return ShowPlayerDialog(playerid,36,DIALOG_STYLE_MSGBOX,"{1faee9}ГЃГ Г­ГЄГ®ГўГ±ГЄГЁГ© Г±Г·ГҐГІ","{ffffff}Г„Г«Гї ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГї ГЎГ Г­ГЄГ®ГўГ±ГЄГЁГ¬ГЁ ГіГ±Г«ГіГЈГ Г¬ГЁ ГўГ Г¬ {AC7575}Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® Г§Г ГўГҐГ±ГІГЁ Г±Г·ВёГІ.\nГ„Г«Гї ГЅГІГ®ГЈГ® Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® ГЁГ¬ГҐГІГј ГЇГ°ГЁ Г±ГҐГЎГҐ {ffffff}1000${03c03c} Г¤Г«Гї Г±ГІГ Г°ГІГ®ГўГ®ГЈГ® ГўГЄГ«Г Г¤Г .\
+			\n\n{ffffff}ГЉГ Г¦Г¤Г»Г© Г·Г Г± Г­Г  ГўГ Г± Г±Г·ГҐГІ ГЎГіГ¤ГіГІ ГЇГ®Г±ГІГіГЇГ ГІГј {03c03c}ГЇГ®Г«Г®Г¦ГЁГІГҐГ«ГјГ­Г»ГҐ ГЇГ°Г®Г¶ГҐГ­ГІГ»{ffffff} ГЄГ®ГІГ®Г°Г»ГҐ ГЎГіГ¤ГіГІ ГЇГ®Г¤Г­ГЁГ¬Г ГІГј ГўГ Гё Г±Г·ГҐГІ.\n\n\n {1faee9}- Г‚Г» Г±Г®ГЈГ«Г Г±Г­Г»?","Г„Г ","ГЌГҐГІ");
+			ShowPlayerDialog(playerid,38,DIALOG_STYLE_LIST,"{03c03c}Г“Г±Г«ГіГЈГЁ ГЃГ Г­ГЄГ  LS","{03c03c}ГЏГ®ГЇГ®Г«Г­ГЁГІГј{ffffff}/{AC7575}Г‘Г­ГїГІГј{ffffff} Г¤ГҐГ­ГјГЈГЁ\nГЏГҐГ°ГҐГўГ®Г¤ Г¤ГҐГ­ГҐГЈ Г­Г  Г¤Г°ГіГЈГ®Г© Г±Г·ВёГІ\nГ€Г­ГґГ®Г°Г¬Г Г¶ГЁГї Г® Г±Г·ГҐГІГҐ","Г‚Г»ГЎГ®Г°","ГЋГІГ¬ГҐГ­Г ");
 			SetPVarInt(playerid,"GetPickup",gettime()+3);
 		}
 		case 29: {
@@ -1392,10 +1392,10 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 		}
 		case 33: {
 			if(GetPVarInt(playerid,"GetPickup") > gettime() || GetPVarInt(playerid,"DialogActive") == 1) return true;
-			if(Player[playerid][pFraction][1] != 0 || (GetPVarInt(playerid,"Job") == 1 && GetPVarInt(playerid,"TruckJob") < 1)) return SCM(playerid,-1,"Увы, но вы не можете тут работать, {ff0000}по скольку уже состоите в организации либо уже работаете!");
+			if(Player[playerid][pFraction][1] != 0 || (GetPVarInt(playerid,"Job") == 1 && GetPVarInt(playerid,"TruckJob") < 1)) return SCM(playerid,-1,"Г“ГўГ», Г­Г® ГўГ» Г­ГҐ Г¬Г®Г¦ГҐГІГҐ ГІГіГІ Г°Г ГЎГ®ГІГ ГІГј, {ff0000}ГЇГ® Г±ГЄГ®Г«ГјГЄГі ГіГ¦ГҐ Г±Г®Г±ГІГ®ГЁГІГҐ Гў Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГЁ Г«ГЁГЎГ® ГіГ¦ГҐ Г°Г ГЎГ®ГІГ ГҐГІГҐ!");
 			SetPVarInt(playerid,"DialogActive",1);
-			ShowPlayerDialog(playerid,47,DIALOG_STYLE_MSGBOX,"{cc7722}Трудоустройство","{ffffff}Компании {FFC400}'Real Trucks'{ffffff} требуются опытные водители.\nСуть работы заключается в быстрой и аккуратной перевозки грузов.\n\
-			{03c03c}Для работы вам требуются водительское удостоверение и 1000$ для аренды грузовика!\n\n{ffffff} - Ну что, попробуем? Если вы уже работаете и хотите закончить, нажмите {1faee9}'Работа'","Работа","Отмена");
+			ShowPlayerDialog(playerid,47,DIALOG_STYLE_MSGBOX,"{cc7722}Г’Г°ГіГ¤Г®ГіГ±ГІГ°Г®Г©Г±ГІГўГ®","{ffffff}ГЉГ®Г¬ГЇГ Г­ГЁГЁ {FFC400}'Real Trucks'{ffffff} ГІГ°ГҐГЎГіГѕГІГ±Гї Г®ГЇГ»ГІГ­Г»ГҐ ГўГ®Г¤ГЁГІГҐГ«ГЁ.\nГ‘ГіГІГј Г°Г ГЎГ®ГІГ» Г§Г ГЄГ«ГѕГ·Г ГҐГІГ±Гї Гў ГЎГ»Г±ГІГ°Г®Г© ГЁ Г ГЄГЄГіГ°Г ГІГ­Г®Г© ГЇГҐГ°ГҐГўГ®Г§ГЄГЁ ГЈГ°ГіГ§Г®Гў.\n\
+			{03c03c}Г„Г«Гї Г°Г ГЎГ®ГІГ» ГўГ Г¬ ГІГ°ГҐГЎГіГѕГІГ±Гї ГўГ®Г¤ГЁГІГҐГ«ГјГ±ГЄГ®ГҐ ГіГ¤Г®Г±ГІГ®ГўГҐГ°ГҐГ­ГЁГҐ ГЁ 1000$ Г¤Г«Гї Г Г°ГҐГ­Г¤Г» ГЈГ°ГіГ§Г®ГўГЁГЄГ !\n\n{ffffff} - ГЌГі Г·ГІГ®, ГЇГ®ГЇГ°Г®ГЎГіГҐГ¬? Г…Г±Г«ГЁ ГўГ» ГіГ¦ГҐ Г°Г ГЎГ®ГІГ ГҐГІГҐ ГЁ ГµГ®ГІГЁГІГҐ Г§Г ГЄГ®Г­Г·ГЁГІГј, Г­Г Г¦Г¬ГЁГІГҐ {1faee9}'ГђГ ГЎГ®ГІГ '","ГђГ ГЎГ®ГІГ ","ГЋГІГ¬ГҐГ­Г ");
 			SetPVarInt(playerid,"GetPickup",gettime()+10);
 		}
 		case 34: {
@@ -1414,11 +1414,11 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid) {
 		}
 		case 36: {
 			if(GetPVarInt(playerid,"GetPickup") > gettime() || GetPVarInt(playerid,"DialogActive") == 1) return true;
-			if((Player[playerid][Licenses] & (1<<0) != 0) || GetPVarInt(playerid,"Lesson") > 0) return SCM(playerid,-1,"У вас уже {1faee9}есть вод.удостоверение, либо вы уже начали экзамен!");
-			if(Player[playerid][pMoney] < 800) return SCM(playerid,-1,"У вас {1faee9}недостаточно денег для начала экзамена!");
+			if((Player[playerid][Licenses] & (1<<0) != 0) || GetPVarInt(playerid,"Lesson") > 0) return SCM(playerid,-1,"Г“ ГўГ Г± ГіГ¦ГҐ {1faee9}ГҐГ±ГІГј ГўГ®Г¤.ГіГ¤Г®Г±ГІГ®ГўГҐГ°ГҐГ­ГЁГҐ, Г«ГЁГЎГ® ГўГ» ГіГ¦ГҐ Г­Г Г·Г Г«ГЁ ГЅГЄГ§Г Г¬ГҐГ­!");
+			if(Player[playerid][pMoney] < 800) return SCM(playerid,-1,"Г“ ГўГ Г± {1faee9}Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г­Г Г·Г Г«Г  ГЅГЄГ§Г Г¬ГҐГ­Г !");
 			SetPVarInt(playerid,"DialogActive",1);
-			ShowPlayerDialog(playerid,49,DIALOG_STYLE_MSGBOX,"{cc7722}Экзамен по вождению","{ffffff}Автошкола {FFC400}г.San Fierro{ffffff} принимает абитуриентов.\nНа данный момент вы можете сразу сдать экзамен.\n\
-			{03c03c}Перед этим вы обязательно должны знать теорию и иметь при себе 800$ как взнос.\n\n{ffffff} - Ну что, начнем? Заметь, {AC7575}при неудачной сдаче - деньги не возвращаются!","Начать","Отмена");
+			ShowPlayerDialog(playerid,49,DIALOG_STYLE_MSGBOX,"{cc7722}ГќГЄГ§Г Г¬ГҐГ­ ГЇГ® ГўГ®Г¦Г¤ГҐГ­ГЁГѕ","{ffffff}ГЂГўГІГ®ГёГЄГ®Г«Г  {FFC400}ГЈ.San Fierro{ffffff} ГЇГ°ГЁГ­ГЁГ¬Г ГҐГІ Г ГЎГЁГІГіГ°ГЁГҐГ­ГІГ®Гў.\nГЌГ  Г¤Г Г­Г­Г»Г© Г¬Г®Г¬ГҐГ­ГІ ГўГ» Г¬Г®Г¦ГҐГІГҐ Г±Г°Г Г§Гі Г±Г¤Г ГІГј ГЅГЄГ§Г Г¬ГҐГ­.\n\
+			{03c03c}ГЏГҐГ°ГҐГ¤ ГЅГІГЁГ¬ ГўГ» Г®ГЎГїГ§Г ГІГҐГ«ГјГ­Г® Г¤Г®Г«Г¦Г­Г» Г§Г­Г ГІГј ГІГҐГ®Г°ГЁГѕ ГЁ ГЁГ¬ГҐГІГј ГЇГ°ГЁ Г±ГҐГЎГҐ 800$ ГЄГ ГЄ ГўГ§Г­Г®Г±.\n\n{ffffff} - ГЌГі Г·ГІГ®, Г­Г Г·Г­ГҐГ¬? Г‡Г Г¬ГҐГІГј, {AC7575}ГЇГ°ГЁ Г­ГҐГіГ¤Г Г·Г­Г®Г© Г±Г¤Г Г·ГҐ - Г¤ГҐГ­ГјГЈГЁ Г­ГҐ ГўГ®Г§ГўГ°Г Г№Г ГѕГІГ±Гї!","ГЌГ Г·Г ГІГј","ГЋГІГ¬ГҐГ­Г ");
 			SetPVarInt(playerid,"GetPickup",gettime()+10);
 		}
 		case 37: {
@@ -1531,9 +1531,9 @@ public OnPlayerSelectedMenuRow(playerid, row)
 			 	}
                 ShowMenuForPlayer(rMenu, playerid);
 	        }
-	        case 1: SetPVarInt(playerid,"ReasonKick",1), ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}Кикнуть игрока","{ffffff}Введите причину кика данного игрока.","Кик","Отмена"),ShowMenuForPlayer(rMenu, playerid);
-	        case 2: SetPVarInt(playerid,"ReasonKick",2), ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}Заварнить игрока","{ffffff}Введите причину варна для данного игрока.","Варн","Отмена"),ShowMenuForPlayer(rMenu, playerid);
-	        case 3: SetPVarInt(playerid,"ReasonKick",3), ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}Забанить игрока","{ffffff}Введите количество дней бана данного игрока.","Бан","Отмена"),ShowMenuForPlayer(rMenu, playerid);
+	        case 1: SetPVarInt(playerid,"ReasonKick",1), ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}ГЉГЁГЄГ­ГіГІГј ГЁГЈГ°Г®ГЄГ ","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ ГЇГ°ГЁГ·ГЁГ­Гі ГЄГЁГЄГ  Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .","ГЉГЁГЄ","ГЋГІГ¬ГҐГ­Г "),ShowMenuForPlayer(rMenu, playerid);
+	        case 2: SetPVarInt(playerid,"ReasonKick",2), ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}Г‡Г ГўГ Г°Г­ГЁГІГј ГЁГЈГ°Г®ГЄГ ","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ ГЇГ°ГЁГ·ГЁГ­Гі ГўГ Г°Г­Г  Г¤Г«Гї Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .","Г‚Г Г°Г­","ГЋГІГ¬ГҐГ­Г "),ShowMenuForPlayer(rMenu, playerid);
+	        case 3: SetPVarInt(playerid,"ReasonKick",3), ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}Г‡Г ГЎГ Г­ГЁГІГј ГЁГЈГ°Г®ГЄГ ","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г¤Г­ГҐГ© ГЎГ Г­Г  Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .","ГЃГ Г­","ГЋГІГ¬ГҐГ­Г "),ShowMenuForPlayer(rMenu, playerid);
 	        case 4: {
 				fcor
     			GetPlayerPos(GetPVarInt(playerid,"ReconID"),x,y,z), CreateExplosionForPlayer(GetPVarInt(playerid,"ReconID"), x,y,z+7.5, 5, 0.5), ShowMenuForPlayer(rMenu, playerid);
@@ -1541,10 +1541,10 @@ public OnPlayerSelectedMenuRow(playerid, row)
 	        case 5: {
 	            new Float:health, Float:x, Float:y, Float:z;
 	    		GetPlayerHealth(GetPVarInt(playerid,"ReconID"), health), SetPlayerHealth(GetPVarInt(playerid,"ReconID"), health-5.0), GetPlayerPos(GetPVarInt(playerid,"ReconID"), x, y, z), AC_SetPlayerPos(GetPVarInt(playerid,"ReconID"), x, y, z+3.0), PlayerPlaySound(GetPVarInt(playerid,"ReconID"), 1130, x, y, z+3.0);
-				SCM(playerid,COLOR_LIGHTRED,"Игрок был шлепнут");
+				SCM(playerid,COLOR_LIGHTRED,"Г€ГЈГ°Г®ГЄ ГЎГ»Г« ГёГ«ГҐГЇГ­ГіГІ");
 				ShowMenuForPlayer(rMenu, playerid);
 			}
-	        case 6: ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}В РАЗРАБОТКЕ!","{ffffff}В {ff0000}РАЗРАБОТКЕ!","OK",""),ShowMenuForPlayer(rMenu, playerid);
+	        case 6: ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}Г‚ ГђГЂГ‡ГђГЂГЃГЋГ’ГЉГ…!","{ffffff}Г‚ {ff0000}ГђГЂГ‡ГђГЂГЃГЋГ’ГЉГ…!","OK",""),ShowMenuForPlayer(rMenu, playerid);
 	        case 7: callcmd::recon(playerid, "");
 		}
 	}
@@ -1570,13 +1570,13 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	if(newkeys & KEY_FIRE && GetPlayerState(playerid) == PLAYER_STATE_DRIVER) VXOR<GetPlayerVehicleID(playerid):limit>, PlayerTextDrawSetString(playerid,slimit[playerid], (VVB<GetPlayerVehicleID(playerid):limit>) ? ("~r~SPEED LIMIT") : ("~g~SPEED LIMIT"));
 	if(newkeys & KEY_WALK) {
 	    for(new i = 0; i <= Houses; i++) {
-     		if(IsPlayerInRangeOfPoint(playerid,2.5,Ints[House[i][hInt]][hiX],Ints[House[i][hInt]][hiY],Ints[House[i][hInt]][hiZ])) ShowPlayerDialog(playerid,11,DIALOG_STYLE_MSGBOX,"{1faee9}Выход","{ffffff}Куда бы вы хотели выйти?","Улица","Гараж");
+     		if(IsPlayerInRangeOfPoint(playerid,2.5,Ints[House[i][hInt]][hiX],Ints[House[i][hInt]][hiY],Ints[House[i][hInt]][hiZ])) ShowPlayerDialog(playerid,11,DIALOG_STYLE_MSGBOX,"{1faee9}Г‚Г»ГµГ®Г¤","{ffffff}ГЉГіГ¤Г  ГЎГ» ГўГ» ГµГ®ГІГҐГ«ГЁ ГўГ»Г©ГІГЁ?","Г“Г«ГЁГ¶Г ","ГѓГ Г°Г Г¦");
       		else if(IsPlayerInRangeOfPoint(playerid,1.5,897.7181,-354.6801,2177.6160) && GetPlayerVirtualWorld(playerid) == House[i][hID]) AC_SetPlayerPos(playerid,Ints[House[i][hInt]][hiX],Ints[House[i][hInt]][hiY],Ints[House[i][hInt]][hiZ]), SetPlayerInterior(playerid,Ints[House[i][hInt]][hiInt]);
 		}
 	    for(new a = 0; a <= Atms; a++) {
  			if(!IsPlayerInRangeOfPoint(playerid,2.0,Atm[a][aX], Atm[a][aY], Atm[a][aZ])) continue;
-   			if(Player[playerid][pBankPass] == 0) return SCM(playerid,0xAC7575FF,"У вас нет счёта в банке!");
- 			ShowPlayerDialog(playerid,44,DIALOG_STYLE_LIST,"{cc7722}Услуги Банкомата","{03c03c}Пополнить{ffffff}/{AC7575}Снять{ffffff} деньги\nПополнить мобильный счёт","Далее","Отмена");
+   			if(Player[playerid][pBankPass] == 0) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГІ Г±Г·ВёГІГ  Гў ГЎГ Г­ГЄГҐ!");
+ 			ShowPlayerDialog(playerid,44,DIALOG_STYLE_LIST,"{cc7722}Г“Г±Г«ГіГЈГЁ ГЃГ Г­ГЄГ®Г¬Г ГІГ ","{03c03c}ГЏГ®ГЇГ®Г«Г­ГЁГІГј{ffffff}/{AC7575}Г‘Г­ГїГІГј{ffffff} Г¤ГҐГ­ГјГЈГЁ\nГЏГ®ГЇГ®Г«Г­ГЁГІГј Г¬Г®ГЎГЁГ«ГјГ­Г»Г© Г±Г·ВёГІ","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 		}
 	}
   	if(newkeys & KEY_CROUCH && GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
@@ -1648,15 +1648,15 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		case 1: {
             if(!response) return KickEx(playerid);
             for(new i = strlen(inputtext); i != 0; --i)
-			switch(inputtext[i]) { case 'А'..'Я', 'а'..'я', ' ': return ShowPlayerDialog(playerid,1,DIALOG_STYLE_MSGBOX,"{ffcc00}Ошибка ввода","{ffffff}Ваш текст содержит символы кириллици, пожалуйста смените вашу раскладку.","Повтор",""); }
+			switch(inputtext[i]) { case 'ГЂ'..'Гџ', 'Г '..'Гї', ' ': return ShowPlayerDialog(playerid,1,DIALOG_STYLE_MSGBOX,"{ffcc00}ГЋГёГЁГЎГЄГ  ГўГўГ®Г¤Г ","{ffffff}Г‚Г Гё ГІГҐГЄГ±ГІ Г±Г®Г¤ГҐГ°Г¦ГЁГІ Г±ГЁГ¬ГўГ®Г«Г» ГЄГЁГ°ГЁГ«Г«ГЁГ¶ГЁ, ГЇГ®Г¦Г Г«ГіГ©Г±ГІГ  Г±Г¬ГҐГ­ГЁГІГҐ ГўГ ГёГі Г°Г Г±ГЄГ«Г Г¤ГЄГі.","ГЏГ®ГўГІГ®Г°",""); }
 			if(GetPVarInt(playerid,"LoginTime") > gettime()) {
-				format(dstring, 132, "{ffffff}Аккаунт ещё не успел загрузиться пожалуйста повторите попытку\n\n{ff0000}Ник-нейм: %s\n{00ff00}Пароль:",Name(playerid));
-				ShowPlayerDialog(playerid, 1, DIALOG_STYLE_PASSWORD, "{ffcc00}Авторизация", dstring, "Принять","Отмена");
+				format(dstring, 132, "{ffffff}ГЂГЄГЄГ ГіГ­ГІ ГҐГ№Вё Г­ГҐ ГіГ±ГЇГҐГ« Г§Г ГЈГ°ГіГ§ГЁГІГјГ±Гї ГЇГ®Г¦Г Г«ГіГ©Г±ГІГ  ГЇГ®ГўГІГ®Г°ГЁГІГҐ ГЇГ®ГЇГ»ГІГЄГі\n\n{ff0000}ГЌГЁГЄ-Г­ГҐГ©Г¬: %s\n{00ff00}ГЏГ Г°Г®Г«Гј:",Name(playerid));
+				ShowPlayerDialog(playerid, 1, DIALOG_STYLE_PASSWORD, "{ffcc00}ГЂГўГІГ®Г°ГЁГ§Г Г¶ГЁГї", dstring, "ГЏГ°ГЁГ­ГїГІГј","ГЋГІГ¬ГҐГ­Г ");
 				return true;
 			}
 			else if(!strlen(inputtext)) {
-				format(dstring, 166, "{ffffff}Приветствую вас, дорогой игрок!\nВаш аккаунт зарегистрирован в системе, пожалуйста авторизуйтесь.\n\n{ff0000}Ник-нейм: %s\n{00ff00}Пароль:",Name(playerid));
-				ShowPlayerDialog(playerid, 1, DIALOG_STYLE_PASSWORD, "{ffcc00}Авторизация", dstring, "Принять","Отмена");
+				format(dstring, 166, "{ffffff}ГЏГ°ГЁГўГҐГІГ±ГІГўГіГѕ ГўГ Г±, Г¤Г®Г°Г®ГЈГ®Г© ГЁГЈГ°Г®ГЄ!\nГ‚Г Гё Г ГЄГЄГ ГіГ­ГІ Г§Г Г°ГҐГЈГЁГ±ГІГ°ГЁГ°Г®ГўГ Г­ Гў Г±ГЁГ±ГІГҐГ¬ГҐ, ГЇГ®Г¦Г Г«ГіГ©Г±ГІГ  Г ГўГІГ®Г°ГЁГ§ГіГ©ГІГҐГ±Гј.\n\n{ff0000}ГЌГЁГЄ-Г­ГҐГ©Г¬: %s\n{00ff00}ГЏГ Г°Г®Г«Гј:",Name(playerid));
+				ShowPlayerDialog(playerid, 1, DIALOG_STYLE_PASSWORD, "{ffcc00}ГЂГўГІГ®Г°ГЁГ§Г Г¶ГЁГї", dstring, "ГЏГ°ГЁГ­ГїГІГј","ГЋГІГ¬ГҐГ­Г ");
 				return true;
 			}
 			mysql_format(connects, query, 118, "SELECT * FROM `accounts` WHERE Name = '%s' AND `password` = '%s'",Name(playerid), inputtext);
@@ -1665,11 +1665,11 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         case 2: {
             if(!response) return KickEx(playerid);
 			if(strlen(inputtext) < 3 || strlen(inputtext) > 16) {
-		    	return ShowPlayerDialog(playerid, 1, DIALOG_STYLE_INPUT, "{ffcc00}Регистрация","{ffffff}Приветствую вас, дорогой игрок!\nПеред регистрацией обратите внимание на правила:\n\n\
-			  	{ff0000}- Запрещается смешивать игровой процесс с реальной жизнью.\n\
-			  	{ffff00}- Игрок обязан знать все Role Play правила и правила сервера. ( След. Графа )\n\
-		      	{00ff00}- Желательно перед игрой посетить наш официальный сайт www.Cheery-rp.ru\n\n\
-			  	{ff0000} Пожалуйста, придумайте ваш будущий пароль:", "Далее","Отмена");
+		    	return ShowPlayerDialog(playerid, 1, DIALOG_STYLE_INPUT, "{ffcc00}ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї","{ffffff}ГЏГ°ГЁГўГҐГІГ±ГІГўГіГѕ ГўГ Г±, Г¤Г®Г°Г®ГЈГ®Г© ГЁГЈГ°Г®ГЄ!\nГЏГҐГ°ГҐГ¤ Г°ГҐГЈГЁГ±ГІГ°Г Г¶ГЁГҐГ© Г®ГЎГ°Г ГІГЁГІГҐ ГўГ­ГЁГ¬Г Г­ГЁГҐ Г­Г  ГЇГ°Г ГўГЁГ«Г :\n\n\
+			  	{ff0000}- Г‡Г ГЇГ°ГҐГ№Г ГҐГІГ±Гї Г±Г¬ГҐГёГЁГўГ ГІГј ГЁГЈГ°Г®ГўГ®Г© ГЇГ°Г®Г¶ГҐГ±Г± Г± Г°ГҐГ Г«ГјГ­Г®Г© Г¦ГЁГ§Г­ГјГѕ.\n\
+			  	{ffff00}- Г€ГЈГ°Г®ГЄ Г®ГЎГїГ§Г Г­ Г§Г­Г ГІГј ГўГ±ГҐ Role Play ГЇГ°Г ГўГЁГ«Г  ГЁ ГЇГ°Г ГўГЁГ«Г  Г±ГҐГ°ГўГҐГ°Г . ( Г‘Г«ГҐГ¤. ГѓГ°Г ГґГ  )\n\
+		      	{00ff00}- Г†ГҐГ«Г ГІГҐГ«ГјГ­Г® ГЇГҐГ°ГҐГ¤ ГЁГЈГ°Г®Г© ГЇГ®Г±ГҐГІГЁГІГј Г­Г Гё Г®ГґГЁГ¶ГЁГ Г«ГјГ­Г»Г© Г±Г Г©ГІ www.Cheery-rp.ru\n\n\
+			  	{ff0000} ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ , ГЇГ°ГЁГ¤ГіГ¬Г Г©ГІГҐ ГўГ Гё ГЎГіГ¤ГіГ№ГЁГ© ГЇГ Г°Г®Г«Гј:", "Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 			}
             else {
     		    Player[playerid][ClothesRound] = false;
@@ -1677,36 +1677,36 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				Player[playerid][ChosenSkin] = 0;
 				SetSpawnInfo(playerid, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
                 strmid(Player[playerid][pPassword], inputtext, 0, strlen(inputtext), 32);
-               	ShowPlayerDialog(playerid, 3, 1, "{ffcc00}Альтернативные данные", "{ffffff}Убедительная просьба ввести ваш {ff0000}настоящий {ffffff}e-mail адресс.\nСейчас на него придет код с подтверждением для продолжения регистрации\nТак-же при утере пароля вы сможете выслать восстановительное письмо на этот адресс!", "Далее", "Отмена");
+               	ShowPlayerDialog(playerid, 3, 1, "{ffcc00}ГЂГ«ГјГІГҐГ°Г­Г ГІГЁГўГ­Г»ГҐ Г¤Г Г­Г­Г»ГҐ", "{ffffff}Г“ГЎГҐГ¤ГЁГІГҐГ«ГјГ­Г Гї ГЇГ°Г®Г±ГјГЎГ  ГўГўГҐГ±ГІГЁ ГўГ Гё {ff0000}Г­Г Г±ГІГ®ГїГ№ГЁГ© {ffffff}e-mail Г Г¤Г°ГҐГ±Г±.\nГ‘ГҐГ©Г·Г Г± Г­Г  Г­ГҐГЈГ® ГЇГ°ГЁГ¤ГҐГІ ГЄГ®Г¤ Г± ГЇГ®Г¤ГІГўГҐГ°Г¦Г¤ГҐГ­ГЁГҐГ¬ Г¤Г«Гї ГЇГ°Г®Г¤Г®Г«Г¦ГҐГ­ГЁГї Г°ГҐГЈГЁГ±ГІГ°Г Г¶ГЁГЁ\nГ’Г ГЄ-Г¦ГҐ ГЇГ°ГЁ ГіГІГҐГ°ГҐ ГЇГ Г°Г®Г«Гї ГўГ» Г±Г¬Г®Г¦ГҐГІГҐ ГўГ»Г±Г«Г ГІГј ГўГ®Г±Г±ГІГ Г­Г®ГўГЁГІГҐГ«ГјГ­Г®ГҐ ГЇГЁГ±ГјГ¬Г® Г­Г  ГЅГІГ®ГІ Г Г¤Г°ГҐГ±Г±!", "Г„Г Г«ГҐГҐ", "ГЋГІГ¬ГҐГ­Г ");
 				return true;
 		}	}
         case 3: {
    		    if(!response) return KickEx(playerid);
-         	if(strlen(inputtext) < 1 || strlen(inputtext) > 36) return ShowPlayerDialog(playerid, 3, 1, "{ffcc00}Альтернативные данные", "{ffffff}Убедительная просьба ввести ваш {ff0000}настоящий {ffffff}e-mail адресс.\nПри утере пароля вы сможете выслать восстановительное письмо на этот адресс!", "Далее", "Отмена");
+         	if(strlen(inputtext) < 1 || strlen(inputtext) > 36) return ShowPlayerDialog(playerid, 3, 1, "{ffcc00}ГЂГ«ГјГІГҐГ°Г­Г ГІГЁГўГ­Г»ГҐ Г¤Г Г­Г­Г»ГҐ", "{ffffff}Г“ГЎГҐГ¤ГЁГІГҐГ«ГјГ­Г Гї ГЇГ°Г®Г±ГјГЎГ  ГўГўГҐГ±ГІГЁ ГўГ Гё {ff0000}Г­Г Г±ГІГ®ГїГ№ГЁГ© {ffffff}e-mail Г Г¤Г°ГҐГ±Г±.\nГЏГ°ГЁ ГіГІГҐГ°ГҐ ГЇГ Г°Г®Г«Гї ГўГ» Г±Г¬Г®Г¦ГҐГІГҐ ГўГ»Г±Г«Г ГІГј ГўГ®Г±Г±ГІГ Г­Г®ГўГЁГІГҐГ«ГјГ­Г®ГҐ ГЇГЁГ±ГјГ¬Г® Г­Г  ГЅГІГ®ГІ Г Г¤Г°ГҐГ±Г±!", "Г„Г Г«ГҐГҐ", "ГЋГІГ¬ГҐГ­Г ");
 			if(strfind(inputtext, "@", true) == -1 || strfind(inputtext, ".", true) == -1 || strlen(inputtext) < 5) {
-				SendClientMessage(playerid, COLOR_GREY, "[Ошибка] Попробуйте еще раз");
-  				return ShowPlayerDialog(playerid, 3, 1, "{ffcc00}Альтернативные данные", "{ffffff}Убедительная просьба ввести ваш {ff0000}настоящий {ffffff}e-mail адресс.\nПри утере пароля вы сможете выслать восстановительное письмо на этот адресс!", "Далее", "Отмена");
+				SendClientMessage(playerid, COLOR_GREY, "[ГЋГёГЁГЎГЄГ ] ГЏГ®ГЇГ°Г®ГЎГіГ©ГІГҐ ГҐГ№ГҐ Г°Г Г§");
+  				return ShowPlayerDialog(playerid, 3, 1, "{ffcc00}ГЂГ«ГјГІГҐГ°Г­Г ГІГЁГўГ­Г»ГҐ Г¤Г Г­Г­Г»ГҐ", "{ffffff}Г“ГЎГҐГ¤ГЁГІГҐГ«ГјГ­Г Гї ГЇГ°Г®Г±ГјГЎГ  ГўГўГҐГ±ГІГЁ ГўГ Гё {ff0000}Г­Г Г±ГІГ®ГїГ№ГЁГ© {ffffff}e-mail Г Г¤Г°ГҐГ±Г±.\nГЏГ°ГЁ ГіГІГҐГ°ГҐ ГЇГ Г°Г®Г«Гї ГўГ» Г±Г¬Г®Г¦ГҐГІГҐ ГўГ»Г±Г«Г ГІГј ГўГ®Г±Г±ГІГ Г­Г®ГўГЁГІГҐГ«ГјГ­Г®ГҐ ГЇГЁГ±ГјГ¬Г® Г­Г  ГЅГІГ®ГІ Г Г¤Г°ГҐГ±Г±!", "Г„Г Г«ГҐГҐ", "ГЋГІГ¬ГҐГ­Г ");
    			}
 			strmid(Player[playerid][pMail], inputtext, 0, strlen(inputtext), 32);
-			ShowPlayerDialog(playerid, 4, 1, "{ffcc00}Реферал", "{ffffff}Если вас пригласил друг играть на наш сервер - просьба указать его ник в данном поле.\n\n{ADFF2F}При достижении вами 4-го уровня он и вы получите вознагрождение в виде 50.000$", "Далее", "Пропуск");
+			ShowPlayerDialog(playerid, 4, 1, "{ffcc00}ГђГҐГґГҐГ°Г Г«", "{ffffff}Г…Г±Г«ГЁ ГўГ Г± ГЇГ°ГЁГЈГ«Г Г±ГЁГ« Г¤Г°ГіГЈ ГЁГЈГ°Г ГІГј Г­Г  Г­Г Гё Г±ГҐГ°ГўГҐГ° - ГЇГ°Г®Г±ГјГЎГ  ГіГЄГ Г§Г ГІГј ГҐГЈГ® Г­ГЁГЄ Гў Г¤Г Г­Г­Г®Г¬ ГЇГ®Г«ГҐ.\n\n{ADFF2F}ГЏГ°ГЁ Г¤Г®Г±ГІГЁГ¦ГҐГ­ГЁГЁ ГўГ Г¬ГЁ 4-ГЈГ® ГіГ°Г®ГўГ­Гї Г®Г­ ГЁ ГўГ» ГЇГ®Г«ГіГ·ГЁГІГҐ ГўГ®Г§Г­Г ГЈГ°Г®Г¦Г¤ГҐГ­ГЁГҐ Гў ГўГЁГ¤ГҐ 50.000$", "Г„Г Г«ГҐГҐ", "ГЏГ°Г®ГЇГіГ±ГЄ");
 		}
 		case 4: {
 			if(response) {
-				if(!strlen(inputtext)) return ShowPlayerDialog(playerid, 4, 1, "{ffcc00}Реферал", "{ffffff}Если вас пригласил друг играть на наш сервер - просьба указать его ник в данном поле.\n\n{ADFF2F}При достижении вами 4-го уровня он и вы получите вознагрождение в виде 50.000$", "Далее", "Пропуск");
-				if(strlen(inputtext) < 1 || strlen(inputtext) > MAX_PLAYER_NAME) return ShowPlayerDialog(playerid, 4, 1, "{ffcc00}Реферал", "{ffffff}Если вас пригласил друг играть на наш сервер - просьба указать его ник в данном поле.\n\n{ADFF2F}При достижении вами 4-го уровня он и вы получите вознагрождение в виде 50.000$", "Далее", "Пропуск");
+				if(!strlen(inputtext)) return ShowPlayerDialog(playerid, 4, 1, "{ffcc00}ГђГҐГґГҐГ°Г Г«", "{ffffff}Г…Г±Г«ГЁ ГўГ Г± ГЇГ°ГЁГЈГ«Г Г±ГЁГ« Г¤Г°ГіГЈ ГЁГЈГ°Г ГІГј Г­Г  Г­Г Гё Г±ГҐГ°ГўГҐГ° - ГЇГ°Г®Г±ГјГЎГ  ГіГЄГ Г§Г ГІГј ГҐГЈГ® Г­ГЁГЄ Гў Г¤Г Г­Г­Г®Г¬ ГЇГ®Г«ГҐ.\n\n{ADFF2F}ГЏГ°ГЁ Г¤Г®Г±ГІГЁГ¦ГҐГ­ГЁГЁ ГўГ Г¬ГЁ 4-ГЈГ® ГіГ°Г®ГўГ­Гї Г®Г­ ГЁ ГўГ» ГЇГ®Г«ГіГ·ГЁГІГҐ ГўГ®Г§Г­Г ГЈГ°Г®Г¦Г¤ГҐГ­ГЁГҐ Гў ГўГЁГ¤ГҐ 50.000$", "Г„Г Г«ГҐГҐ", "ГЏГ°Г®ГЇГіГ±ГЄ");
+				if(strlen(inputtext) < 1 || strlen(inputtext) > MAX_PLAYER_NAME) return ShowPlayerDialog(playerid, 4, 1, "{ffcc00}ГђГҐГґГҐГ°Г Г«", "{ffffff}Г…Г±Г«ГЁ ГўГ Г± ГЇГ°ГЁГЈГ«Г Г±ГЁГ« Г¤Г°ГіГЈ ГЁГЈГ°Г ГІГј Г­Г  Г­Г Гё Г±ГҐГ°ГўГҐГ° - ГЇГ°Г®Г±ГјГЎГ  ГіГЄГ Г§Г ГІГј ГҐГЈГ® Г­ГЁГЄ Гў Г¤Г Г­Г­Г®Г¬ ГЇГ®Г«ГҐ.\n\n{ADFF2F}ГЏГ°ГЁ Г¤Г®Г±ГІГЁГ¦ГҐГ­ГЁГЁ ГўГ Г¬ГЁ 4-ГЈГ® ГіГ°Г®ГўГ­Гї Г®Г­ ГЁ ГўГ» ГЇГ®Г«ГіГ·ГЁГІГҐ ГўГ®Г§Г­Г ГЈГ°Г®Г¦Г¤ГҐГ­ГЁГҐ Гў ГўГЁГ¤ГҐ 50.000$", "Г„Г Г«ГҐГҐ", "ГЏГ°Г®ГЇГіГ±ГЄ");
 	    		strmid(Player[playerid][pReferal], inputtext, 0, strlen(inputtext), MAX_PLAYER_NAME);
-				format(dstring,39, "Вас пригласил %s", inputtext);
+				format(dstring,39, "Г‚Г Г± ГЇГ°ГЁГЈГ«Г Г±ГЁГ« %s", inputtext);
 				SendClientMessage(playerid, COLOR_GREEN, dstring);
-				ShowPlayerDialog(playerid,5,DIALOG_STYLE_MSGBOX, "{ffcc00}Пол вашего персонажа","{ffffff}Пожалуйста, выберите пол вашего персонажа!", "Мужской", "Женский");
+				ShowPlayerDialog(playerid,5,DIALOG_STYLE_MSGBOX, "{ffcc00}ГЏГ®Г« ГўГ ГёГҐГЈГ® ГЇГҐГ°Г±Г®Г­Г Г¦Г ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ , ГўГ»ГЎГҐГ°ГЁГІГҐ ГЇГ®Г« ГўГ ГёГҐГЈГ® ГЇГҐГ°Г±Г®Г­Г Г¦Г !", "ГЊГіГ¦Г±ГЄГ®Г©", "Г†ГҐГ­Г±ГЄГЁГ©");
 			}
-			else ShowPlayerDialog(playerid,5,DIALOG_STYLE_MSGBOX, "{ffcc00}Пол вашего персонажа","{ffffff}Пожалуйста, выберите пол вашего персонажа!", "Мужской", "Женский");
+			else ShowPlayerDialog(playerid,5,DIALOG_STYLE_MSGBOX, "{ffcc00}ГЏГ®Г« ГўГ ГёГҐГЈГ® ГЇГҐГ°Г±Г®Г­Г Г¦Г ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ , ГўГ»ГЎГҐГ°ГЁГІГҐ ГЇГ®Г« ГўГ ГёГҐГЈГ® ГЇГҐГ°Г±Г®Г­Г Г¦Г !", "ГЊГіГ¦Г±ГЄГ®Г©", "Г†ГҐГ­Г±ГЄГЁГ©");
 			return true;
 		}
 		case 5: {
   			new sex[8];
 		    switch(response) {
-		        case 1: { sex = "Мужской"; Player[playerid][pSex] = 1; }
-		        default: { sex = "Женский" ; Player[playerid][pSex] = 2; }
+		        case 1: { sex = "ГЊГіГ¦Г±ГЄГ®Г©"; Player[playerid][pSex] = 1; }
+		        default: { sex = "Г†ГҐГ­Г±ГЄГЁГ©" ; Player[playerid][pSex] = 2; }
 		    }
    			Player[playerid][PlayerLogged] = true, Player[playerid][ClothesRound] = true;
 			SetSpawnInfo(playerid, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
@@ -1715,17 +1715,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
    		}
    		case 6: {
 			if(response) {
-				if(!strlen(inputtext)) return ShowPlayerDialog(playerid,7,DIALOG_STYLE_INPUT, "Вход в режим модерирования", "Введите в поле ваш пароль от панели модератора", "Вход", "Отмена");
+				if(!strlen(inputtext)) return ShowPlayerDialog(playerid,7,DIALOG_STYLE_INPUT, "Г‚ГµГ®Г¤ Гў Г°ГҐГ¦ГЁГ¬ Г¬Г®Г¤ГҐГ°ГЁГ°Г®ГўГ Г­ГЁГї", "Г‚ГўГҐГ¤ГЁГІГҐ Гў ГЇГ®Г«ГҐ ГўГ Гё ГЇГ Г°Г®Г«Гј Г®ГІ ГЇГ Г­ГҐГ«ГЁ Г¬Г®Г¤ГҐГ°Г ГІГ®Г°Г ", "Г‚ГµГ®Г¤", "ГЋГІГ¬ГҐГ­Г ");
 				if(strval(inputtext) != Player[playerid][APass]) return true;
 				Player[playerid][Aat] = true;
-				if(strcmp(Name(playerid),"YourGame.su",true)!=0) format(dstring, sizeof(dstring), "<M> Модератор %s[%d] %d уровня перешел в режим модерирования.",Name(playerid),playerid,Player[playerid][pAdmin]), SendAdminMessage(0xEAC700FF, dstring);
-				else SendClientMessage(playerid, COLOR_RED, "<A> Добро пожаловать, YourGame.su!");
+				if(strcmp(Name(playerid),"YourGame.su",true)!=0) format(dstring, sizeof(dstring), "<M> ГЊГ®Г¤ГҐГ°Г ГІГ®Г° %s[%d] %d ГіГ°Г®ГўГ­Гї ГЇГҐГ°ГҐГёГҐГ« Гў Г°ГҐГ¦ГЁГ¬ Г¬Г®Г¤ГҐГ°ГЁГ°Г®ГўГ Г­ГЁГї.",Name(playerid),playerid,Player[playerid][pAdmin]), SendAdminMessage(0xEAC700FF, dstring);
+				else SendClientMessage(playerid, COLOR_RED, "<A> Г„Г®ГЎГ°Г® ГЇГ®Г¦Г Г«Г®ГўГ ГІГј, YourGame.su!");
 	 	}   }
 		case 8: {
 		    if(response) {
 				for(new i = 0; i <= Houses; i++) {
 				    if(IsPlayerInRangeOfPoint(playerid,2.0,House[i][hX], House[i][hY], House[i][hZ])) {
-						if(strcmp(House[i][hOwner],"None",true) == 0) ShowPlayerDialog(playerid,12,DIALOG_STYLE_MSGBOX,"{03c03c}Покупка дома","{ffffff}Вы действительно хотите приобрести этот дом?","Да","Нет");
+						if(strcmp(House[i][hOwner],"None",true) == 0) ShowPlayerDialog(playerid,12,DIALOG_STYLE_MSGBOX,"{03c03c}ГЏГ®ГЄГіГЇГЄГ  Г¤Г®Г¬Г ","{ffffff}Г‚Г» Г¤ГҐГ©Г±ГІГўГЁГІГҐГ«ГјГ­Г® ГµГ®ГІГЁГІГҐ ГЇГ°ГЁГ®ГЎГ°ГҐГ±ГІГЁ ГЅГІГ®ГІ Г¤Г®Г¬?","Г„Г ","ГЌГҐГІ");
 						else {
 							if(House[i][hLock] == 0) return GameTextForPlayer(playerid, "~r~LOCKED", 2000, 1);
 			      			SetPlayerInterior(playerid,Ints[House[i][hInt]][hiInt]);
@@ -1739,9 +1739,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				House[Player[GetPVarInt(playerid,"HouseSeller")][pHouse]][hCommunal] = 0;
 				House[Player[GetPVarInt(playerid,"HouseSeller")][pHouse]][sMoney] = 0,House[Player[GetPVarInt(playerid,"HouseSeller")][pHouse]][sAmmo] = 0,House[Player[GetPVarInt(playerid,"HouseSeller")][pHouse]][sDrugs] = 0;
 				Player[playerid][pHouse] = Player[GetPVarInt(playerid,"HouseSeller")][pHouse], strmid(House[Player[playerid][pHouse]][hOwner],Name(playerid),0,24,24),Player[GetPVarInt(playerid,"HouseSeller")][pHouse] = 9999;
-				SCM(playerid,-1,"Поздравляем! Вы приобрели новый дом, всю помощь по дому вы найдете в меню помощи (/help) или на форуме!");
+				SCM(playerid,-1,"ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬! Г‚Г» ГЇГ°ГЁГ®ГЎГ°ГҐГ«ГЁ Г­Г®ГўГ»Г© Г¤Г®Г¬, ГўГ±Гѕ ГЇГ®Г¬Г®Г№Гј ГЇГ® Г¤Г®Г¬Гі ГўГ» Г­Г Г©Г¤ГҐГІГҐ Гў Г¬ГҐГ­Гѕ ГЇГ®Г¬Г®Г№ГЁ (/help) ГЁГ«ГЁ Г­Г  ГґГ®Г°ГіГ¬ГҐ!");
 				Success(playerid) Success(GetPVarInt(playerid,"HouseSeller"))
-				SCM(GetPVarInt(playerid,"HouseSeller"),-1,"Поздравляем! Вы успешно продали дом.");
+				SCM(GetPVarInt(playerid,"HouseSeller"),-1,"ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬! Г‚Г» ГіГ±ГЇГҐГёГ­Г® ГЇГ°Г®Г¤Г Г«ГЁ Г¤Г®Г¬.");
 				SaveHouse(House[Player[playerid][pHouse]][hID]);
 				DeletePVar(playerid,"HouseSeller"),DeletePVar(playerid,"HousePrice");
 				return true;
@@ -1757,21 +1757,21 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		    	    case 1: {
 		    	        new priority[12], door[18+1];
 					    switch(House[h][hPriority]) {
-					        case 0: priority = "Фургон";
-					        case 1: priority = "Эконом";
-					        case 2: priority = "Обычный";
+					        case 0: priority = "Г”ГіГ°ГЈГ®Г­";
+					        case 1: priority = "ГќГЄГ®Г­Г®Г¬";
+					        case 2: priority = "ГЋГЎГ»Г·Г­Г»Г©";
 						}
 						switch(House[h][hLock]) {
-							case 0: door = "{ff0000}Закрыта";
-							case 1: door = "{03c03c}Открыта";
+							case 0: door = "{ff0000}Г‡Г ГЄГ°Г»ГІГ ";
+							case 1: door = "{03c03c}ГЋГІГЄГ°Г»ГІГ ";
 						}
-		    	        format(dstring,sizeof(dstring),"{ffffff}Дом\t\t\t {ff0000}№%d\n{ffffff}Владелец:\t\t %s\nСтоимость дома:\t %d$\nПроживающих:\t\t %d\nМестоположение:\t %s\nНа счету дома:\t\t %d$\nДверь:\t\t\t %s",
+		    	        format(dstring,sizeof(dstring),"{ffffff}Г„Г®Г¬\t\t\t {ff0000}В№%d\n{ffffff}Г‚Г«Г Г¤ГҐГ«ГҐГ¶:\t\t %s\nГ‘ГІГ®ГЁГ¬Г®Г±ГІГј Г¤Г®Г¬Г :\t %d$\nГЏГ°Г®Г¦ГЁГўГ ГѕГ№ГЁГµ:\t\t %d\nГЊГҐГ±ГІГ®ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ:\t %s\nГЌГ  Г±Г·ГҐГІГі Г¤Г®Г¬Г :\t\t %d$\nГ„ГўГҐГ°Гј:\t\t\t %s",
 						House[h][hID],House[h][hOwner],House[h][hPrice],House[h][hHousemans],House[h][hStreet],House[h][hCommunal],door);
-						ShowPlayerDialog(playerid,10,DIALOG_STYLE_MSGBOX,"{03c03c}Статистика дома",dstring,"Ок","");
+						ShowPlayerDialog(playerid,10,DIALOG_STYLE_MSGBOX,"{03c03c}Г‘ГІГ ГІГЁГ±ГІГЁГЄГ  Г¤Г®Г¬Г ",dstring,"ГЋГЄ","");
 					}
 					case 2: {
-					    if(GetPlayerVirtualWorld(playerid) != House[h][hID]) return SCM(playerid,0xAC7575FF,"Необходимо находиться внутри своего дома!");
-						ShowPlayerDialog(playerid,62,DIALOG_STYLE_LIST,"Улучшения {1faee9}дома","Сейф\nШкаф\nГараж","Выбор","Отмена");
+					    if(GetPlayerVirtualWorld(playerid) != House[h][hID]) return SCM(playerid,0xAC7575FF,"ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® Г­Г ГµГ®Г¤ГЁГІГјГ±Гї ГўГ­ГіГІГ°ГЁ Г±ГўГ®ГҐГЈГ® Г¤Г®Г¬Г !");
+						ShowPlayerDialog(playerid,62,DIALOG_STYLE_LIST,"Г“Г«ГіГ·ГёГҐГ­ГЁГї {1faee9}Г¤Г®Г¬Г ","Г‘ГҐГ©Гґ\nГГЄГ Гґ\nГѓГ Г°Г Г¦","Г‚Г»ГЎГ®Г°","ГЋГІГ¬ГҐГ­Г ");
 					}
 				}
 		    }
@@ -1783,7 +1783,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			        	if(GetPlayerVirtualWorld(playerid) == House[i][hID]) {
 							if(response) SetPlayerInterior(playerid,0), AC_SetPlayerPos(playerid,House[i][hX],House[i][hY],House[i][hZ]), SetPlayerVirtualWorld(playerid,0), SetPVarInt(playerid,"GetPickup",gettime()+7);
 							else {
-							    if(House[i][hUpgrade] < 3) return SCM(playerid,0xAC7575FF,"В данном доме не установлен гараж!");
+							    if(House[i][hUpgrade] < 3) return SCM(playerid,0xAC7575FF,"Г‚ Г¤Г Г­Г­Г®Г¬ Г¤Г®Г¬ГҐ Г­ГҐ ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­ ГЈГ Г°Г Г¦!");
 								SetPlayerInterior(playerid,0), SetPlayerVirtualWorld(playerid,House[i][hID]), AC_SetPlayerPos(playerid,897.6984,-354.6799,2177.6160), SetPlayerFacingAngle(playerid,358.9425), TogglePlayerControllable(playerid,0), SetTimerEx("PickupFreeze", 2100, false, "i", playerid);
 							}
 			}   }   } return true;
@@ -1792,37 +1792,37 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		case 13: {
 		    if(response) {
 		    	switch(listitem) {
-					case 0: ShowPlayerDialog(playerid,14,DIALOG_STYLE_INPUT,"Деньги банды","{ffffff}Пожалуйста введите сумму денег которую хотите взять или положить в банк банды.\n{ff0000}Внимание, перед суммой поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы снять.\n\
-					{ffffff}Пример: {ff0000}+500","Далее","Отмена");
-					case 1: ShowPlayerDialog(playerid,16,DIALOG_STYLE_INPUT,"Амуниция банды","{ffffff}Пожалуйста введите число патрон которое хотите взять или положить на склад банды.\n{ff0000}Внимание, перед числом поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы взять.\n\
-					{ffffff}Пример: {ff0000}+25","Далее","Отмена");
-					case 2: ShowPlayerDialog(playerid,57,DIALOG_STYLE_INPUT,"Наркотики банды","{ffffff}Пожалуйста введите число грамм которое хотите взять или положить на склад банды.\n{ff0000}Внимание, перед числом поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы взять.\n\
-					{ffffff}Пример: {ff0000}+10","Далее","Отмена");
+					case 0: ShowPlayerDialog(playerid,14,DIALOG_STYLE_INPUT,"Г„ГҐГ­ГјГЈГЁ ГЎГ Г­Г¤Г»","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі Г¤ГҐГ­ГҐГЈ ГЄГ®ГІГ®Г°ГіГѕ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Гў ГЎГ Г­ГЄ ГЎГ Г­Г¤Г».\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г±ГіГ¬Г¬Г®Г© ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» Г±Г­ГїГІГј.\n\
+					{ffffff}ГЏГ°ГЁГ¬ГҐГ°: {ff0000}+500","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+					case 1: ShowPlayerDialog(playerid,16,DIALOG_STYLE_INPUT,"ГЂГ¬ГіГ­ГЁГ¶ГЁГї ГЎГ Г­Г¤Г»","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«Г® ГЇГ ГІГ°Г®Г­ ГЄГ®ГІГ®Г°Г®ГҐ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Г­Г  Г±ГЄГ«Г Г¤ ГЎГ Г­Г¤Г».\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г·ГЁГ±Г«Г®Г¬ ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» ГўГ§ГїГІГј.\n\
+					{ffffff}ГЏГ°ГЁГ¬ГҐГ°: {ff0000}+25","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+					case 2: ShowPlayerDialog(playerid,57,DIALOG_STYLE_INPUT,"ГЌГ Г°ГЄГ®ГІГЁГЄГЁ ГЎГ Г­Г¤Г»","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«Г® ГЈГ°Г Г¬Г¬ ГЄГ®ГІГ®Г°Г®ГҐ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Г­Г  Г±ГЄГ«Г Г¤ ГЎГ Г­Г¤Г».\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г·ГЁГ±Г«Г®Г¬ ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» ГўГ§ГїГІГј.\n\
+					{ffffff}ГЏГ°ГЁГ¬ГҐГ°: {ff0000}+10","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 		}   }   }
 		case 14: {
 		    if(response) {
-		        if(Player[playerid][pFraction][0] == 0) return SCM(playerid,0xFF0000FF,"Данная функция доступна только лидеру!");
-		        if(strlen(inputtext) < 2) return ShowPlayerDialog(playerid,14,DIALOG_STYLE_INPUT,"Деньги банды","{ffffff}Пожалуйста введите сумму денег которую хотите взять или положить в банк банды.\n{ff0000}Внимание, перед суммой поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы снять.\n{ffffff}Пример: {ff0000}+500","Далее","Отмена");
+		        if(Player[playerid][pFraction][0] == 0) return SCM(playerid,0xFF0000FF,"Г„Г Г­Г­Г Гї ГґГіГ­ГЄГ¶ГЁГї Г¤Г®Г±ГІГіГЇГ­Г  ГІГ®Г«ГјГЄГ® Г«ГЁГ¤ГҐГ°Гі!");
+		        if(strlen(inputtext) < 2) return ShowPlayerDialog(playerid,14,DIALOG_STYLE_INPUT,"Г„ГҐГ­ГјГЈГЁ ГЎГ Г­Г¤Г»","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі Г¤ГҐГ­ГҐГЈ ГЄГ®ГІГ®Г°ГіГѕ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Гў ГЎГ Г­ГЄ ГЎГ Г­Г¤Г».\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г±ГіГ¬Г¬Г®Г© ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» Г±Г­ГїГІГј.\n{ffffff}ГЏГ°ГЁГ¬ГҐГ°: {ff0000}+500","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
             	for(new i = strlen(inputtext); i != 0; --i) {
            			switch(inputtext[i]) {
-					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,14,DIALOG_STYLE_INPUT,"{ff2400}Ошибка","{ffffff}Пожалуйста повторите {03c03c}попытку.","Ок","");
+					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,14,DIALOG_STYLE_INPUT,"{ff2400}ГЋГёГЁГЎГЄГ ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГЇГ®ГўГІГ®Г°ГЁГІГҐ {03c03c}ГЇГ®ГЇГ»ГІГЄГі.","ГЋГЄ","");
 					}
 				}
 				for(new w;w<sizeof(Ware);w++) {
 					if(IsPlayerInRangeOfPoint(playerid, 3.0, Ware[w][wX], Ware[w][wY], Ware[w][wZ]) && Player[playerid][pFraction][1] == Ware[w][wFraction]) {
 					    if(strfind(inputtext, "+", true) != -1) {
 		    				strdel(inputtext,0,1);
-							if(Player[playerid][pMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"У вас недостаточно денег!");
+							if(Player[playerid][pMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ!");
 							Ware[w][wMoney] += strval(inputtext), Player[playerid][pMoney] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Склад %s\nАммуниции: %d\nНаркотиков: %d\nДенег: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГЄГ«Г Г¤ %s\nГЂГ¬Г¬ГіГ­ГЁГ¶ГЁГЁ: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГ®Гў: %d\nГ„ГҐГ­ГҐГЈ: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
 	 						UpdateDynamic3DTextLabelText(warehouset[w], 0xFF9900FF, warehousetext);
 	 						return false;
 						}
 	    				else if(strfind(inputtext, "-", true) != -1) {
 							strdel(inputtext,0,1);
-							if(Ware[w][wMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"В банке недостаточно денег!");
+							if(Ware[w][wMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г‚ ГЎГ Г­ГЄГҐ Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ!");
 							Player[playerid][pMoney] += strval(inputtext), Ware[w][wMoney] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Склад %s\nАммуниции: %d\nНаркотиков: %d\nДенег: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГЄГ«Г Г¤ %s\nГЂГ¬Г¬ГіГ­ГЁГ¶ГЁГЁ: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГ®Гў: %d\nГ„ГҐГ­ГҐГЈ: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
 	 						UpdateDynamic3DTextLabelText(warehouset[w], 0xFF9900FF, warehousetext);
 	 						return false;
 	 					}
@@ -1832,28 +1832,28 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 		case 16: {
 		    if(response) {
-		        if(Player[playerid][pFraction][2] < 4) return SCM(playerid,0xFF0000FF,"Функция доступна с 4 ранга!");
-		        if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,16,DIALOG_STYLE_INPUT,"Амуниция банды","{ffffff}Пожалуйста введите сумму патрон которую хотите взять или положить на склад банды.\n{ff0000}Внимание, перед суммой поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы взять.\n{ffffff}Пример: {ff0000}+25","Далее","Отмена");
+		        if(Player[playerid][pFraction][2] < 4) return SCM(playerid,0xFF0000FF,"Г”ГіГ­ГЄГ¶ГЁГї Г¤Г®Г±ГІГіГЇГ­Г  Г± 4 Г°Г Г­ГЈГ !");
+		        if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,16,DIALOG_STYLE_INPUT,"ГЂГ¬ГіГ­ГЁГ¶ГЁГї ГЎГ Г­Г¤Г»","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі ГЇГ ГІГ°Г®Г­ ГЄГ®ГІГ®Г°ГіГѕ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Г­Г  Г±ГЄГ«Г Г¤ ГЎГ Г­Г¤Г».\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г±ГіГ¬Г¬Г®Г© ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» ГўГ§ГїГІГј.\n{ffffff}ГЏГ°ГЁГ¬ГҐГ°: {ff0000}+25","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
             	for(new i = strlen(inputtext); i != 0; --i) {
            			switch(inputtext[i]) {
-					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,16,DIALOG_STYLE_INPUT,"{ff2400}Ошибка","{ffffff}Пожалуйста повторите {03c03c}попытку.","Ок","");
+					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,16,DIALOG_STYLE_INPUT,"{ff2400}ГЋГёГЁГЎГЄГ ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГЇГ®ГўГІГ®Г°ГЁГІГҐ {03c03c}ГЇГ®ГЇГ»ГІГЄГі.","ГЋГЄ","");
 					}
 				}
 				for(new w;w<sizeof(Ware);w++) {
 					if(IsPlayerInRangeOfPoint(playerid, 3.0, Ware[w][wX], Ware[w][wY], Ware[w][wZ]) && Player[playerid][pFraction][1] == Ware[w][wFraction]) {
 					    if(strfind(inputtext, "+", true) != -1) {
 		    				strdel(inputtext,0,1);
-							if(Player[playerid][pAmmo] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"У вас недостаточно патронов!");
+							if(Player[playerid][pAmmo] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ ГІГ°Г®Г­Г®Гў!");
 							Ware[w][wAmmo] += strval(inputtext), Player[playerid][pAmmo] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Склад %s\nАммуниции: %d\nНаркотиков: %d\nДенег: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГЄГ«Г Г¤ %s\nГЂГ¬Г¬ГіГ­ГЁГ¶ГЁГЁ: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГ®Гў: %d\nГ„ГҐГ­ГҐГЈ: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
 	 						UpdateDynamic3DTextLabelText(warehouset[w], 0xFF9900FF, warehousetext);
 	 						return false;
 						}
 	    				else if(strfind(inputtext, "-", true) != -1) {
 							strdel(inputtext,0,1);
-							if(Ware[w][wAmmo] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"На складе недостаточно патронов!");
+							if(Ware[w][wAmmo] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"ГЌГ  Г±ГЄГ«Г Г¤ГҐ Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ ГІГ°Г®Г­Г®Гў!");
 							Player[playerid][pAmmo] += strval(inputtext), Ware[w][wAmmo] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Склад %s\nАммуниции: %d\nНаркотиков: %d\nДенег: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГЄГ«Г Г¤ %s\nГЂГ¬Г¬ГіГ­ГЁГ¶ГЁГЁ: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГ®Гў: %d\nГ„ГҐГ­ГҐГЈ: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
 	 						UpdateDynamic3DTextLabelText(warehouset[w], 0xFF9900FF, warehousetext);
 	 						return false;
 	 					}
@@ -1863,29 +1863,29 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 		case 17: {
 		    if(response) {
-		        if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Сборка оружия","{ffffff}Введите желаемое количество патрон","Далее","Отмена");
+		        if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Г‘ГЎГ®Г°ГЄГ  Г®Г°ГіГ¦ГЁГї","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ Г¦ГҐГ«Г ГҐГ¬Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ ГІГ°Г®Г­","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
             	for(new i = strlen(inputtext); i != 0; --i) {
            			switch(inputtext[i]) {
-					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Сборка оружия","{ffffff}Введите желаемое количество патрон","Далее","Отмена");
+					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Г‘ГЎГ®Г°ГЄГ  Г®Г°ГіГ¦ГЁГї","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ Г¦ГҐГ«Г ГҐГ¬Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ ГІГ°Г®Г­","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 				}   }
-				if(strval(inputtext) <= 0 || strval(inputtext) > 9000) return ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Сборка оружия","{ff0000}Минимальное количество патрон - 1, максимальное - 9000\n\n{ffffff} - Повторить попытку?","Далее","Отмена");
-		        if(Player[playerid][pAmmo] < strval(inputtext)) return ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Сборка оружия","{ff0000}У вас нет столько патрон!\n\n{ffffff} - Повторить попытку?","Далее","Отмена");
+				if(strval(inputtext) <= 0 || strval(inputtext) > 9000) return ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Г‘ГЎГ®Г°ГЄГ  Г®Г°ГіГ¦ГЁГї","{ff0000}ГЊГЁГ­ГЁГ¬Г Г«ГјГ­Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ ГІГ°Г®Г­ - 1, Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГҐ - 9000\n\n{ffffff} - ГЏГ®ГўГІГ®Г°ГЁГІГј ГЇГ®ГЇГ»ГІГЄГі?","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+		        if(Player[playerid][pAmmo] < strval(inputtext)) return ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Г‘ГЎГ®Г°ГЄГ  Г®Г°ГіГ¦ГЁГї","{ff0000}Г“ ГўГ Г± Г­ГҐГІ Г±ГІГ®Г«ГјГЄГ® ГЇГ ГІГ°Г®Г­!\n\n{ffffff} - ГЏГ®ГўГІГ®Г°ГЁГІГј ГЇГ®ГЇГ»ГІГЄГі?","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 				GiveWeapon(playerid,GetPVarInt(playerid,"GunC"),strval(inputtext)), Player[playerid][pAmmo] -= strval(inputtext), SetPVarInt(playerid,"GunC",0);
 			}
 		}
 		case 18: {
 		    if(response) {
-		        if(GetPVarInt(playerid,"Chat") > gettime()) return SCM(playerid,0xFFFFFFFF,"Сообщение можно отправлять {1faee9}раз в минуту!");
-		        if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,18,DIALOG_STYLE_INPUT,"{1faee9}Сообщение Администрации","{ffffff}Если у вас есть жалоба на какого-либо игрока или вопрос, то вы смело можете задать его нам.\n\n\
-				Форма подачи жалобы: [id нарушителя] [причина]\n\n{ff0000}Запрещено:\n - Мат\n - Оскорбления\n - Оффтоп ( сообщение не по теме )\n\n{03c03c}Наказание - от кика до бана.","Далее","Отмена");
-				format(dstring,sizeof(dstring),"[Репорт от %s(%d)]: {ffffff}%s",Name(playerid),playerid,inputtext), SendAdminMessage(0x1faee9FF,dstring), SCM(playerid,0x1faee9FF,"Сообщение было отправлено администрации, ожидайте ответа!");
+		        if(GetPVarInt(playerid,"Chat") > gettime()) return SCM(playerid,0xFFFFFFFF,"Г‘Г®Г®ГЎГ№ГҐГ­ГЁГҐ Г¬Г®Г¦Г­Г® Г®ГІГЇГ°Г ГўГ«ГїГІГј {1faee9}Г°Г Г§ Гў Г¬ГЁГ­ГіГІГі!");
+		        if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,18,DIALOG_STYLE_INPUT,"{1faee9}Г‘Г®Г®ГЎГ№ГҐГ­ГЁГҐ ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г Г¶ГЁГЁ","{ffffff}Г…Г±Г«ГЁ Гі ГўГ Г± ГҐГ±ГІГј Г¦Г Г«Г®ГЎГ  Г­Г  ГЄГ ГЄГ®ГЈГ®-Г«ГЁГЎГ® ГЁГЈГ°Г®ГЄГ  ГЁГ«ГЁ ГўГ®ГЇГ°Г®Г±, ГІГ® ГўГ» Г±Г¬ГҐГ«Г® Г¬Г®Г¦ГҐГІГҐ Г§Г Г¤Г ГІГј ГҐГЈГ® Г­Г Г¬.\n\n\
+				Г”Г®Г°Г¬Г  ГЇГ®Г¤Г Г·ГЁ Г¦Г Г«Г®ГЎГ»: [id Г­Г Г°ГіГёГЁГІГҐГ«Гї] [ГЇГ°ГЁГ·ГЁГ­Г ]\n\n{ff0000}Г‡Г ГЇГ°ГҐГ№ГҐГ­Г®:\n - ГЊГ ГІ\n - ГЋГ±ГЄГ®Г°ГЎГ«ГҐГ­ГЁГї\n - ГЋГґГґГІГ®ГЇ ( Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ Г­ГҐ ГЇГ® ГІГҐГ¬ГҐ )\n\n{03c03c}ГЌГ ГЄГ Г§Г Г­ГЁГҐ - Г®ГІ ГЄГЁГЄГ  Г¤Г® ГЎГ Г­Г .","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+				format(dstring,sizeof(dstring),"[ГђГҐГЇГ®Г°ГІ Г®ГІ %s(%d)]: {ffffff}%s",Name(playerid),playerid,inputtext), SendAdminMessage(0x1faee9FF,dstring), SCM(playerid,0x1faee9FF,"Г‘Г®Г®ГЎГ№ГҐГ­ГЁГҐ ГЎГ»Г«Г® Г®ГІГЇГ°Г ГўГ«ГҐГ­Г® Г Г¤Г¬ГЁГ­ГЁГ±ГІГ°Г Г¶ГЁГЁ, Г®Г¦ГЁГ¤Г Г©ГІГҐ Г®ГІГўГҐГІГ !");
 		        SetPVarInt(playerid,"ReportTime",gettime()+60);
 		    }
 		}
 		case 19: {
 		    if(response) {
 		        switch(listitem) {
-		            case 1: for(new i = GetMaxPlayers()-1; i != -1; --i) ShowPlayerNameTagForPlayer(playerid, i, (GetPVarInt(playerid,"Tags") == 1) ? (false,SetPVarInt(playerid,"Tags",0)) : (true,SetPVarInt(playerid,"Tags",1))), SCM(playerid,-1,"Запрос был {1faee9}выполнен!");
+		            case 1: for(new i = GetMaxPlayers()-1; i != -1; --i) ShowPlayerNameTagForPlayer(playerid, i, (GetPVarInt(playerid,"Tags") == 1) ? (false,SetPVarInt(playerid,"Tags",0)) : (true,SetPVarInt(playerid,"Tags",1))), SCM(playerid,-1,"Г‡Г ГЇГ°Г®Г± ГЎГ»Г« {1faee9}ГўГ»ГЇГ®Г«Г­ГҐГ­!");
 		        }
 		    }
 		}
@@ -1893,7 +1893,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		    if(response) {
 				for(new i = 0; i <= Businesses; i++) {
 				    if(IsPlayerInRangeOfPoint(playerid,2.0,Business[i][bX], Business[i][bY], Business[i][bZ])) {
-						if(strcmp(Business[i][bOwner],"None",true) == 0) ShowPlayerDialog(playerid,21,DIALOG_STYLE_MSGBOX,"{03c03c}Покупка Бизнеса","{ffffff}Вы действительно хотите приобрести этот бизнес?","Да","Нет");
+						if(strcmp(Business[i][bOwner],"None",true) == 0) ShowPlayerDialog(playerid,21,DIALOG_STYLE_MSGBOX,"{03c03c}ГЏГ®ГЄГіГЇГЄГ  ГЃГЁГ§Г­ГҐГ±Г ","{ffffff}Г‚Г» Г¤ГҐГ©Г±ГІГўГЁГІГҐГ«ГјГ­Г® ГµГ®ГІГЁГІГҐ ГЇГ°ГЁГ®ГЎГ°ГҐГ±ГІГЁ ГЅГІГ®ГІ ГЎГЁГ§Г­ГҐГ±?","Г„Г ","ГЌГҐГІ");
 						else {
 							if(Business[i][bLock] == 1) return GameTextForPlayer(playerid, "~r~LOCKED", 2000, 1);
 			      			if(Business[i][bType] == 0) AC_SetPlayerPos(playerid,Business[i][bIX],Business[i][bIY],Business[i][bIZ]), SetPVarInt(playerid,"GetPickup",gettime()+2);
@@ -1908,10 +1908,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(response) {
 				Player[GetPVarInt(playerid,"BusinessSeller")][pMoney] += GetPVarInt(playerid,"BusinessPrice"), Player[playerid][pMoney] -= GetPVarInt(playerid,"BusinessPrice");
 				Player[playerid][pBusiness] = Player[GetPVarInt(playerid,"BusinessSeller")][pBusiness], strmid(Business[Player[playerid][pBusiness]][bOwner],Name(playerid),0,24,24),Player[GetPVarInt(playerid,"BusinessSeller")][pBusiness] = 9999;
-				SCM(playerid,-1,"Поздравляем! Вы приобрели новый дом, всю помощь по дому вы найдете в меню помощи (/help) или на форуме!");
+				SCM(playerid,-1,"ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬! Г‚Г» ГЇГ°ГЁГ®ГЎГ°ГҐГ«ГЁ Г­Г®ГўГ»Г© Г¤Г®Г¬, ГўГ±Гѕ ГЇГ®Г¬Г®Г№Гј ГЇГ® Г¤Г®Г¬Гі ГўГ» Г­Г Г©Г¤ГҐГІГҐ Гў Г¬ГҐГ­Гѕ ГЇГ®Г¬Г®Г№ГЁ (/help) ГЁГ«ГЁ Г­Г  ГґГ®Г°ГіГ¬ГҐ!");
 				Success(playerid) Success(GetPVarInt(playerid,"BusinessSeller"))
 				Business[Player[GetPVarInt(playerid,"BusinessSeller")][pBusiness]][bCommunal] = 0;
-				SCM(GetPVarInt(playerid,"BusinessSeller"),-1,"Поздравляем! Вы успешно продали бизнес.");
+				SCM(GetPVarInt(playerid,"BusinessSeller"),-1,"ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬! Г‚Г» ГіГ±ГЇГҐГёГ­Г® ГЇГ°Г®Г¤Г Г«ГЁ ГЎГЁГ§Г­ГҐГ±.");
 				SaveHouse(Business[Player[playerid][pBusiness]][bID]);
 				DeletePVar(playerid,"HouseSeller"),DeletePVar(playerid,"BusinessPrice");
 				return true;
@@ -1920,8 +1920,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(response) {
 			    switch(GetPVarInt(playerid,"ReasonKick")) {
 			        case 1: {
-			            if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}Кикнуть игрока","{ffffff}Введите причину кика данного игрока.","Кик","Отмена"),ShowMenuForPlayer(rMenu, playerid);
-      					format(dstring,116,"%s был кикнут администратором %s. Причина: %s",Name(GetPVarInt(playerid,"ReconID")),Name(playerid),inputtext);
+			            if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}ГЉГЁГЄГ­ГіГІГј ГЁГЈГ°Г®ГЄГ ","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ ГЇГ°ГЁГ·ГЁГ­Гі ГЄГЁГЄГ  Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .","ГЉГЁГЄ","ГЋГІГ¬ГҐГ­Г "),ShowMenuForPlayer(rMenu, playerid);
+      					format(dstring,116,"%s ГЎГ»Г« ГЄГЁГЄГ­ГіГІ Г Г¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°Г®Г¬ %s. ГЏГ°ГЁГ·ГЁГ­Г : %s",Name(GetPVarInt(playerid,"ReconID")),Name(playerid),inputtext);
 						SendClientMessageToAll(COLOR_LIGHTRED,dstring);
 						KickEx(GetPVarInt(playerid,"ReconID"));
 					}
@@ -1929,11 +1929,11 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			        case 3: {
 						SetPVarInt(playerid,"days", (strlen(inputtext) == 0) ? 7 : (strval(inputtext)));
     					SetPVarInt(playerid,"ReasonKick",4);
-    					ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}Забанить игрока","{ffffff}Введите причину бана данного игрока.","Бан","Отмена"),ShowMenuForPlayer(rMenu, playerid);
+    					ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}Г‡Г ГЎГ Г­ГЁГІГј ГЁГЈГ°Г®ГЄГ ","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ ГЇГ°ГЁГ·ГЁГ­Гі ГЎГ Г­Г  Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .","ГЃГ Г­","ГЋГІГ¬ГҐГ­Г "),ShowMenuForPlayer(rMenu, playerid);
 					}
 			        case 4: {
-                        if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}Забанить игрока","{ffffff}Введите причину бана данного игрока.","Бан","Отмена"),ShowMenuForPlayer(rMenu, playerid);
-						format(dstring,116,"%s был забанен администратором %s на %d дней. Причина: %s",Name(GetPVarInt(playerid,"ReconID")),Name(playerid),GetPVarInt(playerid,"days"),inputtext);
+                        if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,23,DIALOG_STYLE_INPUT,"{03c03c}Г‡Г ГЎГ Г­ГЁГІГј ГЁГЈГ°Г®ГЄГ ","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ ГЇГ°ГЁГ·ГЁГ­Гі ГЎГ Г­Г  Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .","ГЃГ Г­","ГЋГІГ¬ГҐГ­Г "),ShowMenuForPlayer(rMenu, playerid);
+						format(dstring,116,"%s ГЎГ»Г« Г§Г ГЎГ Г­ГҐГ­ Г Г¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°Г®Г¬ %s Г­Г  %d Г¤Г­ГҐГ©. ГЏГ°ГЁГ·ГЁГ­Г : %s",Name(GetPVarInt(playerid,"ReconID")),Name(playerid),GetPVarInt(playerid,"days"),inputtext);
 						SendClientMessageToAll(COLOR_LIGHTRED,dstring);
 						Player[GetPVarInt(playerid,"ReconID")][pBan] = gettime() + GetPVarInt(playerid,"days")*86400-43200;
 						KickEx(GetPVarInt(playerid,"ReconID"));
@@ -1943,13 +1943,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 		case 24: {
 		    if(response) {
-		    	if(GetPVarInt(playerid,"Job") == 1 && GetPVarInt(playerid,"TaxiJob") < 1 || Player[playerid][pFraction][1] > 0) return SCM(playerid,0xFF0000FF,"[Ошибка]: На данный момент вы уже кем-то работаете или состоите в организации!");
+		    	if(GetPVarInt(playerid,"Job") == 1 && GetPVarInt(playerid,"TaxiJob") < 1 || Player[playerid][pFraction][1] > 0) return SCM(playerid,0xFF0000FF,"[ГЋГёГЁГЎГЄГ ]: ГЌГ  Г¤Г Г­Г­Г»Г© Г¬Г®Г¬ГҐГ­ГІ ГўГ» ГіГ¦ГҐ ГЄГҐГ¬-ГІГ® Г°Г ГЎГ®ГІГ ГҐГІГҐ ГЁГ«ГЁ Г±Г®Г±ГІГ®ГЁГІГҐ Гў Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГЁ!");
 				if(GetPVarInt(playerid,"TaxiJob") == 1) {
 				    SetPlayerSkin(playerid,Player[playerid][pModel][0]), SetPlayerColor(playerid,0xFFFFFF33), SetPVarInt(playerid,"TaxiJob",0), SetPVarInt(playerid,"Job",0), Player[playerid][pMoney] += GetPVarInt(playerid,"Cost"), SetPVarInt(playerid,"Cost",0), GameTextForPlayer(playerid, "~g~+$", 3000, 1), taximans--;
 					SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+3);
 				}
 		        else {
-		            if(Player[playerid][pMoney] < 100) return SCM(playerid,-1,"У вас недостаточно денег {1faee9}для аренды автомобиля!");
+		            if(Player[playerid][pMoney] < 100) return SCM(playerid,-1,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ {1faee9}Г¤Г«Гї Г Г°ГҐГ­Г¤Г» Г ГўГІГ®Г¬Г®ГЎГЁГ«Гї!");
 					SetPlayerSkin(playerid,261), SetPlayerColor(playerid,0xFFB30033);
 					SetPVarInt(playerid,"TaxiJob",1), SetPVarInt(playerid,"Job",1);
 					taximans++;
@@ -1963,32 +1963,32 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				#define vehicleid GetPlayerVehicleID(playerid)
 				if(vehicleid >= taxicar[0] && vehicleid <= taxicar[1]) {
 					if(Player[playerid][pMoney] < 100) {
-				 		RemovePlayerFromVehicle(playerid), SCM(playerid,COLOR_WHITE,"У вас недостаточно денег для аренды автомобиля!");
+				 		RemovePlayerFromVehicle(playerid), SCM(playerid,COLOR_WHITE,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г Г°ГҐГ­Г¤Г» Г ГўГІГ®Г¬Г®ГЎГЁГ«Гї!");
 						return true;
 					}
-					Arended[vehicleid] = true, Player[playerid][ArendedVehicle] = vehicleid, Player[playerid][pMoney] -= 100, SCM(playerid, COLOR_WHITE, "Транспорт {1faee9}арендован! {ffffff}Для разрыва аренды введите {1faee9}/unrent");
+					Arended[vehicleid] = true, Player[playerid][ArendedVehicle] = vehicleid, Player[playerid][pMoney] -= 100, SCM(playerid, COLOR_WHITE, "Г’Г°Г Г­Г±ГЇГ®Г°ГІ {1faee9}Г Г°ГҐГ­Г¤Г®ГўГ Г­! {ffffff}Г„Г«Гї Г°Г Г§Г°Г»ГўГ  Г Г°ГҐГ­Г¤Г» ГўГўГҐГ¤ГЁГІГҐ {1faee9}/unrent");
 				}
 				if(vehicleid >= rentcar[0] && vehicleid <= rentcar[1]) {
 					if(Player[playerid][pMoney] < 550) {
-				 		RemovePlayerFromVehicle(playerid), SCM(playerid,COLOR_WHITE,"У вас недостаточно денег для аренды автомобиля!");
+				 		RemovePlayerFromVehicle(playerid), SCM(playerid,COLOR_WHITE,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г Г°ГҐГ­Г¤Г» Г ГўГІГ®Г¬Г®ГЎГЁГ«Гї!");
 						return true;
 					}
-					Arended[vehicleid] = true, Player[playerid][ArendedVehicle] = vehicleid, Player[playerid][pMoney] -= 550, SCM(playerid, COLOR_WHITE, "Транспорт {1faee9}арендован! {ffffff}Для разрыва аренды введите {1faee9}/unrent");
+					Arended[vehicleid] = true, Player[playerid][ArendedVehicle] = vehicleid, Player[playerid][pMoney] -= 550, SCM(playerid, COLOR_WHITE, "Г’Г°Г Г­Г±ГЇГ®Г°ГІ {1faee9}Г Г°ГҐГ­Г¤Г®ГўГ Г­! {ffffff}Г„Г«Гї Г°Г Г§Г°Г»ГўГ  Г Г°ГҐГ­Г¤Г» ГўГўГҐГ¤ГЁГІГҐ {1faee9}/unrent");
 
 				}
 				if(vehicleid >= mailcar[0] && vehicleid <= mailcar[1]) {
 					if(Player[playerid][pMoney] < 200) {
-				 		RemovePlayerFromVehicle(playerid), SCM(playerid,COLOR_WHITE,"У вас недостаточно денег для аренды автомобиля!");
+				 		RemovePlayerFromVehicle(playerid), SCM(playerid,COLOR_WHITE,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г Г°ГҐГ­Г¤Г» Г ГўГІГ®Г¬Г®ГЎГЁГ«Гї!");
 						return true;
 					}
-					Arended[vehicleid] = true, Player[playerid][ArendedVehicle] = vehicleid, Player[playerid][pMoney] -= 200, SCM(playerid, COLOR_WHITE, "Транспорт {1faee9}арендован! {ffffff}Для разрыва аренды введите {1faee9}/unrent");
+					Arended[vehicleid] = true, Player[playerid][ArendedVehicle] = vehicleid, Player[playerid][pMoney] -= 200, SCM(playerid, COLOR_WHITE, "Г’Г°Г Г­Г±ГЇГ®Г°ГІ {1faee9}Г Г°ГҐГ­Г¤Г®ГўГ Г­! {ffffff}Г„Г«Гї Г°Г Г§Г°Г»ГўГ  Г Г°ГҐГ­Г¤Г» ГўГўГҐГ¤ГЁГІГҐ {1faee9}/unrent");
 				}
 				if(vehicleid >= truckcar[0] && vehicleid <= truckcar[1]) {
 					if(Player[playerid][pMoney] < 1000) {
-				 		RemovePlayerFromVehicle(playerid), SCM(playerid,COLOR_WHITE,"У вас недостаточно денег для аренды автомобиля!");
+				 		RemovePlayerFromVehicle(playerid), SCM(playerid,COLOR_WHITE,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г Г°ГҐГ­Г¤Г» Г ГўГІГ®Г¬Г®ГЎГЁГ«Гї!");
 						return true;
 					}
-					Arended[vehicleid] = true, Player[playerid][ArendedVehicle] = vehicleid, Player[playerid][pMoney] -= 1000, SCM(playerid, COLOR_WHITE, "Транспорт {1faee9}арендован! {ffffff}Для разрыва аренды введите {1faee9}/unrent");
+					Arended[vehicleid] = true, Player[playerid][ArendedVehicle] = vehicleid, Player[playerid][pMoney] -= 1000, SCM(playerid, COLOR_WHITE, "Г’Г°Г Г­Г±ГЇГ®Г°ГІ {1faee9}Г Г°ГҐГ­Г¤Г®ГўГ Г­! {ffffff}Г„Г«Гї Г°Г Г§Г°Г»ГўГ  Г Г°ГҐГ­Г¤Г» ГўГўГҐГ¤ГЁГІГҐ {1faee9}/unrent");
 				}
 				#undef vehicleid
 			}
@@ -1998,12 +1998,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(response) {
 			    switch(listitem) {
 			        case 0: {
-			            if(Player[playerid][pPhone][1] < 1) return SCM(playerid,0xAC7575FF,"На вашем лицевом счету недостаточно денег для звонка!");
-						SetPVarInt(playerid,"Number",1), ShowPlayerDialog(playerid,27,DIALOG_STYLE_INPUT,"{03c03c}Введите номер","{ffffff}Введите номер абонента которому вы хотите позвонить!\n\n\n{1faee9} - Тарификация: 1$ в секунду","Вызов","Отмена");
+			            if(Player[playerid][pPhone][1] < 1) return SCM(playerid,0xAC7575FF,"ГЌГ  ГўГ ГёГҐГ¬ Г«ГЁГ¶ГҐГўГ®Г¬ Г±Г·ГҐГІГі Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г§ГўГ®Г­ГЄГ !");
+						SetPVarInt(playerid,"Number",1), ShowPlayerDialog(playerid,27,DIALOG_STYLE_INPUT,"{03c03c}Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®Г¬ГҐГ°","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®Г¬ГҐГ° Г ГЎГ®Г­ГҐГ­ГІГ  ГЄГ®ГІГ®Г°Г®Г¬Гі ГўГ» ГµГ®ГІГЁГІГҐ ГЇГ®Г§ГўГ®Г­ГЁГІГј!\n\n\n{1faee9} - Г’Г Г°ГЁГґГЁГЄГ Г¶ГЁГї: 1$ Гў Г±ГҐГЄГіГ­Г¤Гі","Г‚Г»Г§Г®Гў","ГЋГІГ¬ГҐГ­Г ");
 					}
-					case 1: ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}В РАЗРАБОТКЕ!","{ffffff}В {ff0000}РАЗРАБОТКЕ!","OK","");
-			        case 2: ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}В РАЗРАБОТКЕ!","{ffffff}В {ff0000}РАЗРАБОТКЕ!","OK","");
-			        case 3: SetPVarInt(playerid,"Number",3), ShowPlayerDialog(playerid,27,DIALOG_STYLE_INPUT,"{03c03c}Укажите местонахождение","{ffffff}[Диспетчер такси]: Пожалуйста, сообщите ваше местонахождение!\n\n\n{1faee9}После того, как вы сообщили ваше местонахождение ожидайте ответ оператора!","Далее","Отмена");
+					case 1: ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}Г‚ ГђГЂГ‡ГђГЂГЃГЋГ’ГЉГ…!","{ffffff}Г‚ {ff0000}ГђГЂГ‡ГђГЂГЃГЋГ’ГЉГ…!","OK","");
+			        case 2: ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}Г‚ ГђГЂГ‡ГђГЂГЃГЋГ’ГЉГ…!","{ffffff}Г‚ {ff0000}ГђГЂГ‡ГђГЂГЃГЋГ’ГЉГ…!","OK","");
+			        case 3: SetPVarInt(playerid,"Number",3), ShowPlayerDialog(playerid,27,DIALOG_STYLE_INPUT,"{03c03c}Г“ГЄГ Г¦ГЁГІГҐ Г¬ГҐГ±ГІГ®Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГҐ","{ffffff}[Г„ГЁГ±ГЇГҐГІГ·ГҐГ° ГІГ ГЄГ±ГЁ]: ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ , Г±Г®Г®ГЎГ№ГЁГІГҐ ГўГ ГёГҐ Г¬ГҐГ±ГІГ®Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГҐ!\n\n\n{1faee9}ГЏГ®Г±Г«ГҐ ГІГ®ГЈГ®, ГЄГ ГЄ ГўГ» Г±Г®Г®ГЎГ№ГЁГ«ГЁ ГўГ ГёГҐ Г¬ГҐГ±ГІГ®Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГҐ Г®Г¦ГЁГ¤Г Г©ГІГҐ Г®ГІГўГҐГІ Г®ГЇГҐГ°Г ГІГ®Г°Г !","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 			    }
 			}
 			else SetPlayerSpecialAction(playerid,SPECIAL_ACTION_STOPUSECELLPHONE);
@@ -2012,26 +2012,26 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		    if(response) {
 		        switch(GetPVarInt(playerid,"Number")) {
 		            case 1: {
-		                if(strlen(inputtext) < 1 || strval(inputtext) == 0) return ShowPlayerDialog(playerid,27,DIALOG_STYLE_INPUT,"{03c03c}Введите номер","{ffffff}Введите номер абонента которому вы хотите позвонить!\n\n\n{1faee9} - Тарификация: 1$ в секунду","Вызов","Отмена");
+		                if(strlen(inputtext) < 1 || strval(inputtext) == 0) return ShowPlayerDialog(playerid,27,DIALOG_STYLE_INPUT,"{03c03c}Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®Г¬ГҐГ°","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®Г¬ГҐГ° Г ГЎГ®Г­ГҐГ­ГІГ  ГЄГ®ГІГ®Г°Г®Г¬Гі ГўГ» ГµГ®ГІГЁГІГҐ ГЇГ®Г§ГўГ®Г­ГЁГІГј!\n\n\n{1faee9} - Г’Г Г°ГЁГґГЁГЄГ Г¶ГЁГї: 1$ Гў Г±ГҐГЄГіГ­Г¤Гі","Г‚Г»Г§Г®Гў","ГЋГІГ¬ГҐГ­Г ");
 						new sucs;
 						foreach(new i : Player) if(Player[i][pPhone][0] == strval(inputtext)) SetPVarInt(playerid,"CalledID",i), SetPVarInt(i,"CalledID",playerid), SetPVarInt(i,"Called",2), SetPVarInt(playerid,"Called",1), PlayerPlaySound(i,23000,0.0,0.0,0.0), sucs++;
-						if(sucs == 0) {  SCM(playerid,0xFFEE00FF,"[T] Неправильно набран номер!"), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_STOPUSECELLPHONE); return true; }
-					    SetPlayerChatBubble(playerid,"пытается дозвониться",COLOR_PURPLE,30.0,4000);
+						if(sucs == 0) {  SCM(playerid,0xFFEE00FF,"[T] ГЌГҐГЇГ°Г ГўГЁГ«ГјГ­Г® Г­Г ГЎГ°Г Г­ Г­Г®Г¬ГҐГ°!"), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_STOPUSECELLPHONE); return true; }
+					    SetPlayerChatBubble(playerid,"ГЇГ»ГІГ ГҐГІГ±Гї Г¤Г®Г§ГўГ®Г­ГЁГІГјГ±Гї",COLOR_PURPLE,30.0,4000);
 					    PlayerPlaySound(playerid,3600,0.0,0.0,0.0);
-					    SCM(playerid,0xFFEE00FF,"[T] Связь установлена. Ожидайте ответа абонента.");
+					    SCM(playerid,0xFFEE00FF,"[T] Г‘ГўГїГ§Гј ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г . ГЋГ¦ГЁГ¤Г Г©ГІГҐ Г®ГІГўГҐГІГ  Г ГЎГ®Г­ГҐГ­ГІГ .");
 		            }
 		            case 3: {
-		                if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,27,DIALOG_STYLE_INPUT,"{03c03c}Укажите местонахождение","{ffffff}[Диспетчер такси]: Пожалуйста, сообщите ваше местонахождение!\n\n\n{1faee9}После того, как вы сообщили ваше местонахождение ожидайте ответ оператора!","Далее","Отмена");
+		                if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,27,DIALOG_STYLE_INPUT,"{03c03c}Г“ГЄГ Г¦ГЁГІГҐ Г¬ГҐГ±ГІГ®Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГҐ","{ffffff}[Г„ГЁГ±ГЇГҐГІГ·ГҐГ° ГІГ ГЄГ±ГЁ]: ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ , Г±Г®Г®ГЎГ№ГЁГІГҐ ГўГ ГёГҐ Г¬ГҐГ±ГІГ®Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГҐ!\n\n\n{1faee9}ГЏГ®Г±Г«ГҐ ГІГ®ГЈГ®, ГЄГ ГЄ ГўГ» Г±Г®Г®ГЎГ№ГЁГ«ГЁ ГўГ ГёГҐ Г¬ГҐГ±ГІГ®Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГҐ Г®Г¦ГЁГ¤Г Г©ГІГҐ Г®ГІГўГҐГІ Г®ГЇГҐГ°Г ГІГ®Г°Г !","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 						fcor
 						GetPlayerPos(playerid,x,y,z);
 						SetPVarInt(playerid,"TXS",0);
 						foreach(new i : Player) {
 							if(IsPlayerInRangeOfPoint(i,450.0,x,y,z) && GetPVarInt(playerid,"TaxiCall") == INVALID_PLAYER_ID && i != playerid && GetPVarInt(i,"TaxiJob") == 1) {
-								SetPVarInt(playerid,"TXS",GetPVarInt(playerid,"TXS")+1), format(dstring,130,"[Диспетчер]: {ffffff}Требуется такси, как можно быстрее. Местонахождение клиента: {1faee9}%s. Пейджер: %d",inputtext,playerid), SCM(i,0x1faee9FF,dstring);
-								SCM(i,0x1faee9FF,"Для того, чтобы принять заказ {ffffff}Введите: /taxicall [id]");
+								SetPVarInt(playerid,"TXS",GetPVarInt(playerid,"TXS")+1), format(dstring,130,"[Г„ГЁГ±ГЇГҐГІГ·ГҐГ°]: {ffffff}Г’Г°ГҐГЎГіГҐГІГ±Гї ГІГ ГЄГ±ГЁ, ГЄГ ГЄ Г¬Г®Г¦Г­Г® ГЎГ»Г±ГІГ°ГҐГҐ. ГЊГҐГ±ГІГ®Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГҐ ГЄГ«ГЁГҐГ­ГІГ : {1faee9}%s. ГЏГҐГ©Г¤Г¦ГҐГ°: %d",inputtext,playerid), SCM(i,0x1faee9FF,dstring);
+								SCM(i,0x1faee9FF,"Г„Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ°ГЁГ­ГїГІГј Г§Г ГЄГ Г§ {ffffff}Г‚ГўГҐГ¤ГЁГІГҐ: /taxicall [id]");
 						}   }
-						if(GetPVarInt(playerid,"TXS") == 0) return SCM(playerid,0x1faee9FF,"[Диспетчер Такси]: {ffffff}К сожалению, в вашем районе пока нет свободных автомобилей."), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_STOPUSECELLPHONE);
-						else { SCM(playerid,0x1faee9FF,"[Диспетчер Такси]: {ffffff}Ожидайте, мы ищем водителя для вашего вызова..."), SetPVarInt(playerid,"Taxi",1)  , SetPlayerSpecialAction(playerid,SPECIAL_ACTION_STOPUSECELLPHONE); return true;}
+						if(GetPVarInt(playerid,"TXS") == 0) return SCM(playerid,0x1faee9FF,"[Г„ГЁГ±ГЇГҐГІГ·ГҐГ° Г’Г ГЄГ±ГЁ]: {ffffff}ГЉ Г±Г®Г¦Г Г«ГҐГ­ГЁГѕ, Гў ГўГ ГёГҐГ¬ Г°Г Г©Г®Г­ГҐ ГЇГ®ГЄГ  Г­ГҐГІ Г±ГўГ®ГЎГ®Г¤Г­Г»Гµ Г ГўГІГ®Г¬Г®ГЎГЁГ«ГҐГ©."), SetPlayerSpecialAction(playerid,SPECIAL_ACTION_STOPUSECELLPHONE);
+						else { SCM(playerid,0x1faee9FF,"[Г„ГЁГ±ГЇГҐГІГ·ГҐГ° Г’Г ГЄГ±ГЁ]: {ffffff}ГЋГ¦ГЁГ¤Г Г©ГІГҐ, Г¬Г» ГЁГ№ГҐГ¬ ГўГ®Г¤ГЁГІГҐГ«Гї Г¤Г«Гї ГўГ ГёГҐГЈГ® ГўГ»Г§Г®ГўГ ..."), SetPVarInt(playerid,"Taxi",1)  , SetPlayerSpecialAction(playerid,SPECIAL_ACTION_STOPUSECELLPHONE); return true;}
 			}   }   }
         	else SetPlayerSpecialAction(playerid,SPECIAL_ACTION_STOPUSECELLPHONE);
 		}
@@ -2039,30 +2039,30 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		     if(response) {
 				switch(GetPVarInt(playerid,"Number")) {
 	       			case 1: {
-						if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,28,DIALOG_STYLE_INPUT,"{1faee9}Время прибытия","{ffffff}Если вы действительно хотите принять заказ, пожалуйста {03c03c}укажите примерное время прибытия на место.\n\n\n {ffffff} Пример: {1faee9}5 минут","Принять","Отмена");
-						format(dstring,96,"[Таксист %s]: {ffffff}Я принял Ваш заказ и будут через {1faee9}%s",Name(playerid),inputtext);
-      					SCM(GetPVarInt(playerid,"TaxiCall"),0x1faee9FF,dstring), SCM(GetPVarInt(playerid,"Taxi"),0xFFFFFFFF,"Оставайтесь на месте и {1faee9}никуда не уходите, таксист уже в пути!");
+						if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,28,DIALOG_STYLE_INPUT,"{1faee9}Г‚Г°ГҐГ¬Гї ГЇГ°ГЁГЎГ»ГІГЁГї","{ffffff}Г…Г±Г«ГЁ ГўГ» Г¤ГҐГ©Г±ГІГўГЁГІГҐГ«ГјГ­Г® ГµГ®ГІГЁГІГҐ ГЇГ°ГЁГ­ГїГІГј Г§Г ГЄГ Г§, ГЇГ®Г¦Г Г«ГіГ©Г±ГІГ  {03c03c}ГіГЄГ Г¦ГЁГІГҐ ГЇГ°ГЁГ¬ГҐГ°Г­Г®ГҐ ГўГ°ГҐГ¬Гї ГЇГ°ГЁГЎГ»ГІГЁГї Г­Г  Г¬ГҐГ±ГІГ®.\n\n\n {ffffff} ГЏГ°ГЁГ¬ГҐГ°: {1faee9}5 Г¬ГЁГ­ГіГІ","ГЏГ°ГЁГ­ГїГІГј","ГЋГІГ¬ГҐГ­Г ");
+						format(dstring,96,"[Г’Г ГЄГ±ГЁГ±ГІ %s]: {ffffff}Гџ ГЇГ°ГЁГ­ГїГ« Г‚Г Гё Г§Г ГЄГ Г§ ГЁ ГЎГіГ¤ГіГІ Г·ГҐГ°ГҐГ§ {1faee9}%s",Name(playerid),inputtext);
+      					SCM(GetPVarInt(playerid,"TaxiCall"),0x1faee9FF,dstring), SCM(GetPVarInt(playerid,"Taxi"),0xFFFFFFFF,"ГЋГ±ГІГ ГўГ Г©ГІГҐГ±Гј Г­Г  Г¬ГҐГ±ГІГҐ ГЁ {1faee9}Г­ГЁГЄГіГ¤Г  Г­ГҐ ГіГµГ®Г¤ГЁГІГҐ, ГІГ ГЄГ±ГЁГ±ГІ ГіГ¦ГҐ Гў ГЇГіГІГЁ!");
       					SetPVarInt(GetPVarInt(playerid,"TaxiCall"),"TaxiCall",playerid);
            				fcor GetPlayerPos(GetPVarInt(playerid,"TaxiCall"),x,y,z);
 						SetPlayerRaceCheckpoint(playerid,1,x,y,z,0.0,0.0,0.0,3.0);
 					}
 					case 2: {
-					    if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,28,DIALOG_STYLE_INPUT,"{1faee9}Отказ от вызова","{ffffff}Если вы действительно хотите отменить заказ, пожалуйста {03c03c}укажите причину","Отклонить","Отмена");
-						format(dstring,144,"[Таксист %s]: {ffffff}Увы, но я не смогу приехать на ваш вызов по причине: {1faee9}%s",Name(playerid),inputtext), SCM(GetPVarInt(playerid,"TaxiCall"),0x1faee9FF,dstring);
-						SCM(playerid,0xFFFFFFFF,"Вызов {1faee9}отменен!");
+					    if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,28,DIALOG_STYLE_INPUT,"{1faee9}ГЋГІГЄГ Г§ Г®ГІ ГўГ»Г§Г®ГўГ ","{ffffff}Г…Г±Г«ГЁ ГўГ» Г¤ГҐГ©Г±ГІГўГЁГІГҐГ«ГјГ­Г® ГµГ®ГІГЁГІГҐ Г®ГІГ¬ГҐГ­ГЁГІГј Г§Г ГЄГ Г§, ГЇГ®Г¦Г Г«ГіГ©Г±ГІГ  {03c03c}ГіГЄГ Г¦ГЁГІГҐ ГЇГ°ГЁГ·ГЁГ­Гі","ГЋГІГЄГ«Г®Г­ГЁГІГј","ГЋГІГ¬ГҐГ­Г ");
+						format(dstring,144,"[Г’Г ГЄГ±ГЁГ±ГІ %s]: {ffffff}Г“ГўГ», Г­Г® Гї Г­ГҐ Г±Г¬Г®ГЈГі ГЇГ°ГЁГҐГµГ ГІГј Г­Г  ГўГ Гё ГўГ»Г§Г®Гў ГЇГ® ГЇГ°ГЁГ·ГЁГ­ГҐ: {1faee9}%s",Name(playerid),inputtext), SCM(GetPVarInt(playerid,"TaxiCall"),0x1faee9FF,dstring);
+						SCM(playerid,0xFFFFFFFF,"Г‚Г»Г§Г®Гў {1faee9}Г®ГІГ¬ГҐГ­ГҐГ­!");
 						SetPVarInt(GetPVarInt(playerid,"TaxiCall"),"TaxiCall",INVALID_PLAYER_ID);
 						DisablePlayerRaceCheckpoint(playerid), SetPVarInt(playerid,"TaxiCall",INVALID_PLAYER_ID);
 		}   }   }   }
 		case 29: {
 		    if(response) {
 		        if(GetPVarInt(playerid,"MailJob") == 0) {
-		            if(GetPVarInt(playerid,"Job") == 1 && GetPVarInt(playerid,"MailJob") == 0 || Player[playerid][pFraction][1] != 0) return SCM(playerid,0xFF0000FF,"[Ошибка]: На данный момент вы уже кем-то работаете или состоите в организации!");
-		            if(Player[playerid][pMoney] < 200) return SCM(playerid,-1,"У вас недостаточно денег {1faee9}для аренды автомобиля!");
+		            if(GetPVarInt(playerid,"Job") == 1 && GetPVarInt(playerid,"MailJob") == 0 || Player[playerid][pFraction][1] != 0) return SCM(playerid,0xFF0000FF,"[ГЋГёГЁГЎГЄГ ]: ГЌГ  Г¤Г Г­Г­Г»Г© Г¬Г®Г¬ГҐГ­ГІ ГўГ» ГіГ¦ГҐ ГЄГҐГ¬-ГІГ® Г°Г ГЎГ®ГІГ ГҐГІГҐ ГЁГ«ГЁ Г±Г®Г±ГІГ®ГЁГІГҐ Гў Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГЁ!");
+		            if(Player[playerid][pMoney] < 200) return SCM(playerid,-1,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ {1faee9}Г¤Г«Гї Г Г°ГҐГ­Г¤Г» Г ГўГІГ®Г¬Г®ГЎГЁГ«Гї!");
 					SetPlayerSkin(playerid, (Player[playerid][pSex]==1) ? 71 : 69);
 					SetPVarInt(playerid,"MailJob",1), SetPVarInt(playerid,"Job",1);
 					SetPlayerCheckpoint(playerid,1304.1097,-1874.5109,13.5525,1.0);
 					SetPVarInt(playerid,"MailSend",1);
-					SCM(playerid,0x1faee9FF,"Для работы вам {ffffff}необходим служебный транспорт!");
+					SCM(playerid,0x1faee9FF,"Г„Г«Гї Г°Г ГЎГ®ГІГ» ГўГ Г¬ {ffffff}Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬ Г±Г«ГіГ¦ГҐГЎГ­Г»Г© ГІГ°Г Г­Г±ГЇГ®Г°ГІ!");
 					RemovePlayerAttachedObject(playerid,0);
 		        }
 		        else SetPlayerSkin(playerid,Player[playerid][pModel][0]), SetPVarInt(playerid,"MailJob",0), SetPVarInt(playerid,"MailSend",0), SetPVarInt(playerid,"Job",0), Player[playerid][pMoney] += GetPVarInt(playerid,"Cost"), SetPVarInt(playerid,"Cost",0), GameTextForPlayer(playerid, "~g~+$", 3000, 1),
@@ -2072,14 +2072,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		case 30: {
 		    if(response) {
 		        if(GetPVarInt(playerid,"ShahtaJob") == 0) {
-		            if(GetPVarInt(playerid,"Job") == 1  && GetPVarInt(playerid,"ShahtaJob") == 0 || Player[playerid][pFraction][1] != 0) return SCM(playerid,0xFF0000FF,"[Ошибка]: На данный момент вы уже кем-то работаете или состоите в организации!");
+		            if(GetPVarInt(playerid,"Job") == 1  && GetPVarInt(playerid,"ShahtaJob") == 0 || Player[playerid][pFraction][1] != 0) return SCM(playerid,0xFF0000FF,"[ГЋГёГЁГЎГЄГ ]: ГЌГ  Г¤Г Г­Г­Г»Г© Г¬Г®Г¬ГҐГ­ГІ ГўГ» ГіГ¦ГҐ ГЄГҐГ¬-ГІГ® Г°Г ГЎГ®ГІГ ГҐГІГҐ ГЁГ«ГЁ Г±Г®Г±ГІГ®ГЁГІГҐ Гў Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГЁ!");
 					SetPVarInt(playerid,"ShahtaJob",1), SetPVarInt(playerid,"Job",1);
 					new rand = random(sizeof(jP));
 					SetPlayerCheckpoint(playerid, jP[rand][0],jP[rand][1],jP[rand][2], 1.2);
 					SetPVarInt(playerid,"ShahtaSend",1),SetPVarInt(playerid,"ShahtaRange",rand*18);
-					SCM(playerid,0x1faee9FF,"Начинайте {ffffff}собирать руду, она разбросана по всей скале!");
-					SCM(playerid,0x1faee9FF,"Это высокооплачиваемая работа, так-как {1faee9}вы будите терять много энергии и времени!");
-                    SCM(playerid,0x1faee9FF,"Чем дальше находится руда, {ffffff}тем больше вы будите получать денег за неё!");
+					SCM(playerid,0x1faee9FF,"ГЌГ Г·ГЁГ­Г Г©ГІГҐ {ffffff}Г±Г®ГЎГЁГ°Г ГІГј Г°ГіГ¤Гі, Г®Г­Г  Г°Г Г§ГЎГ°Г®Г±Г Г­Г  ГЇГ® ГўГ±ГҐГ© Г±ГЄГ Г«ГҐ!");
+					SCM(playerid,0x1faee9FF,"ГќГІГ® ГўГ»Г±Г®ГЄГ®Г®ГЇГ«Г Г·ГЁГўГ ГҐГ¬Г Гї Г°Г ГЎГ®ГІГ , ГІГ ГЄ-ГЄГ ГЄ {1faee9}ГўГ» ГЎГіГ¤ГЁГІГҐ ГІГҐГ°ГїГІГј Г¬Г­Г®ГЈГ® ГЅГ­ГҐГ°ГЈГЁГЁ ГЁ ГўГ°ГҐГ¬ГҐГ­ГЁ!");
+                    SCM(playerid,0x1faee9FF,"Г—ГҐГ¬ Г¤Г Г«ГјГёГҐ Г­Г ГµГ®Г¤ГЁГІГ±Гї Г°ГіГ¤Г , {ffffff}ГІГҐГ¬ ГЎГ®Г«ГјГёГҐ ГўГ» ГЎГіГ¤ГЁГІГҐ ГЇГ®Г«ГіГ·Г ГІГј Г¤ГҐГ­ГҐГЈ Г§Г  Г­ГҐВё!");
 					SetPlayerAttachedObject(playerid, 0, 19160, 2, 0.102999, 0.000000, 0.000000, -0.200028, 0.000000, 0.000000, 1.125998, 1.152000, 1.252000);
 					SetPlayerAttachedObject(playerid, 1, 18634, 6, 0.072999, 0.022000, 0.012000, 93.300018, -101.200012, 2.699999, 1.764998, 1.641999, 1.654998);
 		        }
@@ -2091,14 +2091,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		    if(response) {
 				switch(listitem) {
 				    case 0: {
-				        if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 433 && GetVehicleModel(GetPlayerVehicleID(playerid)) != 455 && GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SCM(playerid,0xFFFFFFFF,"Вам {1faee9}необходимо находиться в транспорте для перевозок!");
-						if(LSW == 0) return SCM(playerid,0xFFFFFFFF,"На данный момент {1faee9}корабль пуст, попробуйте позже!");
+				        if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 433 && GetVehicleModel(GetPlayerVehicleID(playerid)) != 455 && GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SCM(playerid,0xFFFFFFFF,"Г‚Г Г¬ {1faee9}Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® Г­Г ГµГ®Г¤ГЁГІГјГ±Гї Гў ГІГ°Г Г­Г±ГЇГ®Г°ГІГҐ Г¤Г«Гї ГЇГҐГ°ГҐГўГ®Г§Г®ГЄ!");
+						if(LSW == 0) return SCM(playerid,0xFFFFFFFF,"ГЌГ  Г¤Г Г­Г­Г»Г© Г¬Г®Г¬ГҐГ­ГІ {1faee9}ГЄГ®Г°Г ГЎГ«Гј ГЇГіГ±ГІ, ГЇГ®ГЇГ°Г®ГЎГіГ©ГІГҐ ГЇГ®Г§Г¦ГҐ!");
                         if(haulspl[GetPlayerVehicleID(playerid)-77] != -1 || haulspu[GetPlayerVehicleID(playerid)-77] != -1) DestroyDynamicPickup(haulspl[GetPlayerVehicleID(playerid)-77]), DestroyDynamic3DTextLabel(haulstext[GetPlayerVehicleID(playerid)-77]),DestroyDynamicPickup(haulspu[GetPlayerVehicleID(playerid)-77]);
 						SetPlayerRaceCheckpoint(playerid,1,2800.0447,-2437.6902,13.6307,0.0,0.0,0.0,6.0), SetPVarInt(playerid,"CheckHaul",1);
 					}
 					case 2: {
-					    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 433 && GetVehicleModel(GetPlayerVehicleID(playerid)) != 455 && GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SCM(playerid,0xFFFFFFFF,"Вам {1faee9}необходимо находиться в транспорте для перевозок!");
-						if(hauls[GetPlayerVehicleID(playerid)-77][1] == 0) return SCM(playerid,0xFFFFFFFF,"Ваш {1faee9}грузовик пуст!");
+					    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 433 && GetVehicleModel(GetPlayerVehicleID(playerid)) != 455 && GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SCM(playerid,0xFFFFFFFF,"Г‚Г Г¬ {1faee9}Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® Г­Г ГµГ®Г¤ГЁГІГјГ±Гї Гў ГІГ°Г Г­Г±ГЇГ®Г°ГІГҐ Г¤Г«Гї ГЇГҐГ°ГҐГўГ®Г§Г®ГЄ!");
+						if(hauls[GetPlayerVehicleID(playerid)-77][1] == 0) return SCM(playerid,0xFFFFFFFF,"Г‚Г Гё {1faee9}ГЈГ°ГіГ§Г®ГўГЁГЄ ГЇГіГ±ГІ!");
                         if(haulspl[GetPlayerVehicleID(playerid)-77] != -1 || haulspu[GetPlayerVehicleID(playerid)-77] != -1) DestroyDynamicPickup(haulspl[GetPlayerVehicleID(playerid)-77]), DestroyDynamic3DTextLabel(haulstext[GetPlayerVehicleID(playerid)-77]), DestroyDynamicPickup(haulspu[GetPlayerVehicleID(playerid)-77]);
 						SetPlayerRaceCheckpoint(playerid,1,340.4890,1938.2731,17.6406,0.0,0.0,0.0,6.0), SetPVarInt(playerid,"CheckHaul",2);
 					}
@@ -2127,19 +2127,19 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		        SetPlayerInterior(playerid, 0), SetPlayerVirtualWorld(playerid, 0);
     			if (GetPlayerState(playerid) == 2) SetVehiclePos(GetPlayerVehicleID(playerid), GetPVarFloat(playerid,"XTP"), GetPVarFloat(playerid,"YTP"), GetPVarFloat(playerid,"ZTP"));
     			else AC_SetPlayerPos(playerid, GetPVarFloat(playerid,"XTP"), GetPVarFloat(playerid,"YTP"), GetPVarFloat(playerid,"ZTP"));
-				SCM(playerid,0xFFFFFFFF,"Вы были {1faee9}телепортированы в желаемую точку!");
+				SCM(playerid,0xFFFFFFFF,"Г‚Г» ГЎГ»Г«ГЁ {1faee9}ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г» Гў Г¦ГҐГ«Г ГҐГ¬ГіГѕ ГІГ®Г·ГЄГі!");
 		}   }
 		case 33: {
 		    if(response) {
 				switch(listitem) {
 				    case 0: {
-				        if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 455 && GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SCM(playerid,0xFFFFFFFF,"Вам {1faee9}необходимо находиться в транспорте для перевозок!");
+				        if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 455 && GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SCM(playerid,0xFFFFFFFF,"Г‚Г Г¬ {1faee9}Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® Г­Г ГµГ®Г¤ГЁГІГјГ±Гї Гў ГІГ°Г Г­Г±ГЇГ®Г°ГІГҐ Г¤Г«Гї ГЇГҐГ°ГҐГўГ®Г§Г®ГЄ!");
                         if(haulspl[GetPlayerVehicleID(playerid)-77] != 0 || haulspu[GetPlayerVehicleID(playerid)-77] != 0) DestroyDynamicPickup(haulsple), DestroyDynamic3DTextLabel(haulstext[GetPlayerVehicleID(playerid)-77]),DestroyDynamicPickup(haulspue);
 						SetPlayerRaceCheckpoint(playerid,1,-1478.1720,2656.4902,56.2726,0.0,0.0,0.0,3.0), SetPVarInt(playerid,"CheckHaul",3);
 					}
 					case 1: {
-					    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 455  && GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SCM(playerid,0xFFFFFFFF,"Вам {1faee9}необходимо находиться в транспорте для перевозок!");
-						if(hauls[GetPlayerVehicleID(playerid)-77][1] == 0) return SCM(playerid,0xFFFFFFFF,"Ваш {1faee9}грузовик пуст!");
+					    if(GetVehicleModel(GetPlayerVehicleID(playerid)) != 455  && GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SCM(playerid,0xFFFFFFFF,"Г‚Г Г¬ {1faee9}Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® Г­Г ГµГ®Г¤ГЁГІГјГ±Гї Гў ГІГ°Г Г­Г±ГЇГ®Г°ГІГҐ Г¤Г«Гї ГЇГҐГ°ГҐГўГ®Г§Г®ГЄ!");
+						if(hauls[GetPlayerVehicleID(playerid)-77][1] == 0) return SCM(playerid,0xFFFFFFFF,"Г‚Г Гё {1faee9}ГЈГ°ГіГ§Г®ГўГЁГЄ ГЇГіГ±ГІ!");
                         if(haulspl[GetPlayerVehicleID(playerid)-77] != -1 || haulspu[GetPlayerVehicleID(playerid)-77] != -1) DestroyDynamicPickup(haulsple), DestroyDynamic3DTextLabel(haulstext[GetPlayerVehicleID(playerid)-77]), DestroyDynamicPickup(haulspue);
 						SetPlayerRaceCheckpoint(playerid,1,255.7696,1972.0992,18.0768,0.0,0.0,0.0,3.0), SetPVarInt(playerid,"CheckHaul",4);
 					}
@@ -2149,7 +2149,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 		case 34: {
 		    if(response) {
-		        if(Business[GetPVarInt(playerid,"BID")][bProduct] < 1) { SCM(playerid,0xAC7575FF,"В амуниции недостаточно оружия!"), SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2); return true; }
+		        if(Business[GetPVarInt(playerid,"BID")][bProduct] < 1) { SCM(playerid,0xAC7575FF,"Г‚ Г Г¬ГіГ­ГЁГ¶ГЁГЁ Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г®Г°ГіГ¦ГЁГї!"), SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2); return true; }
 			    TogglePlayerControllable(playerid, 0);
 			    TextDrawShowForPlayer(playerid,amBox);
 			    TextDrawShowForPlayer(playerid,amPCPS);
@@ -2172,19 +2172,19 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 		case 35: {
 		    if(response) {
-		        if(Player[GetPVarInt(playerid,"SearchID")][pDrugs] == 0 && GetPVarInt(GetPVarInt(playerid,"SearchID"),"Ammo") == 0) return SCM(playerid,0xCA7575FF,"У этого человека нечего изымать!");
+		        if(Player[GetPVarInt(playerid,"SearchID")][pDrugs] == 0 && GetPVarInt(GetPVarInt(playerid,"SearchID"),"Ammo") == 0) return SCM(playerid,0xCA7575FF,"Г“ ГЅГІГ®ГЈГ® Г·ГҐГ«Г®ГўГҐГЄГ  Г­ГҐГ·ГҐГЈГ® ГЁГ§Г»Г¬Г ГІГј!");
 		        Player[GetPVarInt(playerid,"SearchID")][pDrugs] = 0, SetPVarInt(GetPVarInt(playerid,"SearchID"),"Ammo",0);
-                SetPlayerChatBubble(playerid, "изымает запрещенные средства", COLOR_PURPLE, 15.0, 3000);
-				SCM(GetPVarInt(playerid,"SearchID"),0xCA7575FF,"У вас изъяли запрещенные средства!");
+                SetPlayerChatBubble(playerid, "ГЁГ§Г»Г¬Г ГҐГІ Г§Г ГЇГ°ГҐГ№ГҐГ­Г­Г»ГҐ Г±Г°ГҐГ¤Г±ГІГўГ ", COLOR_PURPLE, 15.0, 3000);
+				SCM(GetPVarInt(playerid,"SearchID"),0xCA7575FF,"Г“ ГўГ Г± ГЁГ§ГєГїГ«ГЁ Г§Г ГЇГ°ГҐГ№ГҐГ­Г­Г»ГҐ Г±Г°ГҐГ¤Г±ГІГўГ !");
 		    }
 		}
 		case 36: {
 			if(response) {
 			    if(Player[playerid][pMoney] < 1000) {
-					SCM(playerid,-1,"У вас недостаточно денег {1faee9}для заведения счёта!"), SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
+					SCM(playerid,-1,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ {1faee9}Г¤Г«Гї Г§Г ГўГҐГ¤ГҐГ­ГЁГї Г±Г·ВёГІГ !"), SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 					return true;
 				}
- 				ShowPlayerDialog(playerid,37,DIALOG_STYLE_MSGBOX,"{1faee9}Оформление договра","{ffffff}Если вы согласны со всеми правилами - выберите пункт 'Да'.\n\n\n{AC7575}Для отмены 'Отмена'","Принять","Отмена");
+ 				ShowPlayerDialog(playerid,37,DIALOG_STYLE_MSGBOX,"{1faee9}ГЋГґГ®Г°Г¬Г«ГҐГ­ГЁГҐ Г¤Г®ГЈГ®ГўГ°Г ","{ffffff}Г…Г±Г«ГЁ ГўГ» Г±Г®ГЈГ«Г Г±Г­Г» Г±Г® ГўГ±ГҐГ¬ГЁ ГЇГ°Г ГўГЁГ«Г Г¬ГЁ - ГўГ»ГЎГҐГ°ГЁГІГҐ ГЇГіГ­ГЄГІ 'Г„Г '.\n\n\n{AC7575}Г„Г«Гї Г®ГІГ¬ГҐГ­Г» 'ГЋГІГ¬ГҐГ­Г '","ГЏГ°ГЁГ­ГїГІГј","ГЋГІГ¬ГҐГ­Г ");
 			}
 			else SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 		}
@@ -2192,7 +2192,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		    if(response) {
 				Player[playerid][pMoney] -= 1000, Player[playerid][pBank] = 1000;
 				Player[playerid][pBankPass] = 1;
-				ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}Счёт активирован!","{ffffff}Поздравляем! Вы {03c03c}успешно завели счет в банке!","Ок","");
+				ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}Г‘Г·ВёГІ Г ГЄГІГЁГўГЁГ°Г®ГўГ Г­!","{ffffff}ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬! Г‚Г» {03c03c}ГіГ±ГЇГҐГёГ­Г® Г§Г ГўГҐГ«ГЁ Г±Г·ГҐГІ Гў ГЎГ Г­ГЄГҐ!","ГЋГЄ","");
                 SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 			}
 			else SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
@@ -2200,34 +2200,34 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		case 38: {
 		    if(response) {
 		        switch(listitem) {
-		            case 0: ShowPlayerDialog(playerid,39,DIALOG_STYLE_INPUT,"{1faee9}Управление счётом","{ffffff}Пожалуйста введите сумму денег которую хотите взять или положить на счёт.\n{ff0000}Внимание, перед суммой поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы снять.","Далее","Отмена");
-					case 1: ShowPlayerDialog(playerid,40,DIALOG_STYLE_INPUT,"{1faee9}Управление счётом","{ffffff}Пожалуйста введите ID игрока, которому {03c03c}хотите перечислить деньги.","Далее","Отмена");
-					case 2: format(dstring,92,"{ffffff}Банк:\t\t{03c03c}San Andreas\n{ffffff}На счету:\t{03c03c}%d$",Player[playerid][pBank]), ShowPlayerDialog(playerid,42,DIALOG_STYLE_MSGBOX,"{1faee9}Информация о счёте",dstring,"Ок","");
+		            case 0: ShowPlayerDialog(playerid,39,DIALOG_STYLE_INPUT,"{1faee9}Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г±Г·ВёГІГ®Г¬","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі Г¤ГҐГ­ГҐГЈ ГЄГ®ГІГ®Г°ГіГѕ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Г­Г  Г±Г·ВёГІ.\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г±ГіГ¬Г¬Г®Г© ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» Г±Г­ГїГІГј.","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+					case 1: ShowPlayerDialog(playerid,40,DIALOG_STYLE_INPUT,"{1faee9}Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г±Г·ВёГІГ®Г¬","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ ID ГЁГЈГ°Г®ГЄГ , ГЄГ®ГІГ®Г°Г®Г¬Гі {03c03c}ГµГ®ГІГЁГІГҐ ГЇГҐГ°ГҐГ·ГЁГ±Г«ГЁГІГј Г¤ГҐГ­ГјГЈГЁ.","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+					case 2: format(dstring,92,"{ffffff}ГЃГ Г­ГЄ:\t\t{03c03c}San Andreas\n{ffffff}ГЌГ  Г±Г·ГҐГІГі:\t{03c03c}%d$",Player[playerid][pBank]), ShowPlayerDialog(playerid,42,DIALOG_STYLE_MSGBOX,"{1faee9}Г€Г­ГґГ®Г°Г¬Г Г¶ГЁГї Г® Г±Г·ВёГІГҐ",dstring,"ГЋГЄ","");
 				}
 			}
 			else SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 		}
 		case 39: {
 		    if(response) {
-				if(strlen(inputtext) < 2) return ShowPlayerDialog(playerid,39,DIALOG_STYLE_INPUT,"{1faee9}Управление счётом","{ffffff}Пожалуйста введите сумму денег которую хотите взять или положить на счёт.\n{ff0000}Внимание, перед суммой поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы снять.","Далее","Отмена");
+				if(strlen(inputtext) < 2) return ShowPlayerDialog(playerid,39,DIALOG_STYLE_INPUT,"{1faee9}Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г±Г·ВёГІГ®Г¬","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі Г¤ГҐГ­ГҐГЈ ГЄГ®ГІГ®Г°ГіГѕ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Г­Г  Г±Г·ВёГІ.\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г±ГіГ¬Г¬Г®Г© ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» Г±Г­ГїГІГј.","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
             	for(new i = strlen(inputtext); i != 0; --i) {
            			switch(inputtext[i]) {
-					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,39,DIALOG_STYLE_INPUT,"{ff2400}Ошибка","{ffffff}Пожалуйста повторите {03c03c}попытку.","Ок","");
+					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,39,DIALOG_STYLE_INPUT,"{ff2400}ГЋГёГЁГЎГЄГ ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГЇГ®ГўГІГ®Г°ГЁГІГҐ {03c03c}ГЇГ®ГЇГ»ГІГЄГі.","ГЋГЄ","");
 				}   }
     			if(strfind(inputtext, "+", true) != -1) {
 	    			strdel(inputtext,0,1);
-					if(Player[playerid][pMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"У вас {1faee9}недостаточно денег!");
+					if(Player[playerid][pMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г“ ГўГ Г± {1faee9}Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ!");
 					Player[playerid][pMoney] -= strval(inputtext), Player[playerid][pBank] += strval(inputtext);
-					format(dstring,100,"{ffffff}Банк:\t\t{03c03c}San Andreas\n{ffffff}На счету:\t{03c03c}%d$",Player[playerid][pBank]), ShowPlayerDialog(playerid,42,DIALOG_STYLE_MSGBOX,"{1faee9}Изменения в счёте",dstring,"Ок","");
+					format(dstring,100,"{ffffff}ГЃГ Г­ГЄ:\t\t{03c03c}San Andreas\n{ffffff}ГЌГ  Г±Г·ГҐГІГі:\t{03c03c}%d$",Player[playerid][pBank]), ShowPlayerDialog(playerid,42,DIALOG_STYLE_MSGBOX,"{1faee9}Г€Г§Г¬ГҐГ­ГҐГ­ГЁГї Гў Г±Г·ВёГІГҐ",dstring,"ГЋГЄ","");
 					SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 				 	Success(playerid)
 					return true;
 				}
 			 	if(strfind(inputtext, "-", true) != -1) {
 					strdel(inputtext,0,1);
-					if(Player[playerid][pBank] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"На вашем счету {1faee9}недостаточно денег!");
+					if(Player[playerid][pBank] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"ГЌГ  ГўГ ГёГҐГ¬ Г±Г·ГҐГІГі {1faee9}Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ!");
 					Player[playerid][pMoney] += strval(inputtext), Player[playerid][pBank] -= strval(inputtext);
-					format(dstring,100,"{ffffff}Банк:\t\t{03c03c}San Andreas\n{ffffff}На счету:\t{03c03c}%d$",Player[playerid][pBank]), ShowPlayerDialog(playerid,42,DIALOG_STYLE_MSGBOX,"{1faee9}Изменения в счёте",dstring,"Ок","");
+					format(dstring,100,"{ffffff}ГЃГ Г­ГЄ:\t\t{03c03c}San Andreas\n{ffffff}ГЌГ  Г±Г·ГҐГІГі:\t{03c03c}%d$",Player[playerid][pBank]), ShowPlayerDialog(playerid,42,DIALOG_STYLE_MSGBOX,"{1faee9}Г€Г§Г¬ГҐГ­ГҐГ­ГЁГї Гў Г±Г·ВёГІГҐ",dstring,"ГЋГЄ","");
 					SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 				 	Success(playerid)
 					return true;
@@ -2237,26 +2237,26 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 		case 40: {
 		    if(response) {
-		        if(strlen(inputtext) < 1 && strlen(inputtext) > 4) return ShowPlayerDialog(playerid,40,DIALOG_STYLE_INPUT,"{1faee9}Управление счётом","{ffffff}Пожалуйста введите ID игрока, которому {03c03c}хотите перечислить деньги.","Далее","Отмена");
-				if(!Player[strval(inputtext)][PlayerLogged]) return ShowPlayerDialog(playerid,40,DIALOG_STYLE_INPUT,"{1faee9}Управление счётом","{AC7575}Данный игрок оффлайн\n\n{ffffff}Повторить?","Далее","Отмена");
-				if(Player[strval(inputtext)][pBankPass] == 0) { SCM(playerid,-1,"Данный человек {AC7575}ещё не завел банковский счет!"), SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2); return true; }
-				ShowPlayerDialog(playerid,41,DIALOG_STYLE_INPUT,"{1faee9}Управление счётом","{ffffff}Пожалуйста введите сумму денег которую {03c03c}хотите перечислить на счёт другого игрока.","Далее","Отмена");
+		        if(strlen(inputtext) < 1 && strlen(inputtext) > 4) return ShowPlayerDialog(playerid,40,DIALOG_STYLE_INPUT,"{1faee9}Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г±Г·ВёГІГ®Г¬","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ ID ГЁГЈГ°Г®ГЄГ , ГЄГ®ГІГ®Г°Г®Г¬Гі {03c03c}ГµГ®ГІГЁГІГҐ ГЇГҐГ°ГҐГ·ГЁГ±Г«ГЁГІГј Г¤ГҐГ­ГјГЈГЁ.","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+				if(!Player[strval(inputtext)][PlayerLogged]) return ShowPlayerDialog(playerid,40,DIALOG_STYLE_INPUT,"{1faee9}Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г±Г·ВёГІГ®Г¬","{AC7575}Г„Г Г­Г­Г»Г© ГЁГЈГ°Г®ГЄ Г®ГґГґГ«Г Г©Г­\n\n{ffffff}ГЏГ®ГўГІГ®Г°ГЁГІГј?","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+				if(Player[strval(inputtext)][pBankPass] == 0) { SCM(playerid,-1,"Г„Г Г­Г­Г»Г© Г·ГҐГ«Г®ГўГҐГЄ {AC7575}ГҐГ№Вё Г­ГҐ Г§Г ГўГҐГ« ГЎГ Г­ГЄГ®ГўГ±ГЄГЁГ© Г±Г·ГҐГІ!"), SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2); return true; }
+				ShowPlayerDialog(playerid,41,DIALOG_STYLE_INPUT,"{1faee9}Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г±Г·ВёГІГ®Г¬","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі Г¤ГҐГ­ГҐГЈ ГЄГ®ГІГ®Г°ГіГѕ {03c03c}ГµГ®ГІГЁГІГҐ ГЇГҐГ°ГҐГ·ГЁГ±Г«ГЁГІГј Г­Г  Г±Г·ВёГІ Г¤Г°ГіГЈГ®ГЈГ® ГЁГЈГ°Г®ГЄГ .","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 				SetPVarInt(playerid,"BankSend",strval(inputtext)),SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 			}
 			else SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 		}
 		case 41: {
 		    if(response) {
-		        if(strlen(inputtext) < 1) return ShowPlayerDialog(playerid,41,DIALOG_STYLE_INPUT,"{1faee9}Управление счётом","{ffffff}Пожалуйста введите сумму денег которую {03c03c}хотите перечислить на счёт другого игрока.","Далее","Отмена");
+		        if(strlen(inputtext) < 1) return ShowPlayerDialog(playerid,41,DIALOG_STYLE_INPUT,"{1faee9}Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г±Г·ВёГІГ®Г¬","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі Г¤ГҐГ­ГҐГЈ ГЄГ®ГІГ®Г°ГіГѕ {03c03c}ГµГ®ГІГЁГІГҐ ГЇГҐГ°ГҐГ·ГЁГ±Г«ГЁГІГј Г­Г  Г±Г·ВёГІ Г¤Г°ГіГЈГ®ГЈГ® ГЁГЈГ°Г®ГЄГ .","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 		        for(new i = strlen(inputtext); i != 0; --i) {
            			switch(inputtext[i]) {
-					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,41,DIALOG_STYLE_INPUT,"{ff2400}Ошибка","{ffffff}Пожалуйста повторите {03c03c}попытку.","Ок","");
+					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,41,DIALOG_STYLE_INPUT,"{ff2400}ГЋГёГЁГЎГЄГ ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГЇГ®ГўГІГ®Г°ГЁГІГҐ {03c03c}ГЇГ®ГЇГ»ГІГЄГі.","ГЋГЄ","");
 				}   }
-				if(!Player[GetPVarInt(playerid,"BankSend")][PlayerLogged]) { SCM(playerid,0xAC7575FF,"Игрок оффлайн!"), SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2); return true; }
-		        if(Player[playerid][pBank] < strval(inputtext)) return ShowPlayerDialog(playerid,41,DIALOG_STYLE_INPUT,"{1faee9}Управление счётом","{AC7575}Ошибка на вашем счету нет столько денег\n{ffffff}Повторить?","Далее","Отмена");
+				if(!Player[GetPVarInt(playerid,"BankSend")][PlayerLogged]) { SCM(playerid,0xAC7575FF,"Г€ГЈГ°Г®ГЄ Г®ГґГґГ«Г Г©Г­!"), SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2); return true; }
+		        if(Player[playerid][pBank] < strval(inputtext)) return ShowPlayerDialog(playerid,41,DIALOG_STYLE_INPUT,"{1faee9}Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г±Г·ВёГІГ®Г¬","{AC7575}ГЋГёГЁГЎГЄГ  Г­Г  ГўГ ГёГҐГ¬ Г±Г·ГҐГІГі Г­ГҐГІ Г±ГІГ®Г«ГјГЄГ® Г¤ГҐГ­ГҐГЈ\n{ffffff}ГЏГ®ГўГІГ®Г°ГЁГІГј?","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 				Player[playerid][pBank] -= strval(inputtext), Player[GetPVarInt(playerid,"BankSend")][pBank] += strval(inputtext);
-				SendClientMessage(GetPVarInt(playerid,"BankSend"),0x7fff00FF,"SMS от BANK-SA: На ваш лицевой зачисленна новая сумма!");
-				format(dstring,100,"{ffffff}Банк:\t\t{03c03c}San Andreas\n{ffffff}На счету:\t{03c03c}%d$",Player[playerid][pBank]), ShowPlayerDialog(playerid,42,DIALOG_STYLE_MSGBOX,"{1faee9}Изменения в счёте",dstring,"Ок","");
+				SendClientMessage(GetPVarInt(playerid,"BankSend"),0x7fff00FF,"SMS Г®ГІ BANK-SA: ГЌГ  ГўГ Гё Г«ГЁГ¶ГҐГўГ®Г© Г§Г Г·ГЁГ±Г«ГҐГ­Г­Г  Г­Г®ГўГ Гї Г±ГіГ¬Г¬Г !");
+				format(dstring,100,"{ffffff}ГЃГ Г­ГЄ:\t\t{03c03c}San Andreas\n{ffffff}ГЌГ  Г±Г·ГҐГІГі:\t{03c03c}%d$",Player[playerid][pBank]), ShowPlayerDialog(playerid,42,DIALOG_STYLE_MSGBOX,"{1faee9}Г€Г§Г¬ГҐГ­ГҐГ­ГЁГї Гў Г±Г·ВёГІГҐ",dstring,"ГЋГЄ","");
 				SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 			 	Success(playerid)
 		    }
@@ -2265,9 +2265,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		case 42: SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 		case 43: {
 		    if(response) {
-		        if(strlen(inputtext) < 1 || strlen(inputtext) > 16 || strval(inputtext) == 0) return ShowPlayerDialog(playerid,37,DIALOG_STYLE_INPUT,"Пароль от счёта","{ffffff}Длинна пароля не должна быть меньше 1 цифры и больше 16-ти.\n\n\n{AC7575}Желательно чтобы пароль не совпадал с паролем вашего аккаунта!","Принять","Отмена");
+		        if(strlen(inputtext) < 1 || strlen(inputtext) > 16 || strval(inputtext) == 0) return ShowPlayerDialog(playerid,37,DIALOG_STYLE_INPUT,"ГЏГ Г°Г®Г«Гј Г®ГІ Г±Г·ВёГІГ ","{ffffff}Г„Г«ГЁГ­Г­Г  ГЇГ Г°Г®Г«Гї Г­ГҐ Г¤Г®Г«Г¦Г­Г  ГЎГ»ГІГј Г¬ГҐГ­ГјГёГҐ 1 Г¶ГЁГґГ°Г» ГЁ ГЎГ®Г«ГјГёГҐ 16-ГІГЁ.\n\n\n{AC7575}Г†ГҐГ«Г ГІГҐГ«ГјГ­Г® Г·ГІГ®ГЎГ» ГЇГ Г°Г®Г«Гј Г­ГҐ Г±Г®ГўГЇГ Г¤Г Г« Г± ГЇГ Г°Г®Г«ГҐГ¬ ГўГ ГёГҐГЈГ® Г ГЄГЄГ ГіГ­ГІГ !","ГЏГ°ГЁГ­ГїГІГј","ГЋГІГ¬ГҐГ­Г ");
 				Player[playerid][pBankPass] = strval(inputtext);
-				format(dstring,98,"{ffffff}Пароль {03c03c}успешно изменен!\n\n{ffffff}Не забудьте ваш пароль: {AC7575}%d",Player[playerid][pBankPass]), ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}Пароль от счёта изменен",dstring,"Ок","");
+				format(dstring,98,"{ffffff}ГЏГ Г°Г®Г«Гј {03c03c}ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­!\n\n{ffffff}ГЌГҐ Г§Г ГЎГіГ¤ГјГІГҐ ГўГ Гё ГЇГ Г°Г®Г«Гј: {AC7575}%d",Player[playerid][pBankPass]), ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{03c03c}ГЏГ Г°Г®Г«Гј Г®ГІ Г±Г·ВёГІГ  ГЁГ§Г¬ГҐГ­ГҐГ­",dstring,"ГЋГЄ","");
                 SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 			}
 			else SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
@@ -2275,42 +2275,42 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		case 44: {
 			if(response) {
 				switch(listitem) {
-		    		case 0: ShowPlayerDialog(playerid,39,DIALOG_STYLE_INPUT,"{1faee9}Управление счётом","{ffffff}Пожалуйста введите сумму денег которую хотите взять или положить на счёт.\n{ff0000}Внимание, перед суммой поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы снять.","Далее","Отмена");
-		    		case 1: ShowPlayerDialog(playerid,45,DIALOG_STYLE_INPUT,"{1faee9}Мобильный баланс","{ffffff}Пожалуйста введите сумму денег которую хотите {03c03c}положить на Ваш мобильный счёт","Далее","Отмена");
+		    		case 0: ShowPlayerDialog(playerid,39,DIALOG_STYLE_INPUT,"{1faee9}Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г±Г·ВёГІГ®Г¬","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі Г¤ГҐГ­ГҐГЈ ГЄГ®ГІГ®Г°ГіГѕ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Г­Г  Г±Г·ВёГІ.\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г±ГіГ¬Г¬Г®Г© ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» Г±Г­ГїГІГј.","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+		    		case 1: ShowPlayerDialog(playerid,45,DIALOG_STYLE_INPUT,"{1faee9}ГЊГ®ГЎГЁГ«ГјГ­Г»Г© ГЎГ Г«Г Г­Г±","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі Г¤ГҐГ­ГҐГЈ ГЄГ®ГІГ®Г°ГіГѕ ГµГ®ГІГЁГІГҐ {03c03c}ГЇГ®Г«Г®Г¦ГЁГІГј Г­Г  Г‚Г Гё Г¬Г®ГЎГЁГ«ГјГ­Г»Г© Г±Г·ВёГІ","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 		}   }   }
 		case 45: {
             if(response) {
-				if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,45,DIALOG_STYLE_INPUT,"{1faee9}Мобильный баланс","{ffffff}Пожалуйста введите сумму денег которую хотите {03c03c}положить на Ваш мобильный счёт","Далее","Отмена");
+				if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,45,DIALOG_STYLE_INPUT,"{1faee9}ГЊГ®ГЎГЁГ«ГјГ­Г»Г© ГЎГ Г«Г Г­Г±","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі Г¤ГҐГ­ГҐГЈ ГЄГ®ГІГ®Г°ГіГѕ ГµГ®ГІГЁГІГҐ {03c03c}ГЇГ®Г«Г®Г¦ГЁГІГј Г­Г  Г‚Г Гё Г¬Г®ГЎГЁГ«ГјГ­Г»Г© Г±Г·ВёГІ","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
             	for(new i = strlen(inputtext); i != 0; --i) {
            			switch(inputtext[i]) {
-					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,45,DIALOG_STYLE_INPUT,"{ff2400}Ошибка","{ffffff}Пожалуйста повторите {03c03c}попытку.","Ок","");
+					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,45,DIALOG_STYLE_INPUT,"{ff2400}ГЋГёГЁГЎГЄГ ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГЇГ®ГўГІГ®Г°ГЁГІГҐ {03c03c}ГЇГ®ГЇГ»ГІГЄГі.","ГЋГЄ","");
 				}   }
-				if(Player[playerid][pMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"У вас {1faee9}недостаточно денег!");
+				if(Player[playerid][pMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г“ ГўГ Г± {1faee9}Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ!");
 				Player[playerid][pMoney] -= strval(inputtext), Player[playerid][pPhone][1] += strval(inputtext);
-				format(dstring,100,"{ffffff}Оператор:\t\t{03c03c}SA Mobile\n{ffffff}На счету телефона:\t{03c03c}%d$",Player[playerid][pPhone][1]), ShowPlayerDialog(playerid,42,DIALOG_STYLE_MSGBOX,"{1faee9}Изменения в моб.счёте",dstring,"Ок","");
+				format(dstring,100,"{ffffff}ГЋГЇГҐГ°Г ГІГ®Г°:\t\t{03c03c}SA Mobile\n{ffffff}ГЌГ  Г±Г·ГҐГІГі ГІГҐГ«ГҐГґГ®Г­Г :\t{03c03c}%d$",Player[playerid][pPhone][1]), ShowPlayerDialog(playerid,42,DIALOG_STYLE_MSGBOX,"{1faee9}Г€Г§Г¬ГҐГ­ГҐГ­ГЁГї Гў Г¬Г®ГЎ.Г±Г·ВёГІГҐ",dstring,"ГЋГЄ","");
 				return true;
 			}
 		}
 		case 46: {
 		    if(response) {
- 				format(dstring,78,"Вы назначили {ffffff}%s контролировать его организацию!",Name(GetPVarInt(playerid,"SearchID")));
+ 				format(dstring,78,"Г‚Г» Г­Г Г§Г­Г Г·ГЁГ«ГЁ {ffffff}%s ГЄГ®Г­ГІГ°Г®Г«ГЁГ°Г®ГўГ ГІГј ГҐГЈГ® Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГѕ!",Name(GetPVarInt(playerid,"SearchID")));
 		       	SCM(playerid,0x1faee9FF,dstring);
-				SCM(GetPVarInt(playerid,"SearchID"),0x1faee9FF,"Мэр назначил вас контролировать {ffffff}вашу организацию!");
+				SCM(GetPVarInt(playerid,"SearchID"),0x1faee9FF,"ГЊГЅГ° Г­Г Г§Г­Г Г·ГЁГ« ГўГ Г± ГЄГ®Г­ГІГ°Г®Г«ГЁГ°Г®ГўГ ГІГј {ffffff}ГўГ ГёГі Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГѕ!");
 				Player[GetPVarInt(playerid,"SearchID")][pFraction][0] = Player[GetPVarInt(playerid,"SearchID")][pFraction][1], Player[GetPVarInt(playerid,"SearchID")][pFraction][2] = 10;
 				FractionSkin(GetPVarInt(playerid,"SearchID"));
 		}   }
 		case 47: {
 		    if(response) {
 		        if(GetPVarInt(playerid,"TruckJob") == 1) {
-					SCM(playerid,0x1faee9FF,"Рабочий день окончен!"), format(dstring,12,"~g~+%d",GetPVarInt(playerid,"Cost")), Player[playerid][pMoney] += GetPVarInt(playerid,"Cost"),GameTextForPlayer(playerid,dstring,2000,1), SetPVarInt(playerid,"Cost",0),
+					SCM(playerid,0x1faee9FF,"ГђГ ГЎГ®Г·ГЁГ© Г¤ГҐГ­Гј Г®ГЄГ®Г­Г·ГҐГ­!"), format(dstring,12,"~g~+%d",GetPVarInt(playerid,"Cost")), Player[playerid][pMoney] += GetPVarInt(playerid,"Cost"),GameTextForPlayer(playerid,dstring,2000,1), SetPVarInt(playerid,"Cost",0),
 					SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2), SetPVarInt(playerid,"Job",0), SetPVarInt(playerid,"TruckJob",0), DisablePlayerRaceCheckpoint(playerid);
 					if(Player[playerid][ArendedVehicle] != INVALID_VEHICLE_ID) SetVehicleToRespawn(Player[playerid][ArendedVehicle]), Player[playerid][ArendedVehicle] = INVALID_VEHICLE_ID;
 				}
 				else {
-				    SCM(playerid,0x999589FF,"[F] Диспетчер: Ну что, как слышно? Меня зовут Джесси."), SCM(playerid,0x999589FF,"[F] Диспетчер: Мы выдали тебе рацию настроенную на волну дальнобойщиков (( /f ))");
-					SCM(playerid,0x999589FF,"[F] Диспетчер: На протяжении всей твоей работы я буду тебя координировать."), SCM(playerid,0x999589FF,"[F] Диспетчер: Если вдруг тебе потребутеся помощь - у тебя есть справочник (( /help ))");
-	                SCM(playerid,0x999589FF,"[F] Диспетчер: Для начала работы тебе следует арендовать грузовик."), SCM(playerid,0x999589FF,"[F] Диспетчер: Далее проследуй на точку отмеченную на твоем GPS приемнике для просмотра грузов!");
-	                SCM(playerid,0x999589FF,"[F] Диспетчер: Желаю удачи!"), SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
+				    SCM(playerid,0x999589FF,"[F] Г„ГЁГ±ГЇГҐГІГ·ГҐГ°: ГЌГі Г·ГІГ®, ГЄГ ГЄ Г±Г«Г»ГёГ­Г®? ГЊГҐГ­Гї Г§Г®ГўГіГІ Г„Г¦ГҐГ±Г±ГЁ."), SCM(playerid,0x999589FF,"[F] Г„ГЁГ±ГЇГҐГІГ·ГҐГ°: ГЊГ» ГўГ»Г¤Г Г«ГЁ ГІГҐГЎГҐ Г°Г Г¶ГЁГѕ Г­Г Г±ГІГ°Г®ГҐГ­Г­ГіГѕ Г­Г  ГўГ®Г«Г­Гі Г¤Г Г«ГјГ­Г®ГЎГ®Г©Г№ГЁГЄГ®Гў (( /f ))");
+					SCM(playerid,0x999589FF,"[F] Г„ГЁГ±ГЇГҐГІГ·ГҐГ°: ГЌГ  ГЇГ°Г®ГІГїГ¦ГҐГ­ГЁГЁ ГўГ±ГҐГ© ГІГўГ®ГҐГ© Г°Г ГЎГ®ГІГ» Гї ГЎГіГ¤Гі ГІГҐГЎГї ГЄГ®Г®Г°Г¤ГЁГ­ГЁГ°Г®ГўГ ГІГј."), SCM(playerid,0x999589FF,"[F] Г„ГЁГ±ГЇГҐГІГ·ГҐГ°: Г…Г±Г«ГЁ ГўГ¤Г°ГіГЈ ГІГҐГЎГҐ ГЇГ®ГІГ°ГҐГЎГіГІГҐГ±Гї ГЇГ®Г¬Г®Г№Гј - Гі ГІГҐГЎГї ГҐГ±ГІГј Г±ГЇГ°Г ГўГ®Г·Г­ГЁГЄ (( /help ))");
+	                SCM(playerid,0x999589FF,"[F] Г„ГЁГ±ГЇГҐГІГ·ГҐГ°: Г„Г«Гї Г­Г Г·Г Г«Г  Г°Г ГЎГ®ГІГ» ГІГҐГЎГҐ Г±Г«ГҐГ¤ГіГҐГІ Г Г°ГҐГ­Г¤Г®ГўГ ГІГј ГЈГ°ГіГ§Г®ГўГЁГЄ."), SCM(playerid,0x999589FF,"[F] Г„ГЁГ±ГЇГҐГІГ·ГҐГ°: Г„Г Г«ГҐГҐ ГЇГ°Г®Г±Г«ГҐГ¤ГіГ© Г­Г  ГІГ®Г·ГЄГі Г®ГІГ¬ГҐГ·ГҐГ­Г­ГіГѕ Г­Г  ГІГўГ®ГҐГ¬ GPS ГЇГ°ГЁГҐГ¬Г­ГЁГЄГҐ Г¤Г«Гї ГЇГ°Г®Г±Г¬Г®ГІГ°Г  ГЈГ°ГіГ§Г®Гў!");
+	                SCM(playerid,0x999589FF,"[F] Г„ГЁГ±ГЇГҐГІГ·ГҐГ°: Г†ГҐГ«Г Гѕ ГіГ¤Г Г·ГЁ!"), SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 					SetPlayerRaceCheckpoint(playerid,1,-52.3652,-221.7758,5.4297,0.0,0.0,0.0,8.0), SetPVarInt(playerid,"Job",1), SetPVarInt(playerid,"TruckJob",1);
 				}
 			}
@@ -2329,25 +2329,25 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		        switch(listitem) {
 		            case 0: {
 		                r = random(sizeof(tH1));
-		                ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{1faee9}Перевозки","{ffffff}Вы выбрали в качестве груза {1faee9}'Сырье'.{ffffff} Фура была прицеплена рабочими.\n{1faee9}Куда вести груз - показано на вашем GPS приемнике. Удачи!","Ок","");
+		                ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{1faee9}ГЏГҐГ°ГҐГўГ®Г§ГЄГЁ","{ffffff}Г‚Г» ГўГ»ГЎГ°Г Г«ГЁ Гў ГЄГ Г·ГҐГ±ГІГўГҐ ГЈГ°ГіГ§Г  {1faee9}'Г‘Г»Г°ГјГҐ'.{ffffff} Г”ГіГ°Г  ГЎГ»Г«Г  ГЇГ°ГЁГ¶ГҐГЇГ«ГҐГ­Г  Г°Г ГЎГ®Г·ГЁГ¬ГЁ.\n{1faee9}ГЉГіГ¤Г  ГўГҐГ±ГІГЁ ГЈГ°ГіГ§ - ГЇГ®ГЄГ Г§Г Г­Г® Г­Г  ГўГ ГёГҐГ¬ GPS ГЇГ°ГЁГҐГ¬Г­ГЁГЄГҐ. Г“Г¤Г Г·ГЁ!","ГЋГЄ","");
 						SetPlayerRaceCheckpoint(playerid,1,tH1[r][0],tH1[r][1],tH1[r][2],0.0,0.0,0.0,3.0), SetPVarInt(playerid,"TruckHaul",1);
 						Player[playerid][Trailer] = CreateVehicle(591,x,y,z,a,1,1,86400), AttachTrailerToVehicle(Player[playerid][Trailer],GetPlayerVehicleID(playerid));
 					}
 		            case 1: {
 		                r = random(sizeof(tH2));
-		                ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{1faee9}Перевозки","{ffffff}Вы выбрали в качестве груза {1faee9}'Нефть'.{ffffff} Фура была прицеплена рабочими.\n{1faee9}Куда вести груз - показано на вашем GPS приемнике. Удачи!","Ок","");
+		                ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{1faee9}ГЏГҐГ°ГҐГўГ®Г§ГЄГЁ","{ffffff}Г‚Г» ГўГ»ГЎГ°Г Г«ГЁ Гў ГЄГ Г·ГҐГ±ГІГўГҐ ГЈГ°ГіГ§Г  {1faee9}'ГЌГҐГґГІГј'.{ffffff} Г”ГіГ°Г  ГЎГ»Г«Г  ГЇГ°ГЁГ¶ГҐГЇГ«ГҐГ­Г  Г°Г ГЎГ®Г·ГЁГ¬ГЁ.\n{1faee9}ГЉГіГ¤Г  ГўГҐГ±ГІГЁ ГЈГ°ГіГ§ - ГЇГ®ГЄГ Г§Г Г­Г® Г­Г  ГўГ ГёГҐГ¬ GPS ГЇГ°ГЁГҐГ¬Г­ГЁГЄГҐ. Г“Г¤Г Г·ГЁ!","ГЋГЄ","");
 						SetPlayerRaceCheckpoint(playerid,1,tH2[r][0],tH2[r][1],tH2[r][2],0.0,0.0,0.0,3.0), SetPVarInt(playerid,"TruckHaul",2);
 						Player[playerid][Trailer] = CreateVehicle(584,x,y,z,a,1,1,86400), AttachTrailerToVehicle(Player[playerid][Trailer],GetPlayerVehicleID(playerid));
 					}
 		            case 2: {
 		                r = random(sizeof(tH3));
-		                ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{1faee9}Перевозки","{ffffff}Вы выбрали в качестве груза {1faee9}'Продукты'.{ffffff} Фура была прицеплена рабочими.\n{1faee9}Куда вести груз - показано на вашем GPS приемнике. Удачи!","Ок","");
+		                ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{1faee9}ГЏГҐГ°ГҐГўГ®Г§ГЄГЁ","{ffffff}Г‚Г» ГўГ»ГЎГ°Г Г«ГЁ Гў ГЄГ Г·ГҐГ±ГІГўГҐ ГЈГ°ГіГ§Г  {1faee9}'ГЏГ°Г®Г¤ГіГЄГІГ»'.{ffffff} Г”ГіГ°Г  ГЎГ»Г«Г  ГЇГ°ГЁГ¶ГҐГЇГ«ГҐГ­Г  Г°Г ГЎГ®Г·ГЁГ¬ГЁ.\n{1faee9}ГЉГіГ¤Г  ГўГҐГ±ГІГЁ ГЈГ°ГіГ§ - ГЇГ®ГЄГ Г§Г Г­Г® Г­Г  ГўГ ГёГҐГ¬ GPS ГЇГ°ГЁГҐГ¬Г­ГЁГЄГҐ. Г“Г¤Г Г·ГЁ!","ГЋГЄ","");
 						SetPlayerRaceCheckpoint(playerid,1,tH3[r][0],tH3[r][1],tH3[r][2],0.0,0.0,0.0,3.0), SetPVarInt(playerid,"TruckHaul",3);
 						Player[playerid][Trailer] = CreateVehicle(435,x,y,z,a,1,1,86400), AttachTrailerToVehicle(Player[playerid][Trailer],GetPlayerVehicleID(playerid));
 					}
 		            case 3: {
 		                r = random(sizeof(tH4));
-		                ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{1faee9}Перевозки","{ffffff}Вы выбрали в качестве груза {1faee9}'Зерно'.{ffffff} Фура была прицеплена рабочими.\n{1faee9}Куда вести груз - показано на вашем GPS приемнике. Удачи!","Ок","");
+		                ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{1faee9}ГЏГҐГ°ГҐГўГ®Г§ГЄГЁ","{ffffff}Г‚Г» ГўГ»ГЎГ°Г Г«ГЁ Гў ГЄГ Г·ГҐГ±ГІГўГҐ ГЈГ°ГіГ§Г  {1faee9}'Г‡ГҐГ°Г­Г®'.{ffffff} Г”ГіГ°Г  ГЎГ»Г«Г  ГЇГ°ГЁГ¶ГҐГЇГ«ГҐГ­Г  Г°Г ГЎГ®Г·ГЁГ¬ГЁ.\n{1faee9}ГЉГіГ¤Г  ГўГҐГ±ГІГЁ ГЈГ°ГіГ§ - ГЇГ®ГЄГ Г§Г Г­Г® Г­Г  ГўГ ГёГҐГ¬ GPS ГЇГ°ГЁГҐГ¬Г­ГЁГЄГҐ. Г“Г¤Г Г·ГЁ!","ГЋГЄ","");
 						SetPlayerRaceCheckpoint(playerid,1,tH4[r][0],tH4[r][1],tH4[r][2],0.0,0.0,0.0,3.0), SetPVarInt(playerid,"TruckHaul",4);
 						Player[playerid][Trailer] = CreateVehicle(450,x,y,z,a,1,1,86400), AttachTrailerToVehicle(Player[playerid][Trailer],GetPlayerVehicleID(playerid));
 					}
@@ -2357,29 +2357,29 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		case 49: {
 		    if(response) {
 				Player[playerid][pMoney] -= 800, GameTextForPlayer(playerid,"~r~-800$",2000,1);
-				ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{FFBF00}Правила Дорожного Движения","","Ок","");
-				SCM(playerid,-1,"Экзамен начат! {1faee9}Для начала вам следует взять учебный автомобиль, который стоит на стоянке!");
+				ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{FFBF00}ГЏГ°Г ГўГЁГ«Г  Г„Г®Г°Г®Г¦Г­Г®ГЈГ® Г„ГўГЁГ¦ГҐГ­ГЁГї","","ГЋГЄ","");
+				SCM(playerid,-1,"ГќГЄГ§Г Г¬ГҐГ­ Г­Г Г·Г ГІ! {1faee9}Г„Г«Гї Г­Г Г·Г Г«Г  ГўГ Г¬ Г±Г«ГҐГ¤ГіГҐГІ ГўГ§ГїГІГј ГіГ·ГҐГЎГ­Г»Г© Г ГўГІГ®Г¬Г®ГЎГЁГ«Гј, ГЄГ®ГІГ®Г°Г»Г© Г±ГІГ®ГЁГІ Г­Г  Г±ГІГ®ГїГ­ГЄГҐ!");
 				SetPVarInt(playerid,"Lesson",1), SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+10);
 		    }
 			else SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+2);
 		}
 		case 50: {
 		    if(response) {
-		        if(GetPVarInt(GetPVarInt(playerid,"AdID"),"Advert") == 0 || !Player[GetPVarInt(playerid,"AdID")][PlayerLogged] || !IsPlayerConnected(GetPVarInt(playerid,"AdID"))) return ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{AC7575}Ошибка","{ffffff}Игрок отключился!","Ок","");
+		        if(GetPVarInt(GetPVarInt(playerid,"AdID"),"Advert") == 0 || !Player[GetPVarInt(playerid,"AdID")][PlayerLogged] || !IsPlayerConnected(GetPVarInt(playerid,"AdID"))) return ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{AC7575}ГЋГёГЁГЎГЄГ ","{ffffff}Г€ГЈГ°Г®ГЄ Г®ГІГЄГ«ГѕГ·ГЁГ«Г±Гї!","ГЋГЄ","");
 				new fraction[7];
-				SCM(playerid,0xFFB65CFF,"[AD] Объявление подано!");
-				if(strlen(inputtext) < 2) format(ad,sizeof(ad),"Объявление: %s.Прислал: %s[%d]", Player[GetPVarInt(playerid,"AdID")][Advertise] ,Name(GetPVarInt(playerid,"AdID")),GetPVarInt(playerid,"AdID"));
-				else format(ad,sizeof(ad),"Объявление: %s.Прислал: %s(%d)", inputtext ,Name(GetPVarInt(playerid,"AdID")),GetPVarInt(playerid,"AdID"));
+				SCM(playerid,0xFFB65CFF,"[AD] ГЋГЎГєГїГўГ«ГҐГ­ГЁГҐ ГЇГ®Г¤Г Г­Г®!");
+				if(strlen(inputtext) < 2) format(ad,sizeof(ad),"ГЋГЎГєГїГўГ«ГҐГ­ГЁГҐ: %s.ГЏГ°ГЁГ±Г«Г Г«: %s[%d]", Player[GetPVarInt(playerid,"AdID")][Advertise] ,Name(GetPVarInt(playerid,"AdID")),GetPVarInt(playerid,"AdID"));
+				else format(ad,sizeof(ad),"ГЋГЎГєГїГўГ«ГҐГ­ГЁГҐ: %s.ГЏГ°ГЁГ±Г«Г Г«: %s(%d)", inputtext ,Name(GetPVarInt(playerid,"AdID")),GetPVarInt(playerid,"AdID"));
 			    SendClientMessageToAll(0x00F52DFF,ad);
 			    fraction = (Player[playerid][pFraction][1] == 13) ? ("SANews") : ("CNN");
-			    format(ad,50,"Редактор %s: %s(%d)",fraction,Name(playerid),playerid);
+			    format(ad,50,"ГђГҐГ¤Г ГЄГІГ®Г° %s: %s(%d)",fraction,Name(playerid),playerid);
 			    SendClientMessageToAll(0x00F52DFF,ad);
 			    SetPVarInt(GetPVarInt(playerid,"AdID"),"Advert",0), SetPVarInt(playerid,"AdID",INVALID_PLAYER_ID);
 			}
 		}
 		case 51: {
 		    if(response) {
-		        if(Player[playerid][pMoney] < GetPVarInt(playerid,"BuySkin")) return SCM(playerid,0xAC7575FF,"У вас недостаточно денег для данной покупки!");
+		        if(Player[playerid][pMoney] < GetPVarInt(playerid,"BuySkin")) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г¤Г Г­Г­Г®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
 		        for(new i; i <= Businesses; i++) {
 					if(!IsPlayerInRangeOfPoint(playerid,24.0,Business[i][bPX],Business[i][bPY],Business[i][bPZ]) && GetPlayerVirtualWorld(playerid) != Business[i][bVW] && GetPlayerInterior(playerid) != BInts[Business[i][bInt]][biInt]) continue;
 					Business[i][bIncome] += GetPVarInt(playerid,"BuySkin");
@@ -2443,7 +2443,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				TextDrawHideForPlayer(playerid, brSelect), TextDrawHideForPlayer(playerid, ButtonCancel), TextDrawHideForPlayer(playerid, tCost), TextDrawHideForPlayer(playerid, Player[playerid][tCostItem]);
 				SetCameraBehindPlayer(playerid);
 				format(dstring,12,"~r~-%d$",GetPVarInt(playerid,"BuySkin"));
-				SCM(playerid,0x03c03cFF,"Поздравляем вас с обновкой!"), GameTextForPlayer(playerid,dstring,1000,1), SetPVarInt(playerid,"BuySkin",0);
+				SCM(playerid,0x03c03cFF,"ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬ ГўГ Г± Г± Г®ГЎГ­Г®ГўГЄГ®Г©!"), GameTextForPlayer(playerid,dstring,1000,1), SetPVarInt(playerid,"BuySkin",0);
 				SetPlayerSkin(playerid, (Player[playerid][pFraction][1] > 0) ? Player[playerid][pModel][1] : Player[playerid][pModel][0]);
 				PlayerPlaySound(playerid, 30803, 0.0, 0.0, 0.0);
 		}   }
@@ -2451,62 +2451,62 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		    if(response) {
 		        SetPVarInt(playerid,"DialogActive",0);
 		        if(Business[GetPVarInt(playerid,"BID")][bProduct] < 1) {
-					ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{1faee9}Информация","{ffffff}На складе данного бизнеса {AC7575}недостаточно товаров!","Ок",""),
+					ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{1faee9}Г€Г­ГґГ®Г°Г¬Г Г¶ГЁГї","{ffffff}ГЌГ  Г±ГЄГ«Г Г¤ГҐ Г¤Г Г­Г­Г®ГЈГ® ГЎГЁГ§Г­ГҐГ±Г  {AC7575}Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГІГ®ГўГ Г°Г®Гў!","ГЋГЄ",""),
 					SetPVarInt(playerid,"GetPickup",gettime()+3);
 					return true;
 				}
 		        switch(listitem) {
 		            case 0: {
-						if(Player[playerid][pPhone][0] != 0) return SCM(playerid,0xFFFFFFFF,"У вас {1faee9}уже есть мобильный телефон!");
-						if(Player[playerid][pMoney] < Business[GetPVarInt(playerid,"BID")][bCost]) return SCM(playerid,0xAC7575FF,"У вас нехватает денег для совершения данной покупки!");
+						if(Player[playerid][pPhone][0] != 0) return SCM(playerid,0xFFFFFFFF,"Г“ ГўГ Г± {1faee9}ГіГ¦ГҐ ГҐГ±ГІГј Г¬Г®ГЎГЁГ«ГјГ­Г»Г© ГІГҐГ«ГҐГґГ®Г­!");
+						if(Player[playerid][pMoney] < Business[GetPVarInt(playerid,"BID")][bCost]) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГµГўГ ГІГ ГҐГІ Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г±Г®ГўГҐГ°ГёГҐГ­ГЁГї Г¤Г Г­Г­Г®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
 						Player[playerid][pMoney] -= Business[GetPVarInt(playerid,"BID")][bCost];
 						Player[playerid][pPhone][0] = 9001+random(90000), Player[playerid][pPhone][1] = Business[GetPVarInt(playerid,"BID")][bCost];
 						Business[GetPVarInt(playerid,"BID")][bIncome] += Business[GetPVarInt(playerid,"BID")][bCost];
 						Business[GetPVarInt(playerid,"BID")][bProduct]--;
-						format(dstring,32,"Ваш новый номер: {ffffff}%d",Player[playerid][pPhone][0]), SCM(playerid,0x1faee9FF,dstring);
+						format(dstring,32,"Г‚Г Гё Г­Г®ГўГ»Г© Г­Г®Г¬ГҐГ°: {ffffff}%d",Player[playerid][pPhone][0]), SCM(playerid,0x1faee9FF,dstring);
 		            }
 		            case 1: {
-						if(Player[playerid][pPhone][0] == 0) return SCM(playerid,0xAC7575FF,"У вас нет мобильного телефона!");
-						if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],12)) return SCM(playerid,0xAC7575FF,"У вас нехватает денег для совершения данной покупки!");
+						if(Player[playerid][pPhone][0] == 0) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГІ Г¬Г®ГЎГЁГ«ГјГ­Г®ГЈГ® ГІГҐГ«ГҐГґГ®Г­Г !");
+						if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],12)) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГµГўГ ГІГ ГҐГІ Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г±Г®ГўГҐГ°ГёГҐГ­ГЁГї Г¤Г Г­Г­Г®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
                         Player[playerid][pMoney] -= pernumber(Business[GetPVarInt(playerid,"BID")][bCost],10);
 						Player[playerid][pPhone][0] = 9001+random(90000);
 						Business[GetPVarInt(playerid,"BID")][bIncome] += pernumber(Business[GetPVarInt(playerid,"BID")][bCost],12);
 						Business[GetPVarInt(playerid,"BID")][bProduct]--;
-						format(dstring,32,"Ваш новый номер: {ffffff}%d",Player[playerid][pPhone][0]), SCM(playerid,0x1faee9FF,dstring);
+						format(dstring,32,"Г‚Г Гё Г­Г®ГўГ»Г© Г­Г®Г¬ГҐГ°: {ffffff}%d",Player[playerid][pPhone][0]), SCM(playerid,0x1faee9FF,dstring);
 					}
 					case 2: {
-                        if((Player[playerid][CGR] & (1<<0)) != 0) return SCM(playerid,0xAC7575FF,"У вас уже есть наручные часы!");
-						if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],20)) return SCM(playerid,0xAC7575FF,"У вас нехватает денег для совершения данной покупки!");
-						Player[playerid][CGR] ^= (1<<0), SCM(playerid,0xFFFFFFFF,"Наручные часы {1faee9}приобретены!");
+                        if((Player[playerid][CGR] & (1<<0)) != 0) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± ГіГ¦ГҐ ГҐГ±ГІГј Г­Г Г°ГіГ·Г­Г»ГҐ Г·Г Г±Г»!");
+						if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],20)) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГµГўГ ГІГ ГҐГІ Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г±Г®ГўГҐГ°ГёГҐГ­ГЁГї Г¤Г Г­Г­Г®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
+						Player[playerid][CGR] ^= (1<<0), SCM(playerid,0xFFFFFFFF,"ГЌГ Г°ГіГ·Г­Г»ГҐ Г·Г Г±Г» {1faee9}ГЇГ°ГЁГ®ГЎГ°ГҐГІГҐГ­Г»!");
 						Player[playerid][pMoney] -= pernumber(Business[GetPVarInt(playerid,"BID")][bCost],20);
                         Business[GetPVarInt(playerid,"BID")][bProduct]--;
 						Business[GetPVarInt(playerid,"BID")][bIncome] += pernumber(Business[GetPVarInt(playerid,"BID")][bCost],20);
 					}
 					case 3: {
-					    if((Player[playerid][CGR] & (1<<1)) != 0) return SCM(playerid,0xAC7575FF,"У вас уже есть GPS-навигатор!");
-						if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],35)) return SCM(playerid,0xAC7575FF,"У вас нехватает денег для совершения данной покупки!");
-						Player[playerid][CGR] ^= (1<<1), SCM(playerid,0xFFFFFFFF,"GPS-навигатор {1faee9}приобретен!");
+					    if((Player[playerid][CGR] & (1<<1)) != 0) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± ГіГ¦ГҐ ГҐГ±ГІГј GPS-Г­Г ГўГЁГЈГ ГІГ®Г°!");
+						if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],35)) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГµГўГ ГІГ ГҐГІ Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г±Г®ГўГҐГ°ГёГҐГ­ГЁГї Г¤Г Г­Г­Г®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
+						Player[playerid][CGR] ^= (1<<1), SCM(playerid,0xFFFFFFFF,"GPS-Г­Г ГўГЁГЈГ ГІГ®Г° {1faee9}ГЇГ°ГЁГ®ГЎГ°ГҐГІГҐГ­!");
 						Player[playerid][pMoney] -= pernumber(Business[GetPVarInt(playerid,"BID")][bCost],35);
 						Business[GetPVarInt(playerid,"BID")][bIncome] += pernumber(Business[GetPVarInt(playerid,"BID")][bCost],35);
 						Business[GetPVarInt(playerid,"BID")][bProduct]--;
 					}
 					case 4: {
-                        if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],56)) return SCM(playerid,0xAC7575FF,"У вас нехватает денег для совершения данной покупки!");
-                        GiveWeapon(playerid,5,1), SCM(playerid,0xFFFFFFFF,"Бейсбольная бита {1faee9}приобретена!");
+                        if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],56)) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГµГўГ ГІГ ГҐГІ Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г±Г®ГўГҐГ°ГёГҐГ­ГЁГї Г¤Г Г­Г­Г®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
+                        GiveWeapon(playerid,5,1), SCM(playerid,0xFFFFFFFF,"ГЃГҐГ©Г±ГЎГ®Г«ГјГ­Г Гї ГЎГЁГІГ  {1faee9}ГЇГ°ГЁГ®ГЎГ°ГҐГІГҐГ­Г !");
                         Player[playerid][pMoney] -= pernumber(Business[GetPVarInt(playerid,"BID")][bCost],56);
                         Business[GetPVarInt(playerid,"BID")][bIncome] += pernumber(Business[GetPVarInt(playerid,"BID")][bCost],56);
                         Business[GetPVarInt(playerid,"BID")][bProduct]--;
 					}
 					case 5: {
-                        if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],72)) return SCM(playerid,0xAC7575FF,"У вас нехватает денег для совершения данной покупки!");
+                        if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],72)) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГµГўГ ГІГ ГҐГІ Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г±Г®ГўГҐГ°ГёГҐГ­ГЁГї Г¤Г Г­Г­Г®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
                         Player[playerid][pMoney] -= pernumber(Business[GetPVarInt(playerid,"BID")][bCost],72);
-                        GiveWeapon(playerid,43,10), SCM(playerid,0xFFFFFFFF,"Фотоаппарат {1faee9}приобретен!");
+                        GiveWeapon(playerid,43,10), SCM(playerid,0xFFFFFFFF,"Г”Г®ГІГ®Г ГЇГЇГ Г°Г ГІ {1faee9}ГЇГ°ГЁГ®ГЎГ°ГҐГІГҐГ­!");
                         Business[GetPVarInt(playerid,"BID")][bProduct]--;
 					}
 					case 6: {
-					    if((Player[playerid][CGR] & (1<<2)) != 0) return SCM(playerid,0xAC7575FF,"У вас уже есть набор для ремонта!");
-                        if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],100)) return SCM(playerid,0xAC7575FF,"У вас нехватает денег для совершения данной покупки!");
-                        Player[playerid][CGR] ^= (1<<2), SCM(playerid,0xFFFFFFFF,"Набор для ремонта {1faee9}приобретен!");
+					    if((Player[playerid][CGR] & (1<<2)) != 0) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± ГіГ¦ГҐ ГҐГ±ГІГј Г­Г ГЎГ®Г° Г¤Г«Гї Г°ГҐГ¬Г®Г­ГІГ !");
+                        if(Player[playerid][pMoney] < pernumber(Business[GetPVarInt(playerid,"BID")][bCost],100)) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГµГўГ ГІГ ГҐГІ Г¤ГҐГ­ГҐГЈ Г¤Г«Гї Г±Г®ГўГҐГ°ГёГҐГ­ГЁГї Г¤Г Г­Г­Г®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
+                        Player[playerid][CGR] ^= (1<<2), SCM(playerid,0xFFFFFFFF,"ГЌГ ГЎГ®Г° Г¤Г«Гї Г°ГҐГ¬Г®Г­ГІГ  {1faee9}ГЇГ°ГЁГ®ГЎГ°ГҐГІГҐГ­!");
                         Player[playerid][pMoney] -= pernumber(Business[GetPVarInt(playerid,"BID")][bCost],100);
                         Business[GetPVarInt(playerid,"BID")][bIncome] += pernumber(Business[GetPVarInt(playerid,"BID")][bCost],100);
                         Business[GetPVarInt(playerid,"BID")][bProduct]--;
@@ -2518,16 +2518,16 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
        	case 53: {
 			if(response) {
 				switch(listitem) {
-				    case 0: SetPVarInt(playerid,"Number",1), ShowPlayerDialog(playerid,54,DIALOG_STYLE_LIST,"{FFC800}Очки","{ffffff}Черные очки {03c03c}[80$]\n{ffffff}Красные очки {03c03c}[80$]\n{ffffff}Синие очки {03c03c}[80$]\n{ffffff}X-RAY очки {AC7575}[200$]","Купить","Отмена");
-					case 1: SetPVarInt(playerid,"Number",2), ShowPlayerDialog(playerid,54,DIALOG_STYLE_LIST,"{FFC800}Шляпы","{ffffff}Ковбой-1 {03c03c}[110$]\n{ffffff}Ковбой-2 {03c03c}[110$]\n{ffffff}Панама {03c03c}[90$]\n{ffffff}Чаплин {AC7575}[300$]\n{ffffff}Чаплин-Синяя {AC7575}[300$]\n{ffffff}Чаплин-Красная {AC7575}[300$]","Купить","Отмена");
+				    case 0: SetPVarInt(playerid,"Number",1), ShowPlayerDialog(playerid,54,DIALOG_STYLE_LIST,"{FFC800}ГЋГ·ГЄГЁ","{ffffff}Г—ГҐГ°Г­Г»ГҐ Г®Г·ГЄГЁ {03c03c}[80$]\n{ffffff}ГЉГ°Г Г±Г­Г»ГҐ Г®Г·ГЄГЁ {03c03c}[80$]\n{ffffff}Г‘ГЁГ­ГЁГҐ Г®Г·ГЄГЁ {03c03c}[80$]\n{ffffff}X-RAY Г®Г·ГЄГЁ {AC7575}[200$]","ГЉГіГЇГЁГІГј","ГЋГІГ¬ГҐГ­Г ");
+					case 1: SetPVarInt(playerid,"Number",2), ShowPlayerDialog(playerid,54,DIALOG_STYLE_LIST,"{FFC800}ГГ«ГїГЇГ»","{ffffff}ГЉГ®ГўГЎГ®Г©-1 {03c03c}[110$]\n{ffffff}ГЉГ®ГўГЎГ®Г©-2 {03c03c}[110$]\n{ffffff}ГЏГ Г­Г Г¬Г  {03c03c}[90$]\n{ffffff}Г—Г ГЇГ«ГЁГ­ {AC7575}[300$]\n{ffffff}Г—Г ГЇГ«ГЁГ­-Г‘ГЁГ­ГїГї {AC7575}[300$]\n{ffffff}Г—Г ГЇГ«ГЁГ­-ГЉГ°Г Г±Г­Г Гї {AC7575}[300$]","ГЉГіГЇГЁГІГј","ГЋГІГ¬ГҐГ­Г ");
 				}
 			}
-        	ShowPlayerDialog(playerid,53,DIALOG_STYLE_LIST,"{FFC800}Ассортимент магазина","{ffffff}Очки\nШляпки\nБереты\nБанданы\nМаски","Выбор","Отмена");
+        	ShowPlayerDialog(playerid,53,DIALOG_STYLE_LIST,"{FFC800}ГЂГ±Г±Г®Г°ГІГЁГ¬ГҐГ­ГІ Г¬Г ГЈГ Г§ГЁГ­Г ","{ffffff}ГЋГ·ГЄГЁ\nГГ«ГїГЇГЄГЁ\nГЃГҐГ°ГҐГІГ»\nГЃГ Г­Г¤Г Г­Г»\nГЊГ Г±ГЄГЁ","Г‚Г»ГЎГ®Г°","ГЋГІГ¬ГҐГ­Г ");
         	SetPVarInt(playerid,"DialogActive",0), SetPVarInt(playerid,"GetPickup",gettime()+3);
 		}
 		case 54: {
 		    if(response) {
-				// В разработке!
+				// Г‚ Г°Г Г§Г°Г ГЎГ®ГІГЄГҐ!
 		    }
 		}
 		case 55: {
@@ -2535,11 +2535,11 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				switch(listitem) {
 					case 0: {
 						Player[GetPVarInt(playerid,"SearchID")][Licenses] ^= (1<<0);
-						SCM(playerid,0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<0)) != 0) ? ("Водительское удостоверение {ffffff}выдано!") : ("Водительское удостоверение {ffffff}аннулировано!")), SCM(GetPVarInt(playerid,"SearchID"),0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<0)) != 0) ? ("Вам выдано {ffffff}водительское удостоверение!") : ("Ваше водительское удостоверение было {ffffff}аннулировано!"));
+						SCM(playerid,0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<0)) != 0) ? ("Г‚Г®Г¤ГЁГІГҐГ«ГјГ±ГЄГ®ГҐ ГіГ¤Г®Г±ГІГ®ГўГҐГ°ГҐГ­ГЁГҐ {ffffff}ГўГ»Г¤Г Г­Г®!") : ("Г‚Г®Г¤ГЁГІГҐГ«ГјГ±ГЄГ®ГҐ ГіГ¤Г®Г±ГІГ®ГўГҐГ°ГҐГ­ГЁГҐ {ffffff}Г Г­Г­ГіГ«ГЁГ°Г®ГўГ Г­Г®!")), SCM(GetPVarInt(playerid,"SearchID"),0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<0)) != 0) ? ("Г‚Г Г¬ ГўГ»Г¤Г Г­Г® {ffffff}ГўГ®Г¤ГЁГІГҐГ«ГјГ±ГЄГ®ГҐ ГіГ¤Г®Г±ГІГ®ГўГҐГ°ГҐГ­ГЁГҐ!") : ("Г‚Г ГёГҐ ГўГ®Г¤ГЁГІГҐГ«ГјГ±ГЄГ®ГҐ ГіГ¤Г®Г±ГІГ®ГўГҐГ°ГҐГ­ГЁГҐ ГЎГ»Г«Г® {ffffff}Г Г­Г­ГіГ«ГЁГ°Г®ГўГ Г­Г®!"));
 					}
 					case 1: {
 						Player[GetPVarInt(playerid,"SearchID")][Licenses] ^= (1<<1);
-						SCM(playerid,0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<1)) != 0) ? ("Лицензия на управление воздушным ТС {ffffff}выдана!") : ("Лицензия на управление воздушным ТС {ffffff}аннулирована!")), SCM(GetPVarInt(playerid,"SearchID"),0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<1)) != 0) ? ("Вам выдана {ffffff}лицензия на управление воздушным ТC!") : ("Ваша лицензия на управление воздушным ТС была {ffffff}аннулирована!"));
+						SCM(playerid,0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<1)) != 0) ? ("Г‹ГЁГ¶ГҐГ­Г§ГЁГї Г­Г  ГіГЇГ°Г ГўГ«ГҐГ­ГЁГҐ ГўГ®Г§Г¤ГіГёГ­Г»Г¬ Г’Г‘ {ffffff}ГўГ»Г¤Г Г­Г !") : ("Г‹ГЁГ¶ГҐГ­Г§ГЁГї Г­Г  ГіГЇГ°Г ГўГ«ГҐГ­ГЁГҐ ГўГ®Г§Г¤ГіГёГ­Г»Г¬ Г’Г‘ {ffffff}Г Г­Г­ГіГ«ГЁГ°Г®ГўГ Г­Г !")), SCM(GetPVarInt(playerid,"SearchID"),0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<1)) != 0) ? ("Г‚Г Г¬ ГўГ»Г¤Г Г­Г  {ffffff}Г«ГЁГ¶ГҐГ­Г§ГЁГї Г­Г  ГіГЇГ°Г ГўГ«ГҐГ­ГЁГҐ ГўГ®Г§Г¤ГіГёГ­Г»Г¬ Г’C!") : ("Г‚Г ГёГ  Г«ГЁГ¶ГҐГ­Г§ГЁГї Г­Г  ГіГЇГ°Г ГўГ«ГҐГ­ГЁГҐ ГўГ®Г§Г¤ГіГёГ­Г»Г¬ Г’Г‘ ГЎГ»Г«Г  {ffffff}Г Г­Г­ГіГ«ГЁГ°Г®ГўГ Г­Г !"));
 					}
 				}
 			}
@@ -2547,33 +2547,33 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		case 56: {
 			if(response) {
 		    	Player[GetPVarInt(playerid,"SearchID")][Licenses] ^= (1<<2);
-				SCM(playerid,0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<2)) != 0) ? ("Лицензия на хранение оружия {ffffff}выдана!") : ("Лицензия на хранение оружия {ffffff}аннулирована!")), SCM(GetPVarInt(playerid,"SearchID"),0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<2)) != 0) ? ("Вам выдана {ffffff}лицензия на хранение оружия!") : ("Ваша лицензия на хранение оружия была {ffffff}аннулирована!"));
+				SCM(playerid,0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<2)) != 0) ? ("Г‹ГЁГ¶ГҐГ­Г§ГЁГї Г­Г  ГµГ°Г Г­ГҐГ­ГЁГҐ Г®Г°ГіГ¦ГЁГї {ffffff}ГўГ»Г¤Г Г­Г !") : ("Г‹ГЁГ¶ГҐГ­Г§ГЁГї Г­Г  ГµГ°Г Г­ГҐГ­ГЁГҐ Г®Г°ГіГ¦ГЁГї {ffffff}Г Г­Г­ГіГ«ГЁГ°Г®ГўГ Г­Г !")), SCM(GetPVarInt(playerid,"SearchID"),0x1faee9FF, ((Player[GetPVarInt(playerid,"SearchID")][Licenses] & (1<<2)) != 0) ? ("Г‚Г Г¬ ГўГ»Г¤Г Г­Г  {ffffff}Г«ГЁГ¶ГҐГ­Г§ГЁГї Г­Г  ГµГ°Г Г­ГҐГ­ГЁГҐ Г®Г°ГіГ¦ГЁГї!") : ("Г‚Г ГёГ  Г«ГЁГ¶ГҐГ­Г§ГЁГї Г­Г  ГµГ°Г Г­ГҐГ­ГЁГҐ Г®Г°ГіГ¦ГЁГї ГЎГ»Г«Г  {ffffff}Г Г­Г­ГіГ«ГЁГ°Г®ГўГ Г­Г !"));
 			}
 		}
 		case 57: {
 		    if(response) {
-		        if(Player[playerid][pFraction][2] < 4) return SCM(playerid,0xFF0000FF,"Функция доступна с 4 ранга!");
-		        if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,57,DIALOG_STYLE_INPUT,"Склал банды","{ffffff}Пожалуйста введите кол-во наркотиков которое хотите взять или положить на склад банды.\n{ff0000}Внимание, перед суммой поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы взять.\n{ffffff}Пример: {ff0000}+10","Далее","Отмена");
+		        if(Player[playerid][pFraction][2] < 4) return SCM(playerid,0xFF0000FF,"Г”ГіГ­ГЄГ¶ГЁГї Г¤Г®Г±ГІГіГЇГ­Г  Г± 4 Г°Г Г­ГЈГ !");
+		        if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,57,DIALOG_STYLE_INPUT,"Г‘ГЄГ«Г Г« ГЎГ Г­Г¤Г»","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ ГЄГ®Г«-ГўГ® Г­Г Г°ГЄГ®ГІГЁГЄГ®Гў ГЄГ®ГІГ®Г°Г®ГҐ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Г­Г  Г±ГЄГ«Г Г¤ ГЎГ Г­Г¤Г».\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г±ГіГ¬Г¬Г®Г© ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» ГўГ§ГїГІГј.\n{ffffff}ГЏГ°ГЁГ¬ГҐГ°: {ff0000}+10","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
             	for(new i = strlen(inputtext); i != 0; --i) {
            			switch(inputtext[i]) {
-					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,57,DIALOG_STYLE_INPUT,"{ff2400}Ошибка","{ffffff}Пожалуйста повторите {03c03c}попытку.","Ок","");
+					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,57,DIALOG_STYLE_INPUT,"{ff2400}ГЋГёГЁГЎГЄГ ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГЇГ®ГўГІГ®Г°ГЁГІГҐ {03c03c}ГЇГ®ГЇГ»ГІГЄГі.","ГЋГЄ","");
 					}
 				}
 				for(new w;w<sizeof(Ware);w++) {
 					if(IsPlayerInRangeOfPoint(playerid, 3.0, Ware[w][wX], Ware[w][wY], Ware[w][wZ]) && Player[playerid][pFraction][1] == Ware[w][wFraction]) {
 					    if(strfind(inputtext, "+", true) != -1) {
 		    				strdel(inputtext,0,1);
-							if(Player[playerid][pDrugs] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"У вас недостаточно наркотиков!");
+							if(Player[playerid][pDrugs] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г­Г Г°ГЄГ®ГІГЁГЄГ®Гў!");
 							Ware[w][wDrugs] += strval(inputtext), Player[playerid][pDrugs] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Склад %s\nАммуниции: %d\nНаркотиков: %d\nДенег: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГЄГ«Г Г¤ %s\nГЂГ¬Г¬ГіГ­ГЁГ¶ГЁГЁ: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГ®Гў: %d\nГ„ГҐГ­ГҐГЈ: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
 	 						UpdateDynamic3DTextLabelText(warehouset[w], 0xFF9900FF, warehousetext);
 	 						return false;
 						}
 	    				else if(strfind(inputtext, "-", true) != -1) {
 							strdel(inputtext,0,1);
-							if(Ware[w][wDrugs] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"На складе недостаточно наркотиков!");
+							if(Ware[w][wDrugs] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"ГЌГ  Г±ГЄГ«Г Г¤ГҐ Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г­Г Г°ГЄГ®ГІГЁГЄГ®Гў!");
 							Player[playerid][pDrugs] += strval(inputtext), Ware[w][wAmmo] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Склад %s\nАммуниции: %d\nНаркотиков: %d\nДенег: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГЄГ«Г Г¤ %s\nГЂГ¬Г¬ГіГ­ГЁГ¶ГЁГЁ: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГ®Гў: %d\nГ„ГҐГ­ГҐГЈ: %d",Ware[w][wName], Ware[w][wAmmo], Ware[w][wDrugs], Ware[w][wMoney]);
 	 						UpdateDynamic3DTextLabelText(warehouset[w], 0xFF9900FF, warehousetext);
 	 						return false;
 	 					}
@@ -2585,20 +2585,20 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(response) {
 			    switch(listitem) {
 				    case 0: {
-						format(dstring,68,"{ffffff}Прибыль: {03c03c}%i$\n{ffffff}Убытки: {AC7575}%i$",Business[Player[playerid][pBusiness]][bIncome], Business[Player[playerid][pBusiness]][bCommunal]);
-						ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{ffffff}Статистика {1faee9}Бизнеса",dstring,"Ок","");
+						format(dstring,68,"{ffffff}ГЏГ°ГЁГЎГ»Г«Гј: {03c03c}%i$\n{ffffff}Г“ГЎГ»ГІГЄГЁ: {AC7575}%i$",Business[Player[playerid][pBusiness]][bIncome], Business[Player[playerid][pBusiness]][bCommunal]);
+						ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{ffffff}Г‘ГІГ ГІГЁГ±ГІГЁГЄГ  {1faee9}ГЃГЁГ§Г­ГҐГ±Г ",dstring,"ГЋГЄ","");
 				    }
 				    case 1: {
-	                    format(dstring,72,"{ffffff}Товара: {03c03c}%i шт.\n{ffffff}Цена за товар: {AC7575}%i$",Business[Player[playerid][pBusiness]][bProduct], Business[Player[playerid][pBusiness]][bCost]);
-						ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{ffffff}Статистика {1faee9}Бизнеса",dstring,"Ок","");
+	                    format(dstring,72,"{ffffff}Г’Г®ГўГ Г°Г : {03c03c}%i ГёГІ.\n{ffffff}Г–ГҐГ­Г  Г§Г  ГІГ®ГўГ Г°: {AC7575}%i$",Business[Player[playerid][pBusiness]][bProduct], Business[Player[playerid][pBusiness]][bCost]);
+						ShowPlayerDialog(playerid,999,DIALOG_STYLE_MSGBOX,"{ffffff}Г‘ГІГ ГІГЁГ±ГІГЁГЄГ  {1faee9}ГЃГЁГ§Г­ГҐГ±Г ",dstring,"ГЋГЄ","");
 				    }
 				    case 2: {
-				        if(!IsPlayerInRangeOfPoint(playerid,10.0,Business[Player[playerid][pBusiness]][bX],Business[Player[playerid][pBusiness]][bY],Business[Player[playerid][pBusiness]][bZ])) return SCM(playerid,0xFFFFFFFF,"Необходимо {1faee9}находиться возле бизнеса!");
-						SetPVarInt(playerid,"Number",1), ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Цена за товар","{ffffff}Пожалуйста {1faee9}укажите цену за продаваемый товар ( минимальную )","Далее","Отмена");
+				        if(!IsPlayerInRangeOfPoint(playerid,10.0,Business[Player[playerid][pBusiness]][bX],Business[Player[playerid][pBusiness]][bY],Business[Player[playerid][pBusiness]][bZ])) return SCM(playerid,0xFFFFFFFF,"ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® {1faee9}Г­Г ГµГ®Г¤ГЁГІГјГ±Гї ГўГ®Г§Г«ГҐ ГЎГЁГ§Г­ГҐГ±Г !");
+						SetPVarInt(playerid,"Number",1), ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Г–ГҐГ­Г  Г§Г  ГІГ®ГўГ Г°","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  {1faee9}ГіГЄГ Г¦ГЁГІГҐ Г¶ГҐГ­Гі Г§Г  ГЇГ°Г®Г¤Г ГўГ ГҐГ¬Г»Г© ГІГ®ГўГ Г° ( Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­ГіГѕ )","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 				    }
 				    case 3: {
-				        if(!IsPlayerInRangeOfPoint(playerid,10.0,Business[Player[playerid][pBusiness]][bX],Business[Player[playerid][pBusiness]][bY],Business[Player[playerid][pBusiness]][bZ])) return SCM(playerid,0xFFFFFFFF,"Необходимо {1faee9}находиться возле бизнеса!");
-                        SetPVarInt(playerid,"Number",2), ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Забрать доход","{ffffff}Пожалуйста {1faee9}укажите сумму которую вы хотите снять","Далее","Отмена");
+				        if(!IsPlayerInRangeOfPoint(playerid,10.0,Business[Player[playerid][pBusiness]][bX],Business[Player[playerid][pBusiness]][bY],Business[Player[playerid][pBusiness]][bZ])) return SCM(playerid,0xFFFFFFFF,"ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® {1faee9}Г­Г ГµГ®Г¤ГЁГІГјГ±Гї ГўГ®Г§Г«ГҐ ГЎГЁГ§Г­ГҐГ±Г !");
+                        SetPVarInt(playerid,"Number",2), ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Г‡Г ГЎГ°Г ГІГј Г¤Г®ГµГ®Г¤","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  {1faee9}ГіГЄГ Г¦ГЁГІГҐ Г±ГіГ¬Г¬Гі ГЄГ®ГІГ®Г°ГіГѕ ГўГ» ГµГ®ГІГЁГІГҐ Г±Г­ГїГІГј","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 					}
 				    case 4: callcmd::sellbiz(playerid, "");
 				}
@@ -2608,40 +2608,40 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		    if(response) {
 		        for(new i = strlen(inputtext); i != 0; --i) {
            			switch(inputtext[i]) {
-					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{ff2400}Ошибка","{ffffff}Пожалуйста повторите {03c03c}попытку.","Ок","");
+					   	case 'A'..'Z', 'a'..'z', ' ': return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{ff2400}ГЋГёГЁГЎГЄГ ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГЇГ®ГўГІГ®Г°ГЁГІГҐ {03c03c}ГЇГ®ГЇГ»ГІГЄГі.","ГЋГЄ","");
 					}
 				}
 		        if(GetPVarInt(playerid,"Number") == 1) {
-		            if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Цена за товар","{ffffff}Пожалуйста {1faee9}укажите цену за продаваемый товар ( минимальную )","Далее","Отмена");
-		            if(1 < strval(inputtext) > 1000) return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Цена за товар","{ffffff}Цена за товар {1faee9}не должна быть меньше 1$ и не больше 1000$","Далее","Отмена");
-					Business[Player[playerid][pBusiness]][bCost] = strval(inputtext), SCM(playerid,0x03c03cFF,"Цена за товар установлена!");
+		            if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Г–ГҐГ­Г  Г§Г  ГІГ®ГўГ Г°","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  {1faee9}ГіГЄГ Г¦ГЁГІГҐ Г¶ГҐГ­Гі Г§Г  ГЇГ°Г®Г¤Г ГўГ ГҐГ¬Г»Г© ГІГ®ГўГ Г° ( Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­ГіГѕ )","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+		            if(1 < strval(inputtext) > 1000) return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Г–ГҐГ­Г  Г§Г  ГІГ®ГўГ Г°","{ffffff}Г–ГҐГ­Г  Г§Г  ГІГ®ГўГ Г° {1faee9}Г­ГҐ Г¤Г®Г«Г¦Г­Г  ГЎГ»ГІГј Г¬ГҐГ­ГјГёГҐ 1$ ГЁ Г­ГҐ ГЎГ®Г«ГјГёГҐ 1000$","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+					Business[Player[playerid][pBusiness]][bCost] = strval(inputtext), SCM(playerid,0x03c03cFF,"Г–ГҐГ­Г  Г§Г  ГІГ®ГўГ Г° ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г !");
 				}
 				if(GetPVarInt(playerid,"Number") == 2) {
-                    if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Забрать доход","{ffffff}Пожалуйста {1faee9}укажите сумму которую вы хотите снять","Далее","Отмена");
-                    if(1 < strval(inputtext) > 100000) return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Забрать доход","{ffffff}Сумма {1faee9}не должна быть меньше 1$ и не больше 100000$","Далее","Отмена");
-					if(Business[Player[playerid][pBusiness]][bIncome] < strval(inputtext)) return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Забрать доход","{ffffff}Ваш бизнес {1faee9}не имеет такого дохода!","Далее","Отмена");
-                    Business[Player[playerid][pBusiness]][bIncome] -= strval(inputtext), Player[playerid][pMoney] += strval(inputtext), SCM(playerid,0x03c03cFF,"Часть с суммы заработка бизнеса снята!");
+                    if(strlen(inputtext) == 0) return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Г‡Г ГЎГ°Г ГІГј Г¤Г®ГµГ®Г¤","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  {1faee9}ГіГЄГ Г¦ГЁГІГҐ Г±ГіГ¬Г¬Гі ГЄГ®ГІГ®Г°ГіГѕ ГўГ» ГµГ®ГІГЁГІГҐ Г±Г­ГїГІГј","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+                    if(1 < strval(inputtext) > 100000) return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Г‡Г ГЎГ°Г ГІГј Г¤Г®ГµГ®Г¤","{ffffff}Г‘ГіГ¬Г¬Г  {1faee9}Г­ГҐ Г¤Г®Г«Г¦Г­Г  ГЎГ»ГІГј Г¬ГҐГ­ГјГёГҐ 1$ ГЁ Г­ГҐ ГЎГ®Г«ГјГёГҐ 100000$","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+					if(Business[Player[playerid][pBusiness]][bIncome] < strval(inputtext)) return ShowPlayerDialog(playerid,59,DIALOG_STYLE_INPUT,"{FFC800}Г‡Г ГЎГ°Г ГІГј Г¤Г®ГµГ®Г¤","{ffffff}Г‚Г Гё ГЎГЁГ§Г­ГҐГ± {1faee9}Г­ГҐ ГЁГ¬ГҐГҐГІ ГІГ ГЄГ®ГЈГ® Г¤Г®ГµГ®Г¤Г !","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+                    Business[Player[playerid][pBusiness]][bIncome] -= strval(inputtext), Player[playerid][pMoney] += strval(inputtext), SCM(playerid,0x03c03cFF,"Г—Г Г±ГІГј Г± Г±ГіГ¬Г¬Г» Г§Г Г°Г ГЎГ®ГІГЄГ  ГЎГЁГ§Г­ГҐГ±Г  Г±Г­ГїГІГ !");
 				}
 		    }
 		}
 		case 60: {
 		    if(response) {
 		        new debt[84];
-				SCM(playerid,0xD58000FF,"Задолжности:");
+				SCM(playerid,0xD58000FF,"Г‡Г Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ:");
 		        switch(listitem) {
 		            case 0: {
 		                for(new i; i <= Houses; i++) {
  							if(strcmp(House[i][hOwner],"None",true,25) == 0 || House[i][hCommunal] > -1) continue;
- 							format(debt,sizeof(debt),"%Дом №%d[%s]: %d$",House[i][hID],House[i][hOwner],House[i][hCommunal]), SCM(playerid,0xDCA900FF,debt);
+ 							format(debt,sizeof(debt),"%Г„Г®Г¬ В№%d[%s]: %d$",House[i][hID],House[i][hOwner],House[i][hCommunal]), SCM(playerid,0xDCA900FF,debt);
 					}   }
 		            case 1: {
 		                for(new i; i <= Businesses; i++)  {
 	    					if(strcmp(Business[i][bOwner],"None",true,25) == 0 || Business[i][bCommunal] > -1) continue;
-							format(debt,sizeof(debt),"Бизнес %s[%s]: %d$",Business[i][bName],Business[i][bOwner],Business[i][bCommunal]), SCM(playerid,0xDCA900FF,debt);
+							format(debt,sizeof(debt),"ГЃГЁГ§Г­ГҐГ± %s[%s]: %d$",Business[i][bName],Business[i][bOwner],Business[i][bCommunal]), SCM(playerid,0xDCA900FF,debt);
 	    }   }   }   }   }
 	    case 61: {
 			if(response) {
-   				if(Player[playerid][pMoney] < VehicleCost[GetPVarInt(playerid,"BuyCase")]) return SCM(playerid,0xAC7575FF,"У вас недостаточно денег для покупки этого авто!");
+   				if(Player[playerid][pMoney] < VehicleCost[GetPVarInt(playerid,"BuyCase")]) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї ГЇГ®ГЄГіГЇГЄГЁ ГЅГІГ®ГЈГ® Г ГўГІГ®!");
  				switch(GetPVarInt(playerid,"BuyCase")) {
 					case 1: Player[playerid][pCar][0] = GetPVarInt(playerid,"BuyCar"), Player[playerid][pMoney] -= VehicleCost[GetPVarInt(playerid,"BuyCase")], Player[playerid][pCar][1] = -1;
  					case 2: Player[playerid][pCar][0] = GetPVarInt(playerid,"BuyCar"), Player[playerid][pMoney] -= VehicleCost[GetPVarInt(playerid,"BuyCase")], Player[playerid][pCar][1] = -1;
@@ -2652,7 +2652,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				TextDrawHideForPlayer(playerid, asExit), TextDrawHideForPlayer(playerid, asBBuy), TextDrawHideForPlayer(playerid, asBExit);
 				format(dstring,22,"~r~-%d$",VehicleCost[GetPVarInt(playerid,"BuyCase")]);
     			DestroyVehicle(Player[playerid][pCar][3]);
-				SCM(playerid,0x03c03cFF,"Поздравляем вас с покупкой нового автомобиля, {ffffff}он стоит на паркове Автосалона!"), GameTextForPlayer(playerid,dstring,1000,1);
+				SCM(playerid,0x03c03cFF,"ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬ ГўГ Г± Г± ГЇГ®ГЄГіГЇГЄГ®Г© Г­Г®ГўГ®ГЈГ® Г ГўГІГ®Г¬Г®ГЎГЁГ«Гї, {ffffff}Г®Г­ Г±ГІГ®ГЁГІ Г­Г  ГЇГ Г°ГЄГ®ГўГҐ ГЂГўГІГ®Г±Г Г«Г®Г­Г !"), GameTextForPlayer(playerid,dstring,1000,1);
 				PlayerPlaySound(playerid, 30803, 0.0, 0.0, 0.0);
 				DestroyVehicle(Player[playerid][PlayerCar]), Player[playerid][PlayerCar] = CreateVehicle(Player[playerid][pCar][0],565.0430,-1277.2322,17.2422,15.2486,Player[playerid][pCar][1],Player[playerid][pCar][2],84600);
                 SetVehicleVirtualWorld(Player[playerid][PlayerCar],0);
@@ -2665,39 +2665,39 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		        GetPlayerPos(playerid,x,y,z);
 		        switch(listitem) {
 		            case 0: {
-						if(House[Player[playerid][pHouse]][hUpgrade] > 0) return SCM(playerid,0xAC7575FF,"У вас уже установлено данное улучшение!");
-						if(Player[playerid][pBank] < 25000) return SCM(playerid,0xAC7575FF,"У вас недостаточно денег в банке для покупки этого апгрейда!");
+						if(House[Player[playerid][pHouse]][hUpgrade] > 0) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± ГіГ¦ГҐ ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г® Г¤Г Г­Г­Г®ГҐ ГіГ«ГіГ·ГёГҐГ­ГЁГҐ!");
+						if(Player[playerid][pBank] < 25000) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Гў ГЎГ Г­ГЄГҐ Г¤Г«Гї ГЇГ®ГЄГіГЇГЄГЁ ГЅГІГ®ГЈГ® Г ГЇГЈГ°ГҐГ©Г¤Г !");
 						House[Player[playerid][pHouse]][hObject][0] = CreateDynamicObject(2332,x,y,z,0.0,0.0,0.0,GetPlayerVirtualWorld(playerid),GetPlayerInterior(playerid));
 						EditDynamicObject(playerid,House[Player[playerid][pHouse]][hObject][0]);
-						SCM(playerid,0xFF0000FF,"Внимание! Для редактирования позиции объекта используйте все 6 осей.");
-						SCM(playerid,0xFF0000FF,"Оси сменяются серой кнопкой ( повернутой стрелкой )");
-						SCM(playerid,0xFF0000FF,"Для ходьбы или поворота камеры {ffffff}Зажмите SPRINT ( LSHIFT или Пробел! )");
+						SCM(playerid,0xFF0000FF,"Г‚Г­ГЁГ¬Г Г­ГЁГҐ! Г„Г«Гї Г°ГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГї ГЇГ®Г§ГЁГ¶ГЁГЁ Г®ГЎГєГҐГЄГІГ  ГЁГ±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ ГўГ±ГҐ 6 Г®Г±ГҐГ©.");
+						SCM(playerid,0xFF0000FF,"ГЋГ±ГЁ Г±Г¬ГҐГ­ГїГѕГІГ±Гї Г±ГҐГ°Г®Г© ГЄГ­Г®ГЇГЄГ®Г© ( ГЇГ®ГўГҐГ°Г­ГіГІГ®Г© Г±ГІГ°ГҐГ«ГЄГ®Г© )");
+						SCM(playerid,0xFF0000FF,"Г„Г«Гї ГµГ®Г¤ГјГЎГ» ГЁГ«ГЁ ГЇГ®ГўГ®Г°Г®ГІГ  ГЄГ Г¬ГҐГ°Г» {ffffff}Г‡Г Г¦Г¬ГЁГІГҐ SPRINT ( LSHIFT ГЁГ«ГЁ ГЏГ°Г®ГЎГҐГ«! )");
 		            }
 					case 1: {
-					    if(House[Player[playerid][pHouse]][hUpgrade] == 0) return SCM(playerid,0xAC7575FF,"Для установки этого апгрейда необходимо иметь 'Сейф'");
-					    if(House[Player[playerid][pHouse]][hUpgrade] > 1) return SCM(playerid,0xAC7575FF,"У вас уже установлено данное улучшение!");
-						if(Player[playerid][pBank] < 20000) return SCM(playerid,0xAC7575FF,"У вас недостаточно денег в банке для покупки этого апгрейда!");
+					    if(House[Player[playerid][pHouse]][hUpgrade] == 0) return SCM(playerid,0xAC7575FF,"Г„Г«Гї ГіГ±ГІГ Г­Г®ГўГЄГЁ ГЅГІГ®ГЈГ® Г ГЇГЈГ°ГҐГ©Г¤Г  Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® ГЁГ¬ГҐГІГј 'Г‘ГҐГ©Гґ'");
+					    if(House[Player[playerid][pHouse]][hUpgrade] > 1) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± ГіГ¦ГҐ ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г® Г¤Г Г­Г­Г®ГҐ ГіГ«ГіГ·ГёГҐГ­ГЁГҐ!");
+						if(Player[playerid][pBank] < 20000) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Гў ГЎГ Г­ГЄГҐ Г¤Г«Гї ГЇГ®ГЄГіГЇГЄГЁ ГЅГІГ®ГЈГ® Г ГЇГЈГ°ГҐГ©Г¤Г !");
 						House[Player[playerid][pHouse]][hObject][1] = CreateDynamicObject(2025,x,y,z,0.0,0.0,0.0,GetPlayerVirtualWorld(playerid),GetPlayerInterior(playerid));
 						EditDynamicObject(playerid,House[Player[playerid][pHouse]][hObject][1]);
-						SCM(playerid,0xFF0000FF,"Внимание! Для редактирования позиции объекта используйте все 6 осей.");
-						SCM(playerid,0xFF0000FF,"Оси сменяются серой кнопкой ( повернутой стрелкой )");
-						SCM(playerid,0xFF0000FF,"Для ходьбы или поворота камеры {ffffff}Зажмите SPRINT ( LSHIFT или Пробел! )");
+						SCM(playerid,0xFF0000FF,"Г‚Г­ГЁГ¬Г Г­ГЁГҐ! Г„Г«Гї Г°ГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГї ГЇГ®Г§ГЁГ¶ГЁГЁ Г®ГЎГєГҐГЄГІГ  ГЁГ±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ ГўГ±ГҐ 6 Г®Г±ГҐГ©.");
+						SCM(playerid,0xFF0000FF,"ГЋГ±ГЁ Г±Г¬ГҐГ­ГїГѕГІГ±Гї Г±ГҐГ°Г®Г© ГЄГ­Г®ГЇГЄГ®Г© ( ГЇГ®ГўГҐГ°Г­ГіГІГ®Г© Г±ГІГ°ГҐГ«ГЄГ®Г© )");
+						SCM(playerid,0xFF0000FF,"Г„Г«Гї ГµГ®Г¤ГјГЎГ» ГЁГ«ГЁ ГЇГ®ГўГ®Г°Г®ГІГ  ГЄГ Г¬ГҐГ°Г» {ffffff}Г‡Г Г¦Г¬ГЁГІГҐ SPRINT ( LSHIFT ГЁГ«ГЁ ГЏГ°Г®ГЎГҐГ«! )");
 					}
 					case 2: {
-					    if(House[Player[playerid][pHouse]][hUpgrade] == 0) return SCM(playerid,0xAC7575FF,"Для установки этого апгрейда необходимо иметь 'Шкаф'");
-					    if(House[Player[playerid][pHouse]][hUpgrade] > 2) return SCM(playerid,0xAC7575FF,"У вас уже установлено данное улучшение!");
-						if(Player[playerid][pBank] < 20000) return SCM(playerid,0xAC7575FF,"У вас недостаточно денег в банке для покупки этого апгрейда!");
+					    if(House[Player[playerid][pHouse]][hUpgrade] == 0) return SCM(playerid,0xAC7575FF,"Г„Г«Гї ГіГ±ГІГ Г­Г®ГўГЄГЁ ГЅГІГ®ГЈГ® Г ГЇГЈГ°ГҐГ©Г¤Г  Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® ГЁГ¬ГҐГІГј 'ГГЄГ Гґ'");
+					    if(House[Player[playerid][pHouse]][hUpgrade] > 2) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± ГіГ¦ГҐ ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г® Г¤Г Г­Г­Г®ГҐ ГіГ«ГіГ·ГёГҐГ­ГЁГҐ!");
+						if(Player[playerid][pBank] < 20000) return SCM(playerid,0xAC7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Гў ГЎГ Г­ГЄГҐ Г¤Г«Гї ГЇГ®ГЄГіГЇГЄГЁ ГЅГІГ®ГЈГ® Г ГЇГЈГ°ГҐГ©Г¤Г !");
 						Player[playerid][pMoney] -= 20000, House[Player[playerid][pHouse]][hUpgrade] = 3;
-						SCM(playerid,0x03c03cFF,"Гараж {ffffff}приобретен!");
+						SCM(playerid,0x03c03cFF,"ГѓГ Г°Г Г¦ {ffffff}ГЇГ°ГЁГ®ГЎГ°ГҐГІГҐГ­!");
 		}   }   }   }
 		case 63: {
 			switch(listitem) {
-			    case 0: SetPVarInt(playerid,"Number",0), ShowPlayerDialog(playerid,64,DIALOG_STYLE_INPUT,"Деньги в сейфе","{ffffff}Пожалуйста введите сумму денег которую хотите взять или положить в сейф.\n{ff0000}Внимание, перед суммой поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы снять.\n\
-					{ffffff}Пример: {ff0000}+500","Далее","Отмена");
-				case 1: SetPVarInt(playerid,"Number",1), ShowPlayerDialog(playerid,64,DIALOG_STYLE_INPUT,"Патроны в сейфе","{ffffff}Пожалуйста введите кол-во патрон которые хотите взять или положить в сейф.\n{ff0000}Внимание, перед суммой поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы снять.\n\
-					{ffffff}Пример: {ff0000}+25","Далее","Отмена");
-                case 2: SetPVarInt(playerid,"Number",2), ShowPlayerDialog(playerid,64,DIALOG_STYLE_INPUT,"Наркотики в сейфе","{ffffff}Пожалуйста введите кол-во грамм которые хотите взять или положить в сейф.\n{ff0000}Внимание, перед суммой поставьте + или - ,плюс для того, чтобы положить, и минус для того чтобы снять.\n\
-					{ffffff}Пример: {ff0000}+10","Далее","Отмена");
+			    case 0: SetPVarInt(playerid,"Number",0), ShowPlayerDialog(playerid,64,DIALOG_STYLE_INPUT,"Г„ГҐГ­ГјГЈГЁ Гў Г±ГҐГ©ГґГҐ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі Г¤ГҐГ­ГҐГЈ ГЄГ®ГІГ®Г°ГіГѕ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Гў Г±ГҐГ©Гґ.\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г±ГіГ¬Г¬Г®Г© ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» Г±Г­ГїГІГј.\n\
+					{ffffff}ГЏГ°ГЁГ¬ГҐГ°: {ff0000}+500","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+				case 1: SetPVarInt(playerid,"Number",1), ShowPlayerDialog(playerid,64,DIALOG_STYLE_INPUT,"ГЏГ ГІГ°Г®Г­Г» Гў Г±ГҐГ©ГґГҐ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ ГЄГ®Г«-ГўГ® ГЇГ ГІГ°Г®Г­ ГЄГ®ГІГ®Г°Г»ГҐ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Гў Г±ГҐГ©Гґ.\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г±ГіГ¬Г¬Г®Г© ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» Г±Г­ГїГІГј.\n\
+					{ffffff}ГЏГ°ГЁГ¬ГҐГ°: {ff0000}+25","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+                case 2: SetPVarInt(playerid,"Number",2), ShowPlayerDialog(playerid,64,DIALOG_STYLE_INPUT,"ГЌГ Г°ГЄГ®ГІГЁГЄГЁ Гў Г±ГҐГ©ГґГҐ","{ffffff}ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГўГҐГ¤ГЁГІГҐ ГЄГ®Г«-ГўГ® ГЈГ°Г Г¬Г¬ ГЄГ®ГІГ®Г°Г»ГҐ ГµГ®ГІГЁГІГҐ ГўГ§ГїГІГј ГЁГ«ГЁ ГЇГ®Г«Г®Г¦ГЁГІГј Гў Г±ГҐГ©Гґ.\n{ff0000}Г‚Г­ГЁГ¬Г Г­ГЁГҐ, ГЇГҐГ°ГҐГ¤ Г±ГіГ¬Г¬Г®Г© ГЇГ®Г±ГІГ ГўГјГІГҐ + ГЁГ«ГЁ - ,ГЇГ«ГѕГ± Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» ГЇГ®Г«Г®Г¦ГЁГІГј, ГЁ Г¬ГЁГ­ГіГ± Г¤Г«Гї ГІГ®ГЈГ® Г·ГІГ®ГЎГ» Г±Г­ГїГІГј.\n\
+					{ffffff}ГЏГ°ГЁГ¬ГҐГ°: {ff0000}+10","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 		}   }
 		case 64: {
 			if(response) {
@@ -2706,17 +2706,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				    case 0: {
 			    		if(strfind(inputtext, "+", true) != -1) {
    							strdel(inputtext,0,1);
-							if(Player[playerid][pMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"У вас недостаточно денег!");
+							if(Player[playerid][pMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ!");
 							House[h][sMoney] += strval(inputtext), Player[playerid][pMoney] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Сейф\nДенег: %d\nПатроны: %d\nНаркотики: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГҐГ©Гґ\nГ„ГҐГ­ГҐГЈ: %d\nГЏГ ГІГ°Г®Г­Г»: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГЁ: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
 	 						UpdateDynamic3DTextLabelText(House[h][sText], 0x1faee9FF, warehousetext);
 	 						return false;
 						}
 	    				else if(strfind(inputtext, "-", true) != -1) {
 							strdel(inputtext,0,1);
-							if(House[h][sMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"В банке недостаточно денег!");
+							if(House[h][sMoney] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г‚ ГЎГ Г­ГЄГҐ Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ!");
 							Player[playerid][pMoney] += strval(inputtext), House[h][sMoney] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Сейф\nДенег: %d\nПатроны: %d\nНаркотики: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГҐГ©Гґ\nГ„ГҐГ­ГҐГЈ: %d\nГЏГ ГІГ°Г®Г­Г»: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГЁ: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
 	 						UpdateDynamic3DTextLabelText(House[h][sText], 0x1faee9FF, warehousetext);
 	 						return false;
 	 					}
@@ -2724,17 +2724,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					case 1: {
 			    		if(strfind(inputtext, "+", true) != -1) {
    							strdel(inputtext,0,1);
-							if(Player[playerid][pAmmo] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"У вас недостаточно денег!");
+							if(Player[playerid][pAmmo] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ!");
 							House[h][sAmmo] += strval(inputtext), Player[playerid][pAmmo] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Сейф\nДенег: %d\nПатроны: %d\nНаркотики: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГҐГ©Гґ\nГ„ГҐГ­ГҐГЈ: %d\nГЏГ ГІГ°Г®Г­Г»: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГЁ: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
 	 						UpdateDynamic3DTextLabelText(House[h][sText], 0x1faee9FF, warehousetext);
 	 						return false;
 						}
 	    				else if(strfind(inputtext, "-", true) != -1) {
 							strdel(inputtext,0,1);
-							if(House[h][sAmmo] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"В банке недостаточно денег!");
+							if(House[h][sAmmo] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г‚ ГЎГ Г­ГЄГҐ Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ!");
 							Player[playerid][pAmmo] += strval(inputtext), House[h][sAmmo] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Сейф\nДенег: %d\nПатроны: %d\nНаркотики: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГҐГ©Гґ\nГ„ГҐГ­ГҐГЈ: %d\nГЏГ ГІГ°Г®Г­Г»: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГЁ: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
 	 						UpdateDynamic3DTextLabelText(House[h][sText], 0x1faee9FF, warehousetext);
 	 						return false;
 	 					}
@@ -2742,17 +2742,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					case 2: {
 			    		if(strfind(inputtext, "+", true) != -1) {
    							strdel(inputtext,0,1);
-							if(Player[playerid][pDrugs] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"У вас недостаточно денег!");
+							if(Player[playerid][pDrugs] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ!");
 							House[h][sDrugs] += strval(inputtext), Player[playerid][pDrugs] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Сейф\nДенег: %d\nПатроны: %d\nНаркотики: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГҐГ©Гґ\nГ„ГҐГ­ГҐГЈ: %d\nГЏГ ГІГ°Г®Г­Г»: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГЁ: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
 	 						UpdateDynamic3DTextLabelText(House[h][sText], 0x1faee9FF, warehousetext);
 	 						return false;
 						}
 						else if(strfind(inputtext, "-", true) != -1) {
 							strdel(inputtext,0,1);
-							if(House[h][sDrugs] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"В банке недостаточно денег!");
+							if(House[h][sDrugs] < strval(inputtext)) return SCM(playerid,0xFF0000FF,"Г‚ ГЎГ Г­ГЄГҐ Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ!");
 							Player[playerid][pDrugs] += strval(inputtext), House[h][sDrugs] -= strval(inputtext), Success(playerid)
-							format(warehousetext,sizeof(warehousetext),"Сейф\nДенег: %d\nПатроны: %d\nНаркотики: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
+							format(warehousetext,sizeof(warehousetext),"Г‘ГҐГ©Гґ\nГ„ГҐГ­ГҐГЈ: %d\nГЏГ ГІГ°Г®Г­Г»: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГЁ: %d",House[h][sMoney],House[h][sAmmo],House[h][sDrugs]);
 	 						UpdateDynamic3DTextLabelText(House[h][sText], 0x1faee9FF, warehousetext);
 	 						return false;
 	 					}
@@ -2763,12 +2763,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 		case 65: {
 		    if(response) {
-		        if(!strlen(inputtext)) return ShowPlayerDialog(playerid,65,DIALOG_STYLE_INPUT,"{AC7575}Настройки гонки","{ffffff}Введите {03c03c}сумму ставки!","Далее","Отмена");
-		        if(strval(inputtext) < 250 || strval(inputtext) > 100000) return ShowPlayerDialog(playerid,65,DIALOG_STYLE_INPUT,"{AC7575}Настройки гонки","{ffffff}Введите {03c03c}сумму ставки!\n\n\n{ffffff}Сумма {AC7575}не должна быть меньше 250$ и больше 100000$","Далее","Отмена");
-				if(Player[playerid][pMoney] < strval(inputtext)) return ShowPlayerDialog(playerid,65,DIALOG_STYLE_INPUT,"{AC7575}Настройки гонки","{ff0000}У вас нет такой суммы денег!\n\n{ffffff}Введите {03c03c}сумму ставки!","Далее","Отмена");
+		        if(!strlen(inputtext)) return ShowPlayerDialog(playerid,65,DIALOG_STYLE_INPUT,"{AC7575}ГЌГ Г±ГІГ°Г®Г©ГЄГЁ ГЈГ®Г­ГЄГЁ","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ {03c03c}Г±ГіГ¬Г¬Гі Г±ГІГ ГўГЄГЁ!","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+		        if(strval(inputtext) < 250 || strval(inputtext) > 100000) return ShowPlayerDialog(playerid,65,DIALOG_STYLE_INPUT,"{AC7575}ГЌГ Г±ГІГ°Г®Г©ГЄГЁ ГЈГ®Г­ГЄГЁ","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ {03c03c}Г±ГіГ¬Г¬Гі Г±ГІГ ГўГЄГЁ!\n\n\n{ffffff}Г‘ГіГ¬Г¬Г  {AC7575}Г­ГҐ Г¤Г®Г«Г¦Г­Г  ГЎГ»ГІГј Г¬ГҐГ­ГјГёГҐ 250$ ГЁ ГЎГ®Г«ГјГёГҐ 100000$","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+				if(Player[playerid][pMoney] < strval(inputtext)) return ShowPlayerDialog(playerid,65,DIALOG_STYLE_INPUT,"{AC7575}ГЌГ Г±ГІГ°Г®Г©ГЄГЁ ГЈГ®Г­ГЄГЁ","{ff0000}Г“ ГўГ Г± Г­ГҐГІ ГІГ ГЄГ®Г© Г±ГіГ¬Г¬Г» Г¤ГҐГ­ГҐГЈ!\n\n{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ {03c03c}Г±ГіГ¬Г¬Гі Г±ГІГ ГўГЄГЁ!","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 				Rate = strval(inputtext);
-				format(dstring,86,"{ffffff}Маршрут: \t{03c03c}%s\n{ffffff}Ставка:\t{03c03c}%d$",track,Rate);
-				ShowPlayerDialog(playerid,66,DIALOG_STYLE_MSGBOX,"{03c03c}Настойки гонки",dstring,"Начать","Отмена");
+				format(dstring,86,"{ffffff}ГЊГ Г°ГёГ°ГіГІ: \t{03c03c}%s\n{ffffff}Г‘ГІГ ГўГЄГ :\t{03c03c}%d$",track,Rate);
+				ShowPlayerDialog(playerid,66,DIALOG_STYLE_MSGBOX,"{03c03c}ГЌГ Г±ГІГ®Г©ГЄГЁ ГЈГ®Г­ГЄГЁ",dstring,"ГЌГ Г·Г ГІГј","ГЋГІГ¬ГҐГ­Г ");
 		    }
 		    else Track = 0, SetPVarInt(playerid,"Race",-1);
 		}
@@ -2870,7 +2870,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 			Player[playerid][pLevel] = 1, Player[playerid][pExp] = 1;
 			SpawnPlayer(playerid), SaveAccount(playerid);
             SetPlayerCameraPos(playerid, 1360.9023,-1571.8125,116.9395), SetPlayerCameraLookAt(playerid, 1480.2584,-1734.5576,18.6296);
-			SCM(playerid, -1,"Поздравляем вас {1FE9B9}с успешной регистрацией!\n{ffffff}Для продолжения игры {F18C8C}введите ваш пароль в окошко ниже!");
+			SCM(playerid, -1,"ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬ ГўГ Г± {1FE9B9}Г± ГіГ±ГЇГҐГёГ­Г®Г© Г°ГҐГЈГЁГ±ГІГ°Г Г¶ГЁГҐГ©!\n{ffffff}Г„Г«Гї ГЇГ°Г®Г¤Г®Г«Г¦ГҐГ­ГЁГї ГЁГЈГ°Г» {F18C8C}ГўГўГҐГ¤ГЁГІГҐ ГўГ Гё ГЇГ Г°Г®Г«Гј Гў Г®ГЄГ®ГёГЄГ® Г­ГЁГ¦ГҐ!");
 			mysql_format(connects, query,70,"SELECT `Name` FROM `accounts` WHERE Name = '%s'", Name(playerid)), mysql_tquery(connects, query, "CheckPlayer","i", playerid);
 			PlayerPlaySound(playerid, 30803, 0.0, 0.0, 0.0);
 			return true;
@@ -2907,11 +2907,11 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 		}
 		//0x2ECC71FF
 		if(clickedid == iDrop) {
-		    if(SS == -2) return SCM(playerid,0xAC7575FF,"Не выбран слот инвентаря!");
+		    if(SS == -2) return SCM(playerid,0xAC7575FF,"ГЌГҐ ГўГ»ГЎГ°Г Г­ Г±Г«Г®ГІ ГЁГ­ГўГҐГ­ГІГ Г°Гї!");
 		    fcor
 		    GetPlayerPos(playerid,x,y,z);
 			if(SS >= -1) {
-			    if(GetPlayerSkin(playerid) == 154) return SCM(playerid,0xAC7575FF,"На вас нет одежды!");
+			    if(GetPlayerSkin(playerid) == 154) return SCM(playerid,0xAC7575FF,"ГЌГ  ГўГ Г± Г­ГҐГІ Г®Г¤ГҐГ¦Г¤Г»!");
 				DropedItem[droped][0] = CreateDynamicObject(2386,x+0.3,y,z-1.0,0.0,0.0,0.0), DropedItem[droped][1] = Player[playerid][pModel][0], SetPlayerSkin(playerid,154), Player[playerid][pModel][0] = 154,
 				TextDrawBackgroundColor(Player[playerid][iSkin], 0xBDC3C7FF), TextDrawSetPreviewModel(Player[playerid][iModel], GetPlayerSkin(playerid));
 			}
@@ -2946,7 +2946,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 			else if(clickedid == a0) strins(getpass[playerid],"0",strlen(getpass[playerid])), TextDrawSetString(atext, getpass[playerid]);
 			else if(clickedid == ac) strdel(getpass[playerid],strlen(getpass[playerid])-1,strlen(getpass[playerid])), TextDrawSetString(atext, getpass[playerid]);
 			else if(clickedid == aenter) {
-			    if(strlen(getpass[playerid]) < 6 || strlen(getpass[playerid]) > 16) SCM(playerid,-1,"Пароль должен содержать не менее 6-ти цифр и не более 16!");
+			    if(strlen(getpass[playerid]) < 6 || strlen(getpass[playerid]) > 16) SCM(playerid,-1,"ГЏГ Г°Г®Г«Гј Г¤Г®Г«Г¦ГҐГ­ Г±Г®Г¤ГҐГ°Г¦Г ГІГј Г­ГҐ Г¬ГҐГ­ГҐГҐ 6-ГІГЁ Г¶ГЁГґГ° ГЁ Г­ГҐ ГЎГ®Г«ГҐГҐ 16!");
 			    TogglePlayerControllable(playerid, 1);
 	     		TextDrawHideForPlayer(playerid,abox);
 				TextDrawHideForPlayer(playerid,a1);
@@ -2965,18 +2965,18 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 				TextDrawHideForPlayer(playerid,ac);
 				CancelSelectTextDraw(playerid);
 				Player[playerid][APass] = strval(getpass[playerid]), Success(playerid)
-				SCM(playerid,COLOR_WHITE,"Установка пароля прошла успешно, теперь введите команду /aat");
+				SCM(playerid,COLOR_WHITE,"Г“Г±ГІГ Г­Г®ГўГЄГ  ГЇГ Г°Г®Г«Гї ГЇГ°Г®ГёГ«Г  ГіГ±ГЇГҐГёГ­Г®, ГІГҐГЇГҐГ°Гј ГўГўГҐГ¤ГЁГІГҐ ГЄГ®Г¬Г Г­Г¤Гі /aat");
 				strdel(getpass[playerid],0,strlen(getpass[playerid])), TextDrawSetString(atext, getpass[playerid]);
 	}   }
 	if(Player[playerid][TDSelect] == true && GetPVarInt(playerid,"MakeGun") == 1)
 	{
 	    if(clickedid == cXc) callcmd::makegun(playerid, "");
-	    else if(clickedid == c1) SetPVarInt(playerid,"GunC",24), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Сборка оружия","{ffffff}Введите желаемое количество патрон","Далее","Отмена");
-	    else if(clickedid == c2) SetPVarInt(playerid,"GunC",23), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Сборка оружия","{ffffff}Введите желаемое количество патрон","Далее","Отмена");
-	    else if(clickedid == c3) SetPVarInt(playerid,"GunC",25), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Сборка оружия","{ffffff}Введите желаемое количество патрон","Далее","Отмена");
-	    else if(clickedid == c4) SetPVarInt(playerid,"GunC",30), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Сборка оружия","{ffffff}Введите желаемое количество патрон","Далее","Отмена");
-	    else if(clickedid == c5) SetPVarInt(playerid,"GunC",31), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Сборка оружия","{ffffff}Введите желаемое количество патрон","Далее","Отмена");
-	    else if(clickedid == c6) SetPVarInt(playerid,"GunC",29), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Сборка оружия","{ffffff}Введите желаемое количество патрон","Далее","Отмена");
+	    else if(clickedid == c1) SetPVarInt(playerid,"GunC",24), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Г‘ГЎГ®Г°ГЄГ  Г®Г°ГіГ¦ГЁГї","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ Г¦ГҐГ«Г ГҐГ¬Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ ГІГ°Г®Г­","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+	    else if(clickedid == c2) SetPVarInt(playerid,"GunC",23), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Г‘ГЎГ®Г°ГЄГ  Г®Г°ГіГ¦ГЁГї","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ Г¦ГҐГ«Г ГҐГ¬Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ ГІГ°Г®Г­","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+	    else if(clickedid == c3) SetPVarInt(playerid,"GunC",25), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Г‘ГЎГ®Г°ГЄГ  Г®Г°ГіГ¦ГЁГї","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ Г¦ГҐГ«Г ГҐГ¬Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ ГІГ°Г®Г­","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+	    else if(clickedid == c4) SetPVarInt(playerid,"GunC",30), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Г‘ГЎГ®Г°ГЄГ  Г®Г°ГіГ¦ГЁГї","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ Г¦ГҐГ«Г ГҐГ¬Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ ГІГ°Г®Г­","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+	    else if(clickedid == c5) SetPVarInt(playerid,"GunC",31), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Г‘ГЎГ®Г°ГЄГ  Г®Г°ГіГ¦ГЁГї","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ Г¦ГҐГ«Г ГҐГ¬Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ ГІГ°Г®Г­","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+	    else if(clickedid == c6) SetPVarInt(playerid,"GunC",29), ShowPlayerDialog(playerid,17,DIALOG_STYLE_INPUT,"{03c03c}Г‘ГЎГ®Г°ГЄГ  Г®Г°ГіГ¦ГЁГї","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ Г¦ГҐГ«Г ГҐГ¬Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ ГІГ°Г®Г­","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 	    
 	    callcmd::makegun(playerid, "");
 	    
@@ -2986,11 +2986,11 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 	 {
 	    if(clickedid == mm29) callcmd::menu(playerid, "");
 	    
-	    else if(clickedid == mm32) ShowPlayerDialog(playerid,18,DIALOG_STYLE_INPUT,"{03c03c}Сообщение Администрации","{ffffff}Если у вас есть жалоба на какого-либо игрока или вопрос, то вы смело можете задать его нам.\n\n\
-		Форма подачи жалобы: [id нарушителя] [причина]\n\n{ff0000}Запрещено:\n - Мат\n - Оскорбления\n - Оффтоп ( сообщение не по теме )\n\n{03c03c}Наказание - от кика до бана.","Далее","Отмена");
-	    else if(clickedid == mm35) ShowPlayerDialog(playerid,19,DIALOG_STYLE_LIST,"{03c03c}Настройки","{03c03c}Включить{ffffff}/{ff0000}Отключить {ffffff}ники","Далее","Отмена");
-	    else if(clickedid == mm39) ShowPlayerDialog(playerid,20,DIALOG_STYLE_LIST,"{03c03c}Помощь по игре","{ff0000}В разработке","Далее","Отмена");
-	    else if(clickedid == mm41) ShowPlayerDialog(playerid,21,DIALOG_STYLE_INPUT,"{03c03c}Донат","{ff0000}В РАЗРАБОТКЕ!","Далее","Отмена");
+	    else if(clickedid == mm32) ShowPlayerDialog(playerid,18,DIALOG_STYLE_INPUT,"{03c03c}Г‘Г®Г®ГЎГ№ГҐГ­ГЁГҐ ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г Г¶ГЁГЁ","{ffffff}Г…Г±Г«ГЁ Гі ГўГ Г± ГҐГ±ГІГј Г¦Г Г«Г®ГЎГ  Г­Г  ГЄГ ГЄГ®ГЈГ®-Г«ГЁГЎГ® ГЁГЈГ°Г®ГЄГ  ГЁГ«ГЁ ГўГ®ГЇГ°Г®Г±, ГІГ® ГўГ» Г±Г¬ГҐГ«Г® Г¬Г®Г¦ГҐГІГҐ Г§Г Г¤Г ГІГј ГҐГЈГ® Г­Г Г¬.\n\n\
+		Г”Г®Г°Г¬Г  ГЇГ®Г¤Г Г·ГЁ Г¦Г Г«Г®ГЎГ»: [id Г­Г Г°ГіГёГЁГІГҐГ«Гї] [ГЇГ°ГЁГ·ГЁГ­Г ]\n\n{ff0000}Г‡Г ГЇГ°ГҐГ№ГҐГ­Г®:\n - ГЊГ ГІ\n - ГЋГ±ГЄГ®Г°ГЎГ«ГҐГ­ГЁГї\n - ГЋГґГґГІГ®ГЇ ( Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ Г­ГҐ ГЇГ® ГІГҐГ¬ГҐ )\n\n{03c03c}ГЌГ ГЄГ Г§Г Г­ГЁГҐ - Г®ГІ ГЄГЁГЄГ  Г¤Г® ГЎГ Г­Г .","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+	    else if(clickedid == mm35) ShowPlayerDialog(playerid,19,DIALOG_STYLE_LIST,"{03c03c}ГЌГ Г±ГІГ°Г®Г©ГЄГЁ","{03c03c}Г‚ГЄГ«ГѕГ·ГЁГІГј{ffffff}/{ff0000}ГЋГІГЄГ«ГѕГ·ГЁГІГј {ffffff}Г­ГЁГЄГЁ","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+	    else if(clickedid == mm39) ShowPlayerDialog(playerid,20,DIALOG_STYLE_LIST,"{03c03c}ГЏГ®Г¬Г®Г№Гј ГЇГ® ГЁГЈГ°ГҐ","{ff0000}Г‚ Г°Г Г§Г°Г ГЎГ®ГІГЄГҐ","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
+	    else if(clickedid == mm41) ShowPlayerDialog(playerid,21,DIALOG_STYLE_INPUT,"{03c03c}Г„Г®Г­Г ГІ","{ff0000}Г‚ ГђГЂГ‡ГђГЂГЃГЋГ’ГЉГ…!","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 
 		callcmd::menu(playerid, "");
 
@@ -3075,49 +3075,49 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 		if(clickedid == amBBUY) {
 		   	switch(GetPVarInt(playerid,"AmmoSCT")) {
 		   	    case 1: {
-				   		if(Player[playerid][pMoney] < 180) return SCM(playerid,0xCA7575FF,"У вас недостаточно денег для этой покупки!");
+				   		if(Player[playerid][pMoney] < 180) return SCM(playerid,0xCA7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї ГЅГІГ®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
 				   		GiveWeapon(playerid,29,30), Player[playerid][pMoney] -= 180, GameTextForPlayer(playerid, "~g~+30 MP5", 1000, 3);
 				   		Business[GetPVarInt(playerid,"BID")][bIncome] += 180;
 				   		Business[GetPVarInt(playerid,"BID")][bProduct]--;
 				}
 		   	    case 2:  {
-				   		if(Player[playerid][pMoney] < 250) return SCM(playerid,0xCA7575FF,"У вас недостаточно денег для этой покупки!");
+				   		if(Player[playerid][pMoney] < 250) return SCM(playerid,0xCA7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї ГЅГІГ®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
 	   					GiveWeapon(playerid,30,30), Player[playerid][pMoney] -= 250,  GameTextForPlayer(playerid, "~g~+30 AK47", 1000, 3);
 	   					Business[GetPVarInt(playerid,"BID")][bIncome] += 250;
 				   		Business[GetPVarInt(playerid,"BID")][bProduct]--;
 				}
 	   			case 3:  {
-				   		if(Player[playerid][pMoney] < 250) return SCM(playerid,0xCA7575FF,"У вас недостаточно денег для этой покупки!");
+				   		if(Player[playerid][pMoney] < 250) return SCM(playerid,0xCA7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї ГЅГІГ®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
 				   		GiveWeapon(playerid,31,50), Player[playerid][pMoney] -= 250,  GameTextForPlayer(playerid, "~g~+50 M4A1", 1000, 3);
 				   		Business[GetPVarInt(playerid,"BID")][bIncome] += 250;
 				   		Business[GetPVarInt(playerid,"BID")][bProduct]--;
 				}
 		   	    case 4:  {
-				   		if(Player[playerid][pMoney] < 350) return SCM(playerid,0xCA7575FF,"У вас недостаточно денег для этой покупки!");
+				   		if(Player[playerid][pMoney] < 350) return SCM(playerid,0xCA7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї ГЅГІГ®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
 				   		GiveWeapon(playerid,25,30), Player[playerid][pMoney] -= 350,  GameTextForPlayer(playerid, "~g~+30 Shotgun", 1000, 3);
 				   		Business[GetPVarInt(playerid,"BID")][bIncome] += 350;
 				   		Business[GetPVarInt(playerid,"BID")][bProduct]--;
 				}
 		   	    case 5:  {
-				   		if(Player[playerid][pMoney] < 135) return SCM(playerid,0xCA7575FF,"У вас недостаточно денег для этой покупки!");
+				   		if(Player[playerid][pMoney] < 135) return SCM(playerid,0xCA7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї ГЅГІГ®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
 				   		GiveWeapon(playerid,23,17), Player[playerid][pMoney] -= 135,  GameTextForPlayer(playerid, "~g~+17 SDP", 1000, 3);
 				   		Business[GetPVarInt(playerid,"BID")][bIncome] += 135;
 				   		Business[GetPVarInt(playerid,"BID")][bProduct]--;
 				}
 		   	    case 6:  {
-				   		if(Player[playerid][pMoney] < 100) return SCM(playerid,0xCA7575FF,"У вас недостаточно денег для этой покупки!");
+				   		if(Player[playerid][pMoney] < 100) return SCM(playerid,0xCA7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї ГЅГІГ®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
 				   		GiveWeapon(playerid,24,7), Player[playerid][pMoney] -= 100,  GameTextForPlayer(playerid, "~g~+7 Deagle", 1000, 3);
 				   		Business[GetPVarInt(playerid,"BID")][bIncome] += 100;
 				   		Business[GetPVarInt(playerid,"BID")][bProduct]--;
 				}
 				case 7:  {
-				   		if(Player[playerid][pMoney] < 70) return SCM(playerid,0xCA7575FF,"У вас недостаточно денег для этой покупки!");
+				   		if(Player[playerid][pMoney] < 70) return SCM(playerid,0xCA7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї ГЅГІГ®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
 				   		GiveWeapon(playerid,17,1), Player[playerid][pMoney] -= 70,  GameTextForPlayer(playerid, "~g~+ Gas Grenade", 1000, 3);
 				   		Business[GetPVarInt(playerid,"BID")][bIncome] += 70;
 				   		Business[GetPVarInt(playerid,"BID")][bProduct]--;
 				}
 	   			case 8:  {
-				   		if(Player[playerid][pMoney] < 50) return SCM(playerid,0xCA7575FF,"У вас недостаточно денег для этой покупки!");
+				   		if(Player[playerid][pMoney] < 50) return SCM(playerid,0xCA7575FF,"Г“ ГўГ Г± Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ Г¤Г«Гї ГЅГІГ®Г© ГЇГ®ГЄГіГЇГЄГЁ!");
 				   		GiveWeapon(playerid,6,1), Player[playerid][pMoney] -= 50,  GameTextForPlayer(playerid, "~g~+ Showel", 1000, 3);
 				   		Business[GetPVarInt(playerid,"BID")][bIncome] += 50;
 				   		Business[GetPVarInt(playerid,"BID")][bProduct]--;
@@ -3280,7 +3280,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 				        case 8: SetPlayerSkin(playerid, 141), Player[playerid][ChosenSkin] = 141, TextDrawSetString(Player[playerid][tCostItem],"300000$"), SetPVarInt(playerid,"BuySkin", 300000);
 	   				}
 					PlayerPlaySound(playerid, 30800, 0.0, 0.0, 0.0); } }
-			if(clickedid == brSelect) ShowPlayerDialog(playerid,51,DIALOG_STYLE_MSGBOX,"{FF8C00}Покупка одежды","{ffffff}Вы действительно хотите {FF8C00}купить данную одежду?","Да","Нет");
+			if(clickedid == brSelect) ShowPlayerDialog(playerid,51,DIALOG_STYLE_MSGBOX,"{FF8C00}ГЏГ®ГЄГіГЇГЄГ  Г®Г¤ГҐГ¦Г¤Г»","{ffffff}Г‚Г» Г¤ГҐГ©Г±ГІГўГЁГІГҐГ«ГјГ­Г® ГµГ®ГІГЁГІГҐ {FF8C00}ГЄГіГЇГЁГІГј Г¤Г Г­Г­ГіГѕ Г®Г¤ГҐГ¦Г¤Гі?","Г„Г ","ГЌГҐГІ");
 			if(clickedid == ButtonCancel || clickedid == Text:INVALID_TEXT_DRAW) {
  				SetPlayerVirtualWorld(playerid,1), TogglePlayerControllable(playerid,1), CancelSelectTextDraw(playerid), TextDrawHideForPlayer(playerid, brLeft), TextDrawHideForPlayer(playerid, brRight),
 				TextDrawHideForPlayer(playerid, brSelect), TextDrawHideForPlayer(playerid, ButtonCancel), TextDrawHideForPlayer(playerid, tCost), TextDrawHideForPlayer(playerid, Player[playerid][tCostItem]);
@@ -3313,7 +3313,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 			    SetVehicleVirtualWorld(Player[playerid][pCar][3],playerid+2);
 			    TextDrawSetString(Player[playerid][asVname],VehicleNames[GetVehicleModel(GetPlayerVehicleID(playerid)-400)]);
 			}
-			if(clickedid == asBBuy) ShowPlayerDialog(playerid,61,DIALOG_STYLE_MSGBOX,"{FF8C00}Покупка автотранспорта","{ffffff}Вы действительно хотите {FF8C00}купить данный автотранспорт?","Да","Нет");
+			if(clickedid == asBBuy) ShowPlayerDialog(playerid,61,DIALOG_STYLE_MSGBOX,"{FF8C00}ГЏГ®ГЄГіГЇГЄГ  Г ГўГІГ®ГІГ°Г Г­Г±ГЇГ®Г°ГІГ ","{ffffff}Г‚Г» Г¤ГҐГ©Г±ГІГўГЁГІГҐГ«ГјГ­Г® ГµГ®ГІГЁГІГҐ {FF8C00}ГЄГіГЇГЁГІГј Г¤Г Г­Г­Г»Г© Г ГўГІГ®ГІГ°Г Г­Г±ГЇГ®Г°ГІ?","Г„Г ","ГЌГҐГІ");
 			if(clickedid == asBExit || clickedid == Text:INVALID_TEXT_DRAW) {
  				TogglePlayerControllable(playerid,1), CancelSelectTextDraw(playerid), TextDrawHideForPlayer(playerid, asLeft), TextDrawHideForPlayer(playerid, asRight),
 				TextDrawHideForPlayer(playerid, asCost), TextDrawHideForPlayer(playerid, asBox), TextDrawHideForPlayer(playerid, Player[playerid][asCostV]), TextDrawHideForPlayer(playerid, Player[playerid][asVname]), TextDrawHideForPlayer(playerid, asBuy);
@@ -3373,7 +3373,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 				case 1: TextDrawSetString(raImg,"LD_RCE3:race12"), track = "San Fierro Ramp";
 			}
 		}
-	    if(clickedid == raButS) ShowPlayerDialog(playerid,65,DIALOG_STYLE_INPUT,"{03c03c}Настройки гонки","{ffffff}Введите сумму ставки!","Далее","Отмена");
+	    if(clickedid == raButS) ShowPlayerDialog(playerid,65,DIALOG_STYLE_INPUT,"{03c03c}ГЌГ Г±ГІГ°Г®Г©ГЄГЁ ГЈГ®Г­ГЄГЁ","{ffffff}Г‚ГўГҐГ¤ГЁГІГҐ Г±ГіГ¬Г¬Гі Г±ГІГ ГўГЄГЁ!","Г„Г Г«ГҐГҐ","ГЋГІГ¬ГҐГ­Г ");
 	    if(clickedid == raButC || clickedid == Text:INVALID_TEXT_DRAW) {
 		    TextDrawHideForPlayer(playerid,raBox),TextDrawHideForPlayer(playerid,raImg),TextDrawHideForPlayer(playerid,raTrack),TextDrawHideForPlayer(playerid,raDist),TextDrawHideForPlayer(playerid,raBox2),
 			TextDrawHideForPlayer(playerid,raLeft),TextDrawHideForPlayer(playerid,raRight),TextDrawHideForPlayer(playerid,raSRace),TextDrawHideForPlayer(playerid,raButS),TextDrawHideForPlayer(playerid,raButC),
@@ -3395,15 +3395,15 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
 		    House[Player[playerid][pHouse]][sX] = x,House[Player[playerid][pHouse]][sY] = y,House[Player[playerid][pHouse]][sZ] = z,
 		    House[Player[playerid][pHouse]][sRX] = rx,House[Player[playerid][pHouse]][sRY] = ry,House[Player[playerid][pHouse]][sRZ] = rz;
 			House[Player[playerid][pHouse]][hUpgrade] = 1;
-		    SCM(playerid,0x03c03cFF,"Улучшение установлено! Для редактирования объекта используйте: {ffffff}/hedit");
-		    format(warehousetext,sizeof(warehousetext),"Сейф\nДенег: %d\nПатроны: %d\nНаркотики: %d",House[Player[playerid][pHouse]][sMoney],House[Player[playerid][pHouse]][sAmmo],House[Player[playerid][pHouse]][sDrugs]);
+		    SCM(playerid,0x03c03cFF,"Г“Г«ГіГ·ГёГҐГ­ГЁГҐ ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г®! Г„Г«Гї Г°ГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГї Г®ГЎГєГҐГЄГІГ  ГЁГ±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ: {ffffff}/hedit");
+		    format(warehousetext,sizeof(warehousetext),"Г‘ГҐГ©Гґ\nГ„ГҐГ­ГҐГЈ: %d\nГЏГ ГІГ°Г®Г­Г»: %d\nГЌГ Г°ГЄГ®ГІГЁГЄГЁ: %d",House[Player[playerid][pHouse]][sMoney],House[Player[playerid][pHouse]][sAmmo],House[Player[playerid][pHouse]][sDrugs]);
 			House[Player[playerid][pHouse]][sText] = CreateDynamic3DTextLabel(warehousetext, 0x1faee9FF,House[Player[playerid][pHouse]][sX],House[Player[playerid][pHouse]][sY],House[Player[playerid][pHouse]][sZ]+1.2,20.0,INVALID_PLAYER_ID,INVALID_PLAYER_ID,0,House[Player[playerid][pHouse]][hID],-1,-1,100.0);
 		}
 		if(objectid == House[Player[playerid][pHouse]][hObject][1]) {
 		    House[Player[playerid][pHouse]][wX] = x,House[Player[playerid][pHouse]][wY] = y,House[Player[playerid][pHouse]][wZ] = z,
 		    House[Player[playerid][pHouse]][wRX] = rx,House[Player[playerid][pHouse]][wRY] = ry,House[Player[playerid][pHouse]][wRZ] = rz;
 		    House[Player[playerid][pHouse]][hUpgrade] = 2;
-            SCM(playerid,0x03c03cFF,"Улучшение установлено! Для редактирования объекта используйте: {ffffff}/hedit");
+            SCM(playerid,0x03c03cFF,"Г“Г«ГіГ·ГёГҐГ­ГЁГҐ ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г®! Г„Г«Гї Г°ГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГї Г®ГЎГєГҐГЄГІГ  ГЁГ±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ: {ffffff}/hedit");
 		}
         return true;
     }
@@ -3423,7 +3423,7 @@ public OnIncomingConnection(playerid, ip_address[], port)
 {
       if(!IsPlayerConnected(playerid)) return SetPVarInt(playerid, "IncomingConnects", GetPVarInt(playerid, "IncomingConnects")+1);
       if(GetPVarInt(playerid, "IncomingConnects") == 3) return BlockIpAddress(ip_address, 10800000);
-      format(strock,sizeof(strock),"[A] IP Адресс: %s:%d был забанен по подозреванию в DDoS атаке.",ip_address,port);
+      format(strock,sizeof(strock),"[A] IP ГЂГ¤Г°ГҐГ±Г±: %s:%d ГЎГ»Г« Г§Г ГЎГ Г­ГҐГ­ ГЇГ® ГЇГ®Г¤Г®Г§Г°ГҐГўГ Г­ГЁГѕ Гў DDoS Г ГІГ ГЄГҐ.",ip_address,port);
       SendAdminMessage(0xFF0000FF, strock);
       return true;
 }
@@ -3435,7 +3435,7 @@ apublic PlayerTimer() {
 	 	new string[22], animlib[16], animname[16];
 		SetPVarInt(playerid, "AFK", GetPVarInt(playerid, "AFK")+1);
 	 	if(GetPVarInt(playerid, "AFK") > 3) format(string, sizeof(string), "[AFK: %d]", (GetPVarInt(playerid, "AFK")-GetPVarInt(playerid, "AFK")+GetPVarInt(playerid, "AFK"))), SetPlayerChatBubble(playerid, string, 0xFF0000FF, 35.0, 1500);
-	  	if(GetPVarInt(playerid, "AFK") > 920 && Player[playerid][pAdmin] == 0) SCM(playerid,COLOR_LIGHTRED,"Вы были кикнуты за долговременное АФК!"), KickEx(playerid);
+	  	if(GetPVarInt(playerid, "AFK") > 920 && Player[playerid][pAdmin] == 0) SCM(playerid,COLOR_LIGHTRED,"Г‚Г» ГЎГ»Г«ГЁ ГЄГЁГЄГ­ГіГІГ» Г§Г  Г¤Г®Г«ГЈГ®ГўГ°ГҐГ¬ГҐГ­Г­Г®ГҐ ГЂГ”ГЉ!"), KickEx(playerid);
 	  	if(Player[playerid][pMoney] < GetPlayerMoney(playerid) || Player[playerid][pMoney] > GetPlayerMoney(playerid)) ResetPlayerMoney(playerid), GivePlayerMoney(playerid,Player[playerid][pMoney]);
 		//
 		if(GetPlayerAmmo(playerid) > Player[playerid][Weapon][GetPlayerWeapon(playerid)]) ResetWeapon(playerid);
@@ -3449,20 +3449,20 @@ apublic PlayerTimer() {
 		    fcor
 	 		GetPlayerPos(playerid, x, y, z);
 			GetAnimationName(GetPlayerAnimationIndex(playerid), animlib, sizeof(animlib), animname, sizeof(animname));
-	        if(strcmp(animlib, "SWIM", true) == 0 && strcmp(animname, "SWIM_crawl", true) == 0 && z > 1 && GetPlayerSpeed(playerid) > 30) SCM(playerid,COLOR_LIGHTRED,"Вы были кикнуты. Опкод: {ffffff}P3T5R1"), KickEx(playerid);
+	        if(strcmp(animlib, "SWIM", true) == 0 && strcmp(animname, "SWIM_crawl", true) == 0 && z > 1 && GetPlayerSpeed(playerid) > 30) SCM(playerid,COLOR_LIGHTRED,"Г‚Г» ГЎГ»Г«ГЁ ГЄГЁГЄГ­ГіГІГ». ГЋГЇГЄГ®Г¤: {ffffff}P3T5R1"), KickEx(playerid);
 			//
-			switch(GPW) { case 9,16,35..39: SCM(playerid,COLOR_LIGHTRED,"Вы были кикнуты. Опкод: {ffffff}P9T1R6"), KickEx(playerid); }
+			switch(GPW) { case 9,16,35..39: SCM(playerid,COLOR_LIGHTRED,"Г‚Г» ГЎГ»Г«ГЁ ГЄГЁГЄГ­ГіГІГ». ГЋГЇГЄГ®Г¤: {ffffff}P9T1R6"), KickEx(playerid); }
 			//
 			if(GetPVarInt(playerid,"AirTime") > 0) SetPVarInt(playerid, "AirTime", GetPVarInt(playerid,"AirTime")-1);
 	  		if(GetPVarInt(playerid,"AirTime") == 0 && floatround(GetPlayerDistanceFromPoint(playerid,GetPVarFloat(playerid,"AX"),GetPVarFloat(playerid,"AY"),GetPVarFloat(playerid,"AZ"))) > 19  && GetPVarInt(playerid,"AC_RTime") < gettime()) {
 	   			if((GetPlayerState(playerid) == PLAYER_STATE_ONFOOT && floatround(GetPlayerDistanceFromPoint(playerid,GetPVarFloat(playerid,"AX"),GetPVarFloat(playerid,"AY"),GetPVarFloat(playerid,"AZ"))) > 20) ||
 				   ((GetPlayerState(playerid) == PLAYER_STATE_DRIVER && floatround(GetPlayerDistanceFromPoint(playerid,GetPVarFloat(playerid,"AX"),GetPVarFloat(playerid,"AY"),GetPVarFloat(playerid,"AZ"))) > 50 &&
-				   GetVehicleSpeed(GetPlayerVehicleID(playerid)) == 0)))  format(strock,54,"[A] %s{%d} возможно AirBreak",Name(playerid),playerid), SendAdminMessage(0xFF0000FF,strock);
+				   GetVehicleSpeed(GetPlayerVehicleID(playerid)) == 0)))  format(strock,54,"[A] %s{%d} ГўГ®Г§Г¬Г®Г¦Г­Г® AirBreak",Name(playerid),playerid), SendAdminMessage(0xFF0000FF,strock);
 				SetPVarInt(playerid,"AC_RTime",gettime()+15);
 			}
 			SetPVarFloat(playerid,"AX",x),SetPVarFloat(playerid,"AY",y),SetPVarFloat(playerid,"AZ",z);
 			if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_USEJETPACK) {
-			    format(strock, sizeof(strock), "%s был забанен античитом на %i дней. Причина: Чит", Name(playerid), (15*86400-43200));
+			    format(strock, sizeof(strock), "%s ГЎГ»Г« Г§Г ГЎГ Г­ГҐГ­ Г Г­ГІГЁГ·ГЁГІГ®Г¬ Г­Г  %i Г¤Г­ГҐГ©. ГЏГ°ГЁГ·ГЁГ­Г : Г—ГЁГІ", Name(playerid), (15*86400-43200));
 				SendClientMessageToAll(COLOR_LIGHTRED,strock);
 				Player[playerid][pBan] = gettime() + 15*86400-43200;
 				KickEx(playerid);
@@ -3506,20 +3506,20 @@ apublic PlayerTimer() {
      	if(Player[playerid][pWanted] == 7) {
 			Player[playerid][pWanted] = 0;
      	    if(IsPlayerInRangeOfPoint(playerid,10.0,265.0295,77.6146,1001.0391) && GetPlayerInterior(playerid) == 6) SetPlayerSkin(playerid, (Player[playerid][pFraction][1] == 0) ? Player[playerid][pModel][0] : Player[playerid][pModel][1]),
-			 SetPlayerInterior(playerid,0), SetPlayerVirtualWorld(playerid,0), AC_SetPlayerPos(playerid,1544.5674,-1675.5991,13.5587), SetPlayerFacingAngle(playerid,92.0004), SetCameraBehindPlayer(playerid), SCM(playerid,0x03c03cFF,"Вы отбыли свой срок в тюрьме!");
+			 SetPlayerInterior(playerid,0), SetPlayerVirtualWorld(playerid,0), AC_SetPlayerPos(playerid,1544.5674,-1675.5991,13.5587), SetPlayerFacingAngle(playerid,92.0004), SetCameraBehindPlayer(playerid), SCM(playerid,0x03c03cFF,"Г‚Г» Г®ГІГЎГ»Г«ГЁ Г±ГўГ®Г© Г±Г°Г®ГЄ Гў ГІГѕГ°ГјГ¬ГҐ!");
      	}
 		if(GetPVarInt(playerid,"Called") > 0) {
 		    if(GetPVarInt(playerid,"Called") == 2) {
 		        SetPVarInt(playerid,"CallTime",GetPVarInt(playerid,"CallTime")+1);
          		if(GetPVarInt(playerid,"CallTime") == 3) {
-				    format(strock,sizeof(strock),"[T] Входящий вызов от номера %d. ( /t ), чтобы принять вызов и ( /h ) чтобы отклонить.",Player[GetPVarInt(playerid,"CalledID")][pPhone][0]);
+				    format(strock,sizeof(strock),"[T] Г‚ГµГ®Г¤ГїГ№ГЁГ© ГўГ»Г§Г®Гў Г®ГІ Г­Г®Г¬ГҐГ°Г  %d. ( /t ), Г·ГІГ®ГЎГ» ГЇГ°ГЁГ­ГїГІГј ГўГ»Г§Г®Гў ГЁ ( /h ) Г·ГІГ®ГЎГ» Г®ГІГЄГ«Г®Г­ГЁГІГј.",Player[GetPVarInt(playerid,"CalledID")][pPhone][0]);
 				    SCM(playerid,0xFFEE00FF,strock);
 				    SetPVarInt(playerid,"CallTime",0);
 			}   }
 	      	if(GetPVarInt(playerid,"Called") == 3) {
 	     	    if(Player[playerid][pPhone][1] < 1) {
   	        		SetPlayerSpecialAction(playerid,SPECIAL_ACTION_STOPUSECELLPHONE),  SetPlayerSpecialAction(GetPVarInt(playerid,"CalledID"),SPECIAL_ACTION_STOPUSECELLPHONE);
-    				SCM(GetPVarInt(playerid,"CalledID"),0xFFEE00FF,"[T] Абонент положил трубку."), SCM(GetPVarInt(GetPVarInt(playerid,"CalledID"),"CalledID"),0xFFEE00FF,"[T] Абонент положил трубку.");
+    				SCM(GetPVarInt(playerid,"CalledID"),0xFFEE00FF,"[T] ГЂГЎГ®Г­ГҐГ­ГІ ГЇГ®Г«Г®Г¦ГЁГ« ГІГ°ГіГЎГЄГі."), SCM(GetPVarInt(GetPVarInt(playerid,"CalledID"),"CalledID"),0xFFEE00FF,"[T] ГЂГЎГ®Г­ГҐГ­ГІ ГЇГ®Г«Г®Г¦ГЁГ« ГІГ°ГіГЎГЄГі.");
     				SetPVarInt(GetPVarInt(playerid,"CalledID"),"Called",0), SetPVarInt(playerid,"Called",0), SetPVarInt(playerid,"CalledID",INVALID_PLAYER_ID), SetPVarInt(GetPVarInt(playerid,"CalledID"),"CalledID",INVALID_PLAYER_ID);
 	     	    }
 			 	SetPVarInt(playerid,"CallTimer",GetPVarInt(playerid,"CallTimer")+1), Player[playerid][pPhone][1]--;
@@ -3555,9 +3555,9 @@ public OnPlayerEnterDynamicArea(playerid,areaid)
     if(areaid == Area) PlayAudioStreamForPlayer(playerid,"http://cheery-rp.ru/sound1.mp3",222.0781,1930.0691,28.3515,350,true);
     if(areaid == Truck) {
         if(GetPVarInt(playerid,"TruckJob") == 1 && (GetPlayerVehicleID(playerid) >= truckcar[0] && GetPlayerVehicleID(playerid) <= truckcar[1]) && GetPVarInt(playerid,"TruckHaul") == 0) {
-            ShowPlayerDialog(playerid,48,DIALOG_STYLE_LIST,"{1faee9}Возможные перевозки","Сырье\nНефть\nПродукты\nЗерно","Выбор","Отмена");
+            ShowPlayerDialog(playerid,48,DIALOG_STYLE_LIST,"{1faee9}Г‚Г®Г§Г¬Г®Г¦Г­Г»ГҐ ГЇГҐГ°ГҐГўГ®Г§ГЄГЁ","Г‘Г»Г°ГјГҐ\nГЌГҐГґГІГј\nГЏГ°Г®Г¤ГіГЄГІГ»\nГ‡ГҐГ°Г­Г®","Г‚Г»ГЎГ®Г°","ГЋГІГ¬ГҐГ­Г ");
 	}   }
-	if(areaid == Area51 && (!PlayerLaw(playerid) && GetPlayerVirtualWorld(playerid) == 0)) Player[playerid][pWanted] = ((4 + Player[playerid][pWanted]) > 6) ? 6 : (Player[playerid][pWanted]+4), SetPlayerWantedLevel(playerid,Player[playerid][pWanted]), SCM(playerid,0xFF0000FF,"Вы проникли на секретную базу, вас увидели камеры!");
+	if(areaid == Area51 && (!PlayerLaw(playerid) && GetPlayerVirtualWorld(playerid) == 0)) Player[playerid][pWanted] = ((4 + Player[playerid][pWanted]) > 6) ? 6 : (Player[playerid][pWanted]+4), SetPlayerWantedLevel(playerid,Player[playerid][pWanted]), SCM(playerid,0xFF0000FF,"Г‚Г» ГЇГ°Г®Г­ГЁГЄГ«ГЁ Г­Г  Г±ГҐГЄГ°ГҐГІГ­ГіГѕ ГЎГ Г§Гі, ГўГ Г± ГіГўГЁГ¤ГҐГ«ГЁ ГЄГ Г¬ГҐГ°Г»!");
     return true;
 }
 
@@ -3579,10 +3579,10 @@ public OnPlayerGiveDamage(playerid, damagedid, Float: amount, weaponid, bodypart
     	if(GetPVarInt(playerid,"Tazer") > gettime()) return true;
     	TogglePlayerControllable(damagedid,0);
 	    ApplyAnimation(damagedid,"PED","KO_skid_front",4.1,0,1,1,1,0), SetTimerEx("Carry", 5000, 0, "dd", damagedid, 2);
-	    SetPlayerChatBubble(damagedid, "оглушен", 0xBA4A4AFF, 35.0, 5000);
-	    SCM(damagedid,0xBA4A4AFF,"Вы были оглушены!");
+	    SetPlayerChatBubble(damagedid, "Г®ГЈГ«ГіГёГҐГ­", 0xBA4A4AFF, 35.0, 5000);
+	    SCM(damagedid,0xBA4A4AFF,"Г‚Г» ГЎГ»Г«ГЁ Г®ГЈГ«ГіГёГҐГ­Г»!");
 	    SetPVarInt(playerid,"Tazer",gettime()+8);
 	}
 	return true;
 }
-//Мод был скачан с сайта YourGame.su
+//ГЊГ®Г¤ ГЎГ»Г« Г±ГЄГ Г·Г Г­ Г± Г±Г Г©ГІГ  YourGame.su
