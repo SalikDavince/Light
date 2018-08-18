@@ -18,7 +18,7 @@
     L1:
     #emit    jump    L1
     #emit    zero    cellmin
-}//коммент
+}
 
 
 #include <a_samp>
